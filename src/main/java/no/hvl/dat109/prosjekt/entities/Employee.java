@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(schema = "dat109_prosjekt", name = "")
-public class Bruker {
+public class Employee {
 
     @Id
     @Column
@@ -19,6 +19,5 @@ public class Bruker {
 
     private String stilling;
 
-    private Project projects;
 
 }
