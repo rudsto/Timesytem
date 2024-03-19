@@ -20,11 +20,12 @@
         <th> name </th>
         <th> phone number </th>
     </tr>
-    <ForEach var = "e" items="${emps}">
+    <c:ForEach var="e" items="${emps}">
     <tr>
-
+        <td>${e.firstName}</td>
     </tr>
-    </ForEach>
+    </c:ForEach>
+
 </table>
 
 </body>
