@@ -22,6 +22,6 @@ public class TestController {
     ){
         List<Employee> emps = employeeService.findAll();
         model.addAttribute("emps", emps);
-        return "home";
+        return "test";
     }
 }

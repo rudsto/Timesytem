@@ -9,22 +9,28 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>Fuck you</title>
+    <title> TBA </title>
 </head>
 <body>
 
-<h1>hello world</h1>
+<h1>These are all the employees in the db currently: </h1>
 <table>
     <tr>
         <th> id </th>
-        <th> name </th>
+        <th> first name </th>
+        <th> last name </th>
+        <th> profession </th>
         <th> phone number </th>
     </tr>
-    <c:ForEach var="e" items="${emps}">
+    <c:forEach var="e" items="${emps}">
     <tr>
+        <td>${e.employeeId}</td>
         <td>${e.firstName}</td>
+        <td>${e.surname}</td>
+        <td>${e.profession}</td>
+        <td>${e.phone}</td>
     </tr>
-    </c:ForEach>
+    </c:forEach>
 
 </table>
 
