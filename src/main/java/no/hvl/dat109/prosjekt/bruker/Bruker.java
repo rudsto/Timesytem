@@ -2,22 +2,32 @@ package no.hvl.dat109.prosjekt.bruker;
 
 import java.util.Objects;
 
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(schema = "DAT109_PROSJEKT")
 public class Bruker {
 
+	@Id
 	private String mobil;
-	private String navn;
+	private String fornavn;
+	private String etternavn;
+	
+	@Embedded
 	private Passord passord;
-
+	
 	public Bruker() {
 		
 	}
 
-	public Bruker(String mobil, String navn, Passord passord) {
+	public Bruker(String mobil, String fornavn, String etternavn, 
+			Passord passord) {
 		this.mobil = mobil;
-		this.navn = navn;
+		this.fornavn = fornavn;
+		this.etternavn = etternavn;
 		this.passord = passord;
 	}
 
@@ -29,12 +39,20 @@ public class Bruker {
 		this.mobil = mobil;
 	}
 
-	public String getNavn() {
-		return navn;
+	public String getFornavn() {
+		return fornavn;
 	}
 
-	public void setNavn(String navn) {
-		this.navn = navn;
+	public void setFornavn(String fornavn) {
+		this.fornavn = fornavn;
+	}
+	
+	public String getEtternavn() {
+		return etternavn;
+	}
+
+	public void setEtternavn(String etternavn) {
+		this.etternavn = etternavn;
 	}
 
 	public Passord getPassord() {
@@ -47,7 +65,7 @@ public class Bruker {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(navn, passord, mobil);
+		return Objects.hash(etternavn, fornavn, mobil, passord);
 	}
 
 	@Override
@@ -59,13 +77,16 @@ public class Bruker {
 		if (getClass() != obj.getClass())
 			return false;
 		Bruker other = (Bruker) obj;
-		return Objects.equals(navn, other.navn) && Objects.equals(passord, other.passord)
-				&& Objects.equals(mobil, other.mobil);
+		return Objects.equals(etternavn, other.etternavn) 
+				&& Objects.equals(fornavn, other.fornavn)
+				&& Objects.equals(mobil, other.mobil) 
+				&& Objects.equals(passord, other.passord);
 	}
 
 	@Override
 	public String toString() {
-		return "Bruker [mobil=" + mobil + ", navn=" + navn + ", passord=" + passord + "]";
+		return "Bruker [mobil=" + mobil + ", fornavn=" + fornavn 
+				+ ", etternavn=" + etternavn + ", passord=" + passord + "]";
 	}
 	
 }

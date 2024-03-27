@@ -24,18 +24,32 @@ public class LoginController {
 	@Autowired 
 	private PassordService passordService;
 	
+	/**
+	 * @return endepunktet til loginsiden
+	 */
 	@GetMapping
 	public String getLogin() {
 		return "login";
 	}
 	
+	/**
+	 * Mottar login-informasjon fra siden og forsøker å logge bruker inn.
+	 * Returnerer redirect til neste side ved lykket innlogging.
+	 * Ved feil mobil eller passord vil det returneres redirect tilbake til 
+	 * samme side med feilmedlding.
+	 * 
+	 * @param input - input fra bruker med login-info
+	 * @param request - informasjon om requesten sendt fra klient
+	 * @param ra - redirect attributes
+	 * @return redirect til innlogget side eller redirect tilbake med feilmelding.
+	 */
 	@PostMapping
-	public String mottaLogin(
+	public String postLogin(
 			@ModelAttribute("login") @Valid LoginSkjema input,
 			HttpServletRequest request,	
 			RedirectAttributes ra) {
-		
-		Bruker bruker = brukerService.getBrukerMedMobil(input.getMobil());
+
+		Bruker bruker = brukerService.finnMedMobil(input.getMobil());
 		
 		if(bruker == null) {
 			return visMelding(ra, "Finner ikke bruker med gitt mobil.");
@@ -44,11 +58,19 @@ public class LoginController {
 			return visMelding(ra, "Passord er feil.");
 		}
 		
-		LoginUtil.logInBruker(request, bruker);
+		LoginUtil.logInnBruker(request, bruker);
 		
 		return "redirect:login_suksess"; //TODO endre til riktig endepunkt
 	}
 	
+	/**
+	 * Legger til melding som redirect attribute, og returnerer login-siden
+	 * hvor meldingen blir vist.
+	 * 
+	 * @param ra - redirect attributes
+	 * @param melding - som skal vises på login-siden
+	 * @return redirect til loginsiden
+	 */
 	private String visMelding(RedirectAttributes ra, String melding) {
 		ra.addFlashAttribute("loginMelding", melding);
 
