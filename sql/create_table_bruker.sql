@@ -5,8 +5,8 @@ SET search_path TO DAT109_PROSJEKT;
 CREATE TABLE bruker
 (
     mobil     CHARACTER(8) PRIMARY KEY,
-    hash      CHARACTER(64) NOT NULL,
-    salt      CHARACTER(32) NOT NULL,
     fornavn   CHARACTER VARYING(40),
     etternavn CHARACTER VARYING(40)
+    hash      CHARACTER(64) NOT NULL,
+    salt      CHARACTER(32) NOT NULL,
 );
