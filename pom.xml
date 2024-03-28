@@ -10,12 +10,12 @@
 	</parent>
 	<groupId>no.hvl.dat109</groupId>
 	<artifactId>Prosjekt-gruppe7</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<name>Prosjekt-gruppe7</name>
 	<description>Prosjekt-gruppe7</description>
 	<packaging>war</packaging>
 	<properties>
-		<java.version>21</java.version>
+		<java.version>11</java.version>
 	</properties>
 	<dependencies>
 
