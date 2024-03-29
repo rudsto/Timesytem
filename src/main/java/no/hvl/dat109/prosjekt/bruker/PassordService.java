@@ -13,7 +13,8 @@ import jakarta.xml.bind.DatatypeConverter;
 
 @Service
 public class PassordService {
-	
+
+
 	/**
 	 * Krypterer gitt streng til hash med et tilfeldig generert salt.
 	 * 
@@ -65,7 +66,7 @@ public class PassordService {
 	 * @return en 64 karakter lang HEX-streng som representerer et 
 	 * 32 byte/256 bit hash.
 	 */
-	public String hashMedSalt(String password, String salt) { 
+	public String hashMedSalt(String password, String salt) {
 		if (password == null || salt == null) { // should validate properly!!
 			throw new IllegalArgumentException();
 		}
