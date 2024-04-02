@@ -14,19 +14,13 @@
 <table class="navbar">
     <tr>
         <td>
-            <form action="/prosjekt???" method="get?">
-    			<button type="submit">Opprett prosjekt</button>
-			</form>
+    		<button href="/deltagerliste" type="submit">Opprett prosjekt</button>
         </td>
         <td>
-            <form action="/prosjekt???" method="get?">
-                <button type="submit">Rediger prosjekt</button>
-            </form>
+            <button href="/deltagerliste" type="submit">Rediger prosjekt</button>
         </td>
         <td>
-            <form action="/prosjekt???" method="get?">
-                <button type="submit">Slett prosjekt</button>
-            </form>
+            <button href="/deltagerliste" type="submit">Slett prosjekt</button>
         </td>
     </tr>
 </table>
