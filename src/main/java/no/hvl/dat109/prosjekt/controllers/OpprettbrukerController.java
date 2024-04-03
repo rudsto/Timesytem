@@ -3,6 +3,8 @@ package no.hvl.dat109.prosjekt.controllers;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 
+import no.hvl.dat109.prosjekt.service.BrukerService;
+import no.hvl.dat109.prosjekt.service.LoginService;
 import no.hvl.dat109.prosjekt.service.SystemService;
 import no.hvl.dat109.prosjekt.entity.Bruker;
 
@@ -17,6 +19,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class OpprettbrukerController {
 	
 	@Autowired private SystemService systemService;
+	@Autowired private LoginService loginService;
+	@Autowired private BrukerService brukerService;
 
 	@PostMapping("paamelding")
 	public String postPaamelding(
@@ -44,7 +48,7 @@ public class OpprettbrukerController {
 		String hash = systemService.hashMedSalt(passord, salt);
 		bruker.setSalt(salt);
 		bruker.setHash(hash);
-		SystemService.loggInnBruker2(request, bruker);
+		loginService.loggInnBruker(request, bruker);
 		systemService.lagreBruker(bruker);
 		return "redirect:paameldt";
 	}
