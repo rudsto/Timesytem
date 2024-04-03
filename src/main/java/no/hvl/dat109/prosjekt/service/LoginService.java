@@ -11,15 +11,15 @@ public class LoginService {
 	
 	//TODO
 	
-	public static void loggInnBruker(HttpServletRequest request, Bruker bruker) {
+	public void loggInnBruker(HttpServletRequest request, Bruker bruker) {
 		//TODO
 	}
 	
-	public static void loggUtBruker(HttpSession session) {
+	public void loggUtBruker(HttpSession session) {
 		//TODO
 	}
 	
-	public static boolean erBrukerInnlogget(HttpSession session) {
+	public boolean erBrukerInnlogget(HttpSession session) {
 		//TODO
 		return false;
 	}
