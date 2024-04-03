@@ -25,8 +25,7 @@ public class SystemService {
 	
 	@Autowired private BrukerRepo brukerRepo;
 	
-	private static final int MAX_INTERACTIVE_INTERVAL = 10 * 60;
-	
+
 	public List<Bruker> finnAlleBrukere() {
 		return brukerRepo.findAll();
 	}
@@ -86,19 +85,6 @@ public class SystemService {
 		return hash.equals(hashMedSalt(passord, salt));
 	}
 	
-	public static void loggUtBruker(HttpSession session) {
-		session.invalidate();
-	}
-	
-	public static void loggInnBruker2(HttpServletRequest request, Bruker bruker) {
-		loggUtBruker(request.getSession());
-		HttpSession session = request.getSession();
-		session.setMaxInactiveInterval(MAX_INTERACTIVE_INTERVAL);
-		session.setAttribute("bruker", bruker);
-	}
-	
-	public static boolean erBrukerInnlogget(HttpSession session) {
-		return session != null && session.getAttribute("bruker") != null;
-	}
+
 
 }

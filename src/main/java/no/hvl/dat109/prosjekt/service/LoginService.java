@@ -8,20 +8,23 @@ import no.hvl.dat109.prosjekt.entity.Bruker;
 
 @Service
 public class LoginService {
-	
-	//TODO
-	
-	public void loggInnBruker(HttpServletRequest request, Bruker bruker) {
-		//TODO
+
+	private static final int MAX_INTERACTIVE_INTERVAL = 10 * 60;
+
+
+	public static void loggUtBruker(HttpSession session) {
+		session.invalidate();
 	}
-	
-	public void loggUtBruker(HttpSession session) {
-		//TODO
+
+	public static void loggInnBruker(HttpServletRequest request, Bruker bruker) {
+		loggUtBruker(request.getSession());
+		HttpSession session = request.getSession();
+		session.setMaxInactiveInterval(MAX_INTERACTIVE_INTERVAL);
+		session.setAttribute("bruker", bruker);
 	}
-	
-	public boolean erBrukerInnlogget(HttpSession session) {
-		//TODO
-		return false;
+
+	public static boolean erBrukerInnlogget(HttpSession session) {
+		return session != null && session.getAttribute("bruker") != null;
 	}
 
 }

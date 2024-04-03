@@ -3,6 +3,7 @@ package no.hvl.dat109.prosjekt.controllers;
 import jakarta.servlet.http.HttpServletRequest;
 
 import no.hvl.dat109.prosjekt.entity.Bruker;
+import no.hvl.dat109.prosjekt.service.LoginService;
 import no.hvl.dat109.prosjekt.service.SystemService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,7 @@ public class LoginController {
 	@PostMapping("login")
 	public String postLogin(RedirectAttributes ra, HttpServletRequest request, @RequestParam String passord, @RequestParam String mobil) {
 		
-		if (SystemService.erBrukerInnlogget(request.getSession())) {
+		if (LoginService.erBrukerInnlogget(request.getSession())) {
 			return "redirect:deltagerliste";
 		}
 		
@@ -52,14 +53,14 @@ public class LoginController {
 			return "redirect:login";
 		}
 
-		SystemService.loggInnBruker2(request, bruker);
+		LoginService.loggInnBruker(request, bruker);
 
 		return "redirect:deltagerliste";
 	}
 
 	@PostMapping("logut")
 	public String postUtlogging(RedirectAttributes ra, HttpServletRequest request) {
-		SystemService.loggUtBruker(request.getSession());
+		LoginService.loggUtBruker(request.getSession());
 		ra.addFlashAttribute("feilmelding", "Du er nå logget ut");
 		return "redirect:login";
 	}
