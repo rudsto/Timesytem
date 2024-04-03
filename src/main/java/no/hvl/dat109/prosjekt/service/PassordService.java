@@ -16,6 +16,9 @@ import org.springframework.stereotype.Service;
 import jakarta.servlet.http.HttpSession;
 import jakarta.xml.bind.DatatypeConverter;
 
+/**
+ *Serviceklasse for passord.
+ */
 @Service
 public class PassordService {
 
@@ -24,6 +27,10 @@ public class PassordService {
     @Autowired
     BrukerService brukerService;
 
+    /**
+     * Genererer en tilfeldig salt av 32 hexadesimale tegn.
+     * @return hexadesimal salt
+     */
     public String genererTilfeldigSalt() {
         SecureRandom sr;
         byte[] salt = new byte[16];
@@ -36,6 +43,10 @@ public class PassordService {
         return DatatypeConverter.printHexBinary(salt);
     }
 
+    /**
+     * Krypterer passord med en tilfeldig salt, 64 hexadesimale tegn.
+     * @return hexadesimal hash
+     */
     public String hashMedSalt(String passord, String salt) {
 
         if (passord == null || salt == null) { // Burde validert skikkelig!!
@@ -58,6 +69,13 @@ public class PassordService {
         return DatatypeConverter.printHexBinary(keyhash);
     }
 
+    /**
+     * Kontrollerer at oppgitt passord er korrekt.
+     * @param passord
+     * @param salt
+     * @param hash
+     * @return
+     */
     public boolean erKorrektPassord(String passord, String salt, String hash) {
 
         if (passord == null || salt == null || hash == null) {
