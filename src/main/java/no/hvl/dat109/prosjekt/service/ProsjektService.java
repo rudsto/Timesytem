@@ -30,8 +30,6 @@ public class ProsjektService {
     }
 
     public Prosjekt lagre(Prosjekt prosjekt) {
-
-
         return prosjektRepo.save(prosjekt);
     }
 
