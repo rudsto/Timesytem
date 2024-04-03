@@ -7,4 +7,5 @@ public interface BrukerRepo extends JpaRepository<Bruker, Integer> {
 	
 	Bruker findByMobil(String mobil);
 
+    Object authenticate(String brukernavn, String passord);
 }
