@@ -18,11 +18,18 @@ public class BrukerServiceTest {
 
     private BrukerService brukerService;
 
+	/**
+	 * Oppsett
+	 */
     @BeforeEach
     public void setup() {
         brukerService = new BrukerService();
     }
 
+	/**
+	 * Test av metoden finnAlle().Skal teste at metoden returner en liste av alle brukere.
+	 * Legger til to brukere og tester at listen stemmer.
+	 */
     @Test
     public void testFinnAlle() {
         List<Bruker> brukere = new ArrayList<>();
@@ -46,6 +53,10 @@ public class BrukerServiceTest {
         assertEquals(2, resultat.size());
     }
 
+	/**
+	 * Test av metoden finnMedMobil(). Skal teste at metoden returner brukeren med telefonnummeret.
+	 * Legger til en bruker og forsøker å hente den.
+	 */
     @Test
     public void testFinnMedMobil() {
         Bruker bruker = new Bruker();
@@ -61,6 +72,10 @@ public class BrukerServiceTest {
         assertEquals("12345678", resultat.getMobil());
     }
 
+    /**
+     * Test for metoden testLagre(). Skal teste at metoden lagrer brukeren og returnerer den.
+     * Legger til en bruker og tester om den er lagret.
+     */
     @Test
     public void testLagre() {
         Bruker bruker = new Bruker();
