@@ -14,12 +14,12 @@ public class Prosjekt {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @OneToMany(mappedBy = "projekt", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "prosjekt", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Time> timeliste;
 
 
-    @Column(name = "Projektnavn", length = 50)
-    @Size(min = 1, max = 50, message = "Projektnavnet må være mellom 1-50 bokstaver")
+    @Column(name = "Prosjektnavn", length = 50)
+    @Size(min = 1, max = 50, message = "Prosjektnavnet må være mellom 1-50 bokstaver")
     @NotNull(message = "Projektet må ha navn")
     private String navn;
 
