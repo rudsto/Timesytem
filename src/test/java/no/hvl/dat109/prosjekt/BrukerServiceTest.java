@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 
 import no.hvl.dat109.prosjekt.entity.Bruker;
 
+
 public class BrukerServiceTest {
 
     private BrukerService brukerService;
