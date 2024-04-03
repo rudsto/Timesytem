@@ -46,9 +46,9 @@ public class BrukerServiceTest {
         brukere.add(bruker2);
 
         BrukerService mockBrukerService = mock(BrukerService.class);
-        when(mockBrukerService.finnAlle()).thenReturn(brukere);
+        when(mockBrukerService.finnAlleBrukere()).thenReturn(brukere);
 
-        List<Bruker> resultat = mockBrukerService.finnAlle();
+        List<Bruker> resultat = mockBrukerService.finnAlleBrukere();
         assertEquals(brukere, resultat);
         assertEquals(2, resultat.size());
     }
@@ -65,9 +65,9 @@ public class BrukerServiceTest {
         bruker.setEtternavn("Nordmann");
 
         BrukerService mockBrukerService = mock(BrukerService.class);
-        when(mockBrukerService.finnMedMobil("12345678")).thenReturn(bruker);
+        when(mockBrukerService.finnBrukerMedMobil("12345678")).thenReturn(bruker);
 
-        Bruker resultat = mockBrukerService.finnMedMobil("12345678");
+        Bruker resultat = mockBrukerService.finnBrukerMedMobil("12345678");
         assertEquals(bruker, resultat);
         assertEquals("12345678", resultat.getMobil());
     }
@@ -84,9 +84,9 @@ public class BrukerServiceTest {
         bruker.setEtternavn("Nordmann");
 
         BrukerService mockBrukerService = mock(BrukerService.class);
-        when(mockBrukerService.lagre(bruker)).thenReturn(bruker);
+        when(mockBrukerService.lagreBruker(bruker)).thenReturn(bruker);
 
-        Bruker resultat = mockBrukerService.lagre(bruker);
+        Bruker resultat = mockBrukerService.lagreBruker(bruker);
         assertEquals(bruker, resultat);
         assertEquals("12345678", resultat.getMobil());
     }
