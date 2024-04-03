@@ -14,23 +14,6 @@ public class BrukerService {
     @Autowired
     BrukerRepo brukerRepo;
 
-    //TODO
-
-    public List<Bruker> finnAlle() {
-        //TODO
-        return null;
-    }
-
-    public Bruker finnMedMobil(String mobil) {
-        //TODO
-        return null;
-    }
-
-    public Bruker lagre(Bruker bruker) {
-        //TODO
-        return null;
-    }
-
     public List<Bruker> finnAlleBrukere() {
         return brukerRepo.findAll();
     }
