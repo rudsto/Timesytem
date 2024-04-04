@@ -4,7 +4,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import no.hvl.dat109.prosjekt.entity.Bruker;
 import no.hvl.dat109.prosjekt.service.LoginService;
-import org.hibernate.Session;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -56,12 +55,15 @@ public class LoginServiceTest {
     @Test
     public void loggUtBrukerTest() {
 
-//        LoginService.loggInnBruker(request, testBruker);
-//        session = request.getSession();
-//        LoginService.loggUtBruker(session);
-//
-//        assertNull(session.getAttribute("bruker"));
-//        assertFalse(LoginService.erBrukerInnlogget(session));
+        LoginService.loggInnBruker(request, testBruker);
+        session = request.getSession();
+
+        assertNotNull(session.getAttribute("bruker"));
+        assertTrue(LoginService.erBrukerInnlogget(session));
+
+        LoginService.loggUtBruker(session);
+
+        assertNull(request.getSession(false));
 
     }
 
@@ -71,11 +73,13 @@ public class LoginServiceTest {
     @Test
     public void erBrukerInnloggetTest() {
 
-//        assertFalse(LoginService.erBrukerInnlogget(session));
-//        LoginService.loggInnBruker(request, testBruker);
-//        assertTrue(LoginService.erBrukerInnlogget(session));
-//        LoginService.loggUtBruker(session);
-//        assertFalse(LoginService.erBrukerInnlogget(session));
+        // bruker som er logget inn
+        LoginService.loggInnBruker(request, testBruker);
+        session = request.getSession();
+        assertTrue(LoginService.erBrukerInnlogget(session));
 
+        // bruker som ikke er logget inn
+        HttpSession brukerIkkeLoggetInn = new MockHttpSession();
+        assertFalse(LoginService.erBrukerInnlogget(brukerIkkeLoggetInn));
     }
 }
