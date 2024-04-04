@@ -1,11 +1,8 @@
 package no.hvl.dat109.prosjekt;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import no.hvl.dat109.prosjekt.entity.Bruker;
-import no.hvl.dat109.prosjekt.entity.Prosjekt;
-import no.hvl.dat109.prosjekt.entity.Time;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.fail;
 
 class TimeServiceTest {
 
