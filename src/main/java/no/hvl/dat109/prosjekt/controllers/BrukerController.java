@@ -1,6 +1,6 @@
 package no.hvl.dat109.prosjekt.controllers;
 
-import jakarta.servlet.http.HttpSession;
+import javax.servlet.http.HttpSession;
 
 import no.hvl.dat109.prosjekt.service.BrukerService;
 import no.hvl.dat109.prosjekt.Utils.LoginUtil;

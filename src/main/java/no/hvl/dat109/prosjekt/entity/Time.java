@@ -2,7 +2,7 @@ package no.hvl.dat109.prosjekt.entity;
 
 import java.util.List;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 public class Time {
