@@ -19,8 +19,8 @@ public class ProsjektService {
         return prosjektRepo.findAll();
     }
 
-    public Prosjekt finnMedID(Integer id) {
-        Optional<Prosjekt> projektOptional = prosjektRepo.findById(id);
+    public Prosjekt finnMedID(String id) {
+        Optional<Prosjekt> projektOptional = prosjektRepo.findById(Integer.parseInt(id));
 
         return projektOptional.orElse(null);
     }
