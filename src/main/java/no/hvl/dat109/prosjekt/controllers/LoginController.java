@@ -21,19 +21,37 @@ public class LoginController {
 
     @Autowired
     private BrukerService brukerService;
-    @Autowired
-    PassordService passordService;
 
+    @Autowired
+    private PassordService passordService;
+
+    /**
+     * @return redirect til login-siden.
+     */
     @GetMapping("/")
     public String getIndex() {
+
         return "redirect:login";
     }
 
+    /**
+     * @param model
+     * @return login jsp mapping
+     */
     @GetMapping("login")
     public String getLogin(Model model) {
         return "innlogging";
     }
 
+    /**
+     * Forsøker å logge bruker inn med bruker-input. Redirecter videre ved lykket innlogging. Ved ugyldig
+     * innlogging vil det returneres redirect til samme side med en feilmelding.
+     * @param ra
+     * @param request
+     * @param passord - forsøkt passord gitt fra bryker
+     * @param mobil - forsøkt mobil gitt fra bruker
+     * @return redirect til neste side eller til samme side med feilmelding
+     */
     @PostMapping("login")
     public String postLogin(RedirectAttributes ra, HttpServletRequest request, @RequestParam String passord, @RequestParam String mobil) {
 
@@ -63,6 +81,12 @@ public class LoginController {
         return "redirect:deltagerliste";
     }
 
+    /**
+     * Logger bruker ut og returnerer til login siden.
+     * @param ra - redirect attributes
+     * @param request - http requesten
+     * @return redirect til login siden.
+     */
     @PostMapping("logut")
     public String postUtlogging(RedirectAttributes ra, HttpServletRequest request) {
         LoginService.loggUtBruker(request.getSession());
