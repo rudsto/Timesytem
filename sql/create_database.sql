@@ -18,7 +18,7 @@ select * from dat109_prosjekt.bruker;
 CREATE TABLE prosjekt
 (
     id     CHARACTER(6) PRIMARY KEY,
-    navn      CHARACTER(64) NOT NULL,
+    navn      CHARACTER(64) NOT NULL
 );
 
 select * from dat109_prosjekt.prosjekt;
