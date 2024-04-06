@@ -3,7 +3,7 @@ package no.hvl.dat109.prosjekt;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import no.hvl.dat109.prosjekt.entity.Bruker;
-import no.hvl.dat109.prosjekt.service.LoginService;
+import no.hvl.dat109.prosjekt.Utils.LoginUtil;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * Testklasse for LoginService
  */
 @ExtendWith(MockitoExtension.class)
-public class LoginServiceTest {
+public class LoginUtilTest {
 
 
     private HttpServletRequest request;
@@ -40,11 +40,11 @@ public class LoginServiceTest {
     @Test
     public void loggInnBrukerTest() {
 
-        LoginService.loggInnBruker(request, testBruker);
+        LoginUtil.loggInnBruker(request, testBruker);
         session = request.getSession();
         assertNotNull(session);
-        assertTrue(LoginService.erBrukerInnlogget(session));
-        assertEquals(LoginService.MAX_INACTIVE_INTERVAL, session.getMaxInactiveInterval());
+        assertTrue(LoginUtil.erBrukerInnlogget(session));
+        assertEquals(LoginUtil.MAX_INACTIVE_INTERVAL, session.getMaxInactiveInterval());
         assertEquals(testBruker, session.getAttribute("bruker"));
 
     }
@@ -55,13 +55,13 @@ public class LoginServiceTest {
     @Test
     public void loggUtBrukerTest() {
 
-        LoginService.loggInnBruker(request, testBruker);
+        LoginUtil.loggInnBruker(request, testBruker);
         session = request.getSession();
 
         assertNotNull(session.getAttribute("bruker"));
-        assertTrue(LoginService.erBrukerInnlogget(session));
+        assertTrue(LoginUtil.erBrukerInnlogget(session));
 
-        LoginService.loggUtBruker(session);
+        LoginUtil.loggUtBruker(session);
 
         assertNull(request.getSession(false));
 
@@ -74,12 +74,12 @@ public class LoginServiceTest {
     public void erBrukerInnloggetTest() {
 
         // bruker som er logget inn
-        LoginService.loggInnBruker(request, testBruker);
+        LoginUtil.loggInnBruker(request, testBruker);
         session = request.getSession();
-        assertTrue(LoginService.erBrukerInnlogget(session));
+        assertTrue(LoginUtil.erBrukerInnlogget(session));
 
         // bruker som ikke er logget inn
         HttpSession brukerIkkeLoggetInn = new MockHttpSession();
-        assertFalse(LoginService.erBrukerInnlogget(brukerIkkeLoggetInn));
+        assertFalse(LoginUtil.erBrukerInnlogget(brukerIkkeLoggetInn));
     }
 }

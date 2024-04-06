@@ -1,7 +1,7 @@
 package no.hvl.dat109.prosjekt;
 
 
-import no.hvl.dat109.prosjekt.service.PassordService;
+import no.hvl.dat109.prosjekt.Utils.PassordUtil;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -12,22 +12,27 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * Testklasse for klassen PassordService.
  */
+
 @ExtendWith(MockitoExtension.class)
-public class PassordServiceTest {
+public class PassordUtilTest {
 
-
-    @Mock
-    private PassordService passordService;
+//    /**
+//     * Oppsett
+//     */
+//    @BeforeEach
+//    public void setup() {
+//        passordService = new PassordService();
+//    }
 
     /**
      * Testmetode som tester at salt er korrekt lengde og vilkårlig generert.
      */
     @Test
     public void genererTilfeldigSaltTest() {
-        String salt = passordService.genererTilfeldigSalt();
+        String salt = PassordUtil.genererTilfeldigSalt();
         assertEquals(32, salt.length());
-        String anotherSalt = passordService.genererTilfeldigSalt();
-        assertTrue(!salt.equals(anotherSalt));
+        String anotherSalt = PassordUtil.genererTilfeldigSalt();
+        assertFalse(salt.equals(anotherSalt));
     }
 
     /**
@@ -41,22 +46,22 @@ public class PassordServiceTest {
         String passord1 = "pass1";
         String passord2 = "pass2";
 
-        String salt = passordService.genererTilfeldigSalt();
-        String ulikSalt = passordService.genererTilfeldigSalt();
+        String salt = PassordUtil.genererTilfeldigSalt();
+        String ulikSalt = PassordUtil.genererTilfeldigSalt();
 
         //Lik pass + lik salt = lik hash
-        String hash1 = passordService.hashMedSalt(passord1, salt);
-        String hash2 = passordService.hashMedSalt(passord1, salt);
+        String hash1 = PassordUtil.hashMedSalt(passord1, salt);
+        String hash2 = PassordUtil.hashMedSalt(passord1, salt);
         assertEquals(hash1, hash2);
 
         //Lik pass + ulik salt = ulik hash
-        hash1 = passordService.hashMedSalt(passord1, salt);
-        hash2 = passordService.hashMedSalt(passord1, ulikSalt);
+        hash1 = PassordUtil.hashMedSalt(passord1, salt);
+        hash2 = PassordUtil.hashMedSalt(passord1, ulikSalt);
         assertNotEquals(hash1, hash2);
 
         //Ulik pass + whatever = ulik hash
-        hash1 = passordService.hashMedSalt(passord1, salt);
-        hash2 = passordService.hashMedSalt(passord2, salt);
+        hash1 = PassordUtil.hashMedSalt(passord1, salt);
+        hash2 = PassordUtil.hashMedSalt(passord2, salt);
         assertNotEquals(hash1, hash2);
     }
 
