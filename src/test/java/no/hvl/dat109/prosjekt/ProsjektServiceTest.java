@@ -9,21 +9,22 @@ import no.hvl.dat109.prosjekt.service.ProsjektService;
 import no.hvl.dat109.prosjekt.entity.Prosjekt;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@SpringBootTest
 class ProsjektServiceTest {
 
+	@Autowired
 	private ProsjektService prosjektService;
-	private ProsjektRepo prosjektRepo;
 
-	@BeforeEach
-	public void setup() {
-		prosjektRepo = mock(ProsjektRepo.class);
-		prosjektService = new ProsjektService();
-	}
+	@MockBean
+	private ProsjektRepo prosjektRepo;
 
 	@Test
 	public void finnAlleTest() {
@@ -38,16 +39,13 @@ class ProsjektServiceTest {
 		prosjekt2.setNavn("Salg");
 		prosjekter.add(prosjekt2);
 
-		ProsjektService mockProsjektService = mock(ProsjektService.class);
-		when(mockProsjektService.finnAlle()).thenReturn(prosjekter);
+		when(prosjektRepo.findAll()).thenReturn(prosjekter);
 
-		List<Prosjekt> testResultatet = mockProsjektService.finnAlle();
+		List<Prosjekt> testResultatet = prosjektService.finnAlle();
 		assertEquals(prosjekter, testResultatet);
 		assertEquals(2, testResultatet.size());
 	}
 
-	//TODO - Testene jobbes med
-	/*
 	@Test
 	public void finnMedIdTest() {
 
@@ -62,14 +60,13 @@ class ProsjektServiceTest {
 		assertEquals(prosjekt, testResultat);
 		assertEquals("115000", testResultat.getId());
 		assertEquals("HR", testResultat.getNavn());
-
-
 	}
 
 	@Test
 	public void testLagre() {
 		Prosjekt prosjekt = new Prosjekt();
 		prosjekt.setNavn("Testprosjekt");
+		prosjekt.setId("303030");
 
 		when(prosjektRepo.save(prosjekt)).thenReturn(prosjekt);
 		Prosjekt lagretProsjekt = prosjektService.lagre(prosjekt);
@@ -77,7 +74,4 @@ class ProsjektServiceTest {
 		assertNotNull(lagretProsjekt.getId());
 		assertEquals("Testprosjekt", lagretProsjekt.getNavn());
 	}
-
-	 */
-
 }
