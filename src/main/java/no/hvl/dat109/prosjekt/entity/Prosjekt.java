@@ -15,7 +15,7 @@ public class Prosjekt {
     @OneToMany(mappedBy = "prosjekt", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Time> timeliste;
 
-    @Column(name = "Prosjektnavn", length = 50)
+    @Column(name = "navn", length = 50)
     @Size(min = 1, max = 50, message = "Prosjektnavnet må være mellom 1-50 bokstaver")
     @NotNull(message = "Projektet må ha navn")
     private String navn;
