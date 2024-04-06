@@ -3,6 +3,7 @@ package no.hvl.dat109.prosjekt.entity;
 import java.util.List;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -10,6 +11,10 @@ import jakarta.validation.constraints.Size;
 public class Prosjekt {
 	
     @Id
+    @Column(name = "id", length = 6)
+    @Size(min = 6, max = 6, message = "Prosjektid må være 6 siffer")
+    @NotNull(message = "Prosjektid er obligatorisk")
+    @Pattern(regexp = "[0-9]{6}", message = "Prosjektid må være 6 siffer")
     private String id;
 
     @OneToMany(mappedBy = "prosjekt", cascade = CascadeType.ALL, orphanRemoval = true)
