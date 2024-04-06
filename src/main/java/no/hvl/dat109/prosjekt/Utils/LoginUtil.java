@@ -1,6 +1,4 @@
-package no.hvl.dat109.prosjekt.service;
-
-import org.springframework.stereotype.Service;
+package no.hvl.dat109.prosjekt.Utils;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -9,8 +7,7 @@ import no.hvl.dat109.prosjekt.entity.Bruker;
 /**
  * Serviceklasse for login.
  */
-@Service
-public class LoginService {
+public class LoginUtil {
 
 	public static final int MAX_INACTIVE_INTERVAL = 10 * 60;
 
