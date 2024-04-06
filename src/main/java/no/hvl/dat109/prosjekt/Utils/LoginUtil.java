@@ -1,7 +1,7 @@
 package no.hvl.dat109.prosjekt.Utils;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import no.hvl.dat109.prosjekt.entity.Bruker;
 
 /**

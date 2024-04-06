@@ -9,7 +9,7 @@ import javax.crypto.spec.PBEKeySpec;
 
 import org.springframework.stereotype.Service;
 
-import jakarta.xml.bind.DatatypeConverter;
+import javax.xml.bind.DatatypeConverter;
 
 /**
  *Serviceklasse for passord.

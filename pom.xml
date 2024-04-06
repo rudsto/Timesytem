@@ -3,13 +3,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	
 	<modelVersion>4.0.0</modelVersion>
-	
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.1.5</version>
-		<relativePath/> <!-- lookup parent from repository -->
-	</parent>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.5.5</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
 	
     <groupId>no.hvl.dat109.gruppe7</groupId>
     <artifactId>time-registrering-system</artifactId>
@@ -20,7 +20,7 @@
 	<packaging>war</packaging>
 	
     <properties>
-        <java.version>17</java.version>
+        <java.version>11</java.version>
     </properties>
 	
 	<dependencies>
@@ -50,16 +50,17 @@
             <scope>provided</scope>
         </dependency>
 
-        <!--Internett sa vi måtte ha den neste-->
+<!--        &lt;!&ndash;Internett sa vi måtte ha den neste&ndash;&gt;
         <dependency>
             <groupId>org.glassfish.web</groupId>
             <artifactId>jakarta.servlet.jsp.jstl</artifactId>
         </dependency>
-        
-        <dependency>
+        -->
+
+<!--        <dependency>
             <groupId>jakarta.servlet.jsp.jstl</groupId>
             <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
-        </dependency>
+        </dependency>-->
         
        	<!--Gir noe bra integrasjon i IntelliJ for endpoints etc.-->
         <dependency>
@@ -82,11 +83,11 @@
             <scope>runtime</scope>
         </dependency>	
         
-        <!-- må ha denne for PassordService -->
+<!--        &lt;!&ndash; må ha denne for PassordService &ndash;&gt;
         <dependency>
             <groupId>jakarta.xml.bind</groupId>
             <artifactId>jakarta.xml.bind-api</artifactId>
-        </dependency>	
+        </dependency>	-->
 
         <!--Spring boot test framework-->
         <dependency>
@@ -111,6 +112,9 @@
 			<scope>provided</scope>
 		</dependency>
 
+
+
+
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
@@ -124,9 +128,19 @@
         </dependency>
 
 
+        <!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+
+
+
     </dependencies>
 
 	<build>
+        <finalName>time</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

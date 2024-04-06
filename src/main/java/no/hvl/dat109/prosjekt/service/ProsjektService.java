@@ -1,5 +1,6 @@
 package no.hvl.dat109.prosjekt.service;
 
+import javax.persistence.Id;
 import no.hvl.dat109.prosjekt.entity.Prosjekt;
 import no.hvl.dat109.prosjekt.repo.ProsjektRepo;
 import org.springframework.beans.factory.annotation.Autowired;

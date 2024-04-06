@@ -31,7 +31,7 @@ public class BrukerService {
      * @return
      */
     public Bruker finnBrukerMedMobil(String mobil) {
-        return brukerRepo.findById(Integer.parseInt(mobil)).orElseThrow();
+        return brukerRepo.findById(mobil).orElse(null);//Integer.parseInt(mobil)).orElseThrow();
     }
 
     /**

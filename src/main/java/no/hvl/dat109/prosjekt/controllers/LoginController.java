@@ -1,6 +1,6 @@
 package no.hvl.dat109.prosjekt.controllers;
 
-import jakarta.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequest;
 
 import no.hvl.dat109.prosjekt.entity.Bruker;
 import no.hvl.dat109.prosjekt.service.BrukerService;
@@ -54,6 +54,7 @@ public class LoginController {
         if (LoginUtil.erBrukerInnlogget(request.getSession())) {
             return "redirect:deltagerliste";
         }
+
 
         System.out.println("mobil: " + mobil);
         System.out.println("passord: " + passord);

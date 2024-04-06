@@ -1,8 +1,8 @@
 package no.hvl.dat109.prosjekt.entity;
 
 import java.util.List;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
+import javax.persistence.*;
+import javax.validation.constraints.*;
 
 @Entity
 @Table(name = "bruker", schema = "dat109_prosjekt")
