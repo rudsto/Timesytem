@@ -21,9 +21,6 @@ public class LoginController {
     @Autowired
     private BrukerService brukerService;
 
-    @Autowired
-    private PassordService passordService;
-
     /**
      * @return redirect til login-siden.
      */
