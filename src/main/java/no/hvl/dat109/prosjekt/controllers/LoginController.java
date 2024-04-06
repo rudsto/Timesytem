@@ -4,9 +4,8 @@ import jakarta.servlet.http.HttpServletRequest;
 
 import no.hvl.dat109.prosjekt.entity.Bruker;
 import no.hvl.dat109.prosjekt.service.BrukerService;
-import no.hvl.dat109.prosjekt.service.LoginService;
-import no.hvl.dat109.prosjekt.service.PassordService;
-import no.hvl.dat109.prosjekt.service.SystemService;
+import no.hvl.dat109.prosjekt.Utils.LoginUtil;
+import no.hvl.dat109.prosjekt.Utils.PassordUtil;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -55,7 +54,7 @@ public class LoginController {
     @PostMapping("login")
     public String postLogin(RedirectAttributes ra, HttpServletRequest request, @RequestParam String passord, @RequestParam String mobil) {
 
-        if (LoginService.erBrukerInnlogget(request.getSession())) {
+        if (LoginUtil.erBrukerInnlogget(request.getSession())) {
             return "redirect:deltagerliste";
         }
 
@@ -70,13 +69,13 @@ public class LoginController {
             return "redirect:login";
         }
 
-        if (!passordService.erKorrektPassord(passord, bruker.getSalt(), bruker.getHash())) {
+        if (!PassordUtil.erKorrektPassord(passord, bruker.getSalt(), bruker.getHash())) {
             ra.addFlashAttribute("feilmelding", "Passord er feil");
             ra.addFlashAttribute("mobil", mobil);
             return "redirect:login";
         }
 
-        LoginService.loggInnBruker(request, bruker);
+        LoginUtil.loggInnBruker(request, bruker);
 
         return "redirect:deltagerliste";
     }
@@ -89,7 +88,7 @@ public class LoginController {
      */
     @PostMapping("logut")
     public String postUtlogging(RedirectAttributes ra, HttpServletRequest request) {
-        LoginService.loggUtBruker(request.getSession());
+        LoginUtil.loggUtBruker(request.getSession());
         ra.addFlashAttribute("feilmelding", "Du er nå logget ut");
         return "redirect:login";
     }

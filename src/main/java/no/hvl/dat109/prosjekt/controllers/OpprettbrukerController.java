@@ -4,9 +4,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 
 import no.hvl.dat109.prosjekt.service.BrukerService;
-import no.hvl.dat109.prosjekt.service.LoginService;
-import no.hvl.dat109.prosjekt.service.PassordService;
-import no.hvl.dat109.prosjekt.service.SystemService;
+import no.hvl.dat109.prosjekt.Utils.LoginUtil;
+import no.hvl.dat109.prosjekt.Utils.PassordUtil;
 import no.hvl.dat109.prosjekt.entity.Bruker;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,13 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class OpprettbrukerController {
 
     @Autowired
-    private SystemService systemService;
-    @Autowired
-    private LoginService loginService;
-    @Autowired
     private BrukerService brukerService;
-    @Autowired
-    PassordService passordService;
 
     @PostMapping("paamelding")
     public String postPaamelding(
@@ -50,11 +43,11 @@ public class OpprettbrukerController {
             ra.addFlashAttribute("feilmeldinger", "Passordet må være minst 5 tegn");
             return "redirect:paamelding";
         }
-        String salt = passordService.genererTilfeldigSalt();
-        String hash = passordService.hashMedSalt(passord, salt);
+        String salt = PassordUtil.genererTilfeldigSalt();
+        String hash = PassordUtil.hashMedSalt(passord, salt);
         bruker.setSalt(salt);
         bruker.setHash(hash);
-        loginService.loggInnBruker(request, bruker);
+        LoginUtil.loggInnBruker(request, bruker);
         brukerService.lagreBruker(bruker);
         return "redirect:paameldt";
     }

@@ -1,4 +1,4 @@
-package no.hvl.dat109.prosjekt.service;
+package no.hvl.dat109.prosjekt.Utils;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -7,31 +7,20 @@ import java.security.spec.InvalidKeySpecException;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
-import no.hvl.dat109.prosjekt.entity.Bruker;
-import no.hvl.dat109.prosjekt.repo.BrukerRepo;
-import org.hibernate.annotations.NaturalId;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import jakarta.servlet.http.HttpSession;
 import jakarta.xml.bind.DatatypeConverter;
 
 /**
  *Serviceklasse for passord.
  */
-@Service
-public class PassordService {
-
-    @Autowired
-    BrukerRepo brukerRepo;
-    @Autowired
-    BrukerService brukerService;
+public class PassordUtil {
 
     /**
      * Genererer en tilfeldig salt av 32 hexadesimale tegn.
      * @return hexadesimal salt
      */
-    public String genererTilfeldigSalt() {
+    public static String genererTilfeldigSalt() {
         SecureRandom sr;
         byte[] salt = new byte[16];
         try {
@@ -47,7 +36,7 @@ public class PassordService {
      * Krypterer passord med en tilfeldig salt, 64 hexadesimale tegn.
      * @return hexadesimal hash
      */
-    public String hashMedSalt(String passord, String salt) {
+    public static String hashMedSalt(String passord, String salt) {
 
         if (passord == null || salt == null) { // Burde validert skikkelig!!
             throw new IllegalArgumentException();
@@ -76,7 +65,7 @@ public class PassordService {
      * @param hash
      * @return
      */
-    public boolean erKorrektPassord(String passord, String salt, String hash) {
+    public static boolean erKorrektPassord(String passord, String salt, String hash) {
 
         if (passord == null || salt == null || hash == null) {
             throw new IllegalArgumentException();
