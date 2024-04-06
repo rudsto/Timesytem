@@ -16,13 +16,6 @@ import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(MockitoExtension.class)
 public class PassordUtilTest {
 
-//    /**
-//     * Oppsett
-//     */
-//    @BeforeEach
-//    public void setup() {
-//        passordService = new PassordService();
-//    }
 
     /**
      * Testmetode som tester at salt er korrekt lengde og vilkårlig generert.
@@ -72,11 +65,14 @@ public class PassordUtilTest {
     public void erKorrektPassordTest() {
     	//TODO
     	
-//        String forsoktPassord = "passord1";
-//
-//        Passord riktigPassord = passordService.krypterPassord("passord1");
-//
-//        assertTrue(passordService.erKorrektPassord(forsoktPassord, riktigPassord));
+        String forsoktPassord = "passord1";
+        String riktigPassord = "passord1";
+
+        String salt = PassordUtil.genererTilfeldigSalt();
+
+        String riktigHash = PassordUtil.hashMedSalt(riktigPassord, salt);
+
+        assertTrue(PassordUtil.erKorrektPassord(forsoktPassord, salt, riktigHash));
     }
 
     /**
@@ -85,12 +81,15 @@ public class PassordUtilTest {
     @Test
     public void erFeilPassordTest() {
     	//TODO
-    	
-//        String forsoktPassord = "feilPassord";
-//
-//        Passord riktigPassord = passordService.krypterPassord("passord1");
-//
-//        assertFalse(passordService.erKorrektPassord(forsoktPassord, riktigPassord));
+
+        String forsoktPassord = "passord1";
+        String riktigPassord = "passord2";
+
+        String salt = PassordUtil.genererTilfeldigSalt();
+
+        String riktigHash = PassordUtil.hashMedSalt(riktigPassord, salt);
+
+        assertFalse(PassordUtil.erKorrektPassord(forsoktPassord, salt, riktigHash));
 
     }
 }

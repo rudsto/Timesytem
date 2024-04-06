@@ -12,13 +12,9 @@ import java.util.Optional;
 @Service
 public class ProsjektService {
 
+    @Autowired
     private ProsjektRepo prosjektRepo;
 
-    @Autowired
-    public ProsjektService(ProsjektRepo prosjektRepo) {
-        this.prosjektRepo = prosjektRepo;
-    }
-	
     public List<Prosjekt> finnAlle() {
         return prosjektRepo.findAll();
     }
