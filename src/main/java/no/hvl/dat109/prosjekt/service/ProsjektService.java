@@ -12,19 +12,15 @@ import java.util.Optional;
 @Service
 public class ProsjektService {
 
+    @Autowired
     private ProsjektRepo prosjektRepo;
 
-    @Autowired
-    public ProsjektService(ProsjektRepo prosjektRepo) {
-        this.prosjektRepo = prosjektRepo;
-    }
-	
     public List<Prosjekt> finnAlle() {
         return prosjektRepo.findAll();
     }
 
-    public Prosjekt finnMedID(Integer id) {
-        Optional<Prosjekt> projektOptional = prosjektRepo.findById(id);
+    public Prosjekt finnMedID(String id) {
+        Optional<Prosjekt> projektOptional = prosjektRepo.findById(Integer.parseInt(id));
 
         return projektOptional.orElse(null);
     }

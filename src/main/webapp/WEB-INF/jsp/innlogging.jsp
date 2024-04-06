@@ -14,14 +14,14 @@
 	<table class="navbar">
     	<tr>
        		<td>
-           		<form method="post" action="/login">
+           		<form method="post" action="${pageContext.request.contextPath}/login">
        	 			<label for="mobil">Mobil:</label> <input type="text" name="mobil" id="mobil" value="${mobil}"/>
         			<label for="passord"> Passord:</label> <input type="password" name="passord" id="passord"/>
         			<button id="submit-btn" type="submit">Logg inn</button>
 				</form>
         	</td>
         	<td>
-            	<form action="/paamelding" method="get">
+            	<form action="${pageContext.request.contextPath}/paamelding" method="get">
     				<button type="submit">Opprett bruker</button>
     			</form>
         	</td>

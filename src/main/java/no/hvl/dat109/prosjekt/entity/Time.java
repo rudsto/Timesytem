@@ -1,10 +1,12 @@
 package no.hvl.dat109.prosjekt.entity;
 
+import java.util.List;
+
 import jakarta.persistence.*;
 
 @Entity
 public class Time {
-	
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -18,13 +20,20 @@ public class Time {
     @JoinColumn(name = "prosjekt_id")
     private Prosjekt prosjekt;
 
+    public Time() {
+
+    }
+
+    public Time(int antallTimer, Bruker bruker, Prosjekt prosjekt) {
+        this.antallTimer = antallTimer;
+        this.bruker = bruker;
+        this.prosjekt = prosjekt;
+    }
+
     public Integer getId() {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public int getAntallTimer() {
         return antallTimer;
