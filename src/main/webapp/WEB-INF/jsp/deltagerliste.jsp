@@ -61,7 +61,7 @@
     </c:forEach>
 </table>
 <br>
-<form action="/logut" method="post">
+<form action="${pageContext.request.contextPath}/logut" method="post">
     <button type="submit">Logg ut</button>
 </form>
 </body>

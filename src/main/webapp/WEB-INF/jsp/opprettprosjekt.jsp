@@ -8,7 +8,7 @@
 </head>
 
 <body>
-<form action="/paamelding" method="post">
+<form action="/${pageContext.request.contextPath}/paamelding" method="post">
     <fieldset id="rot">
 
         <label>Prosjekt Id<br>

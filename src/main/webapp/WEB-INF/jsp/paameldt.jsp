@@ -10,12 +10,12 @@
 <table class="navbar">
     <tr>
         <td>
-            <form action="/paamelding" method="get">
+            <form action="/${pageContext.request.contextPath}/paamelding" method="get">
                 <button type="submit">Registrer ny Bruker</button>
             </form>
         </td>
         <td>
-            <form action="/logut" method="post">
+            <form action="/${pageContext.request.contextPath}/logut" method="post">
                 <button type="submit">Logg ut</button>
             </form>
         </td>

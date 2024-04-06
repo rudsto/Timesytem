@@ -40,7 +40,7 @@
 <h2>Brukerkonto detaljer</h2>
 <p style="color:red;">${feilmeldinger}</p>
 
-<form action="/paamelding" method="post">
+<form action="${pageContext.request.contextPath}/paamelding" method="post">
     <fieldset id="rot">
 
         <label>Fornavn <br>
