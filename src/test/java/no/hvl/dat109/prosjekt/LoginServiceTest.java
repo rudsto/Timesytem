@@ -1,16 +1,17 @@
 package no.hvl.dat109.prosjekt;
 
-import no.hvl.dat109.prosjekt.repo.BrukerRepo;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+import no.hvl.dat109.prosjekt.entity.Bruker;
 import no.hvl.dat109.prosjekt.service.LoginService;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.mock.web.MockHttpServletRequest;
+import org.springframework.mock.web.MockHttpSession;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Testklasse for LoginService
@@ -18,26 +19,34 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 public class LoginServiceTest {
 
-    @Mock
-    private static BrukerRepo brukerRepository;
 
-    @InjectMocks
-    private static LoginService loginService;
+    private HttpServletRequest request;
+    private HttpSession session;
+    private Bruker testBruker;
+
+    /**
+     * Initialiserer mock-objekter for videre bruk i test-klassen.
+     */
+    @BeforeEach
+    public void setUp() {
+        request = new MockHttpServletRequest();
+        session = new MockHttpSession();
+        testBruker = new Bruker();
+    }
 
     /**
      * Tester om loginBruker logger inn bruker.
      */
     @Test
     public void loggInnBrukerTest() {
-        String brukernavn = "testBruker";
-        String passord = "testPassord";
 
-        when(brukerRepository.authenticate(brukernavn, passord)).thenReturn(true);
+        LoginService.loggInnBruker(request, testBruker);
+        session = request.getSession();
+        assertNotNull(session);
+        assertTrue(LoginService.erBrukerInnlogget(session));
+        assertEquals(LoginService.MAX_INACTIVE_INTERVAL, session.getMaxInactiveInterval());
+        assertEquals(testBruker, session.getAttribute("bruker"));
 
-        boolean loggetInn = loginService.loggInnBruker(brukernavn, passord);
-
-        assertTrue(loggetInn);
-        verify(brukerRepository, times(1)).authenticate(brukernavn, passord);
     }
 
     /**
@@ -45,13 +54,17 @@ public class LoginServiceTest {
      */
     @Test
     public void loggUtBrukerTest() {
-        String brukernavn = "testBruker";
 
-        loginService.loggInnBruker(brukernavn, "passord");
+        LoginService.loggInnBruker(request, testBruker);
+        session = request.getSession();
 
-        loginService.loggUtBruker(brukernavn);
+        assertNotNull(session.getAttribute("bruker"));
+        assertTrue(LoginService.erBrukerInnlogget(session));
 
-        assertFalse(loginService.erBrukerInnlogget(brukernavn));
+        LoginService.loggUtBruker(session);
+
+        assertNull(request.getSession(false));
+
     }
 
     /**
@@ -59,12 +72,14 @@ public class LoginServiceTest {
      */
     @Test
     public void erBrukerInnloggetTest() {
-        String innloggetBruker = "testBruker1";
-        String utloggetBruker = "testBruker2";
 
-        loginService.loggInnBruker(innloggetBruker, "passord");
+        // bruker som er logget inn
+        LoginService.loggInnBruker(request, testBruker);
+        session = request.getSession();
+        assertTrue(LoginService.erBrukerInnlogget(session));
 
-        assertTrue(loginService.erBrukerInnlogget(innloggetBruker));
-        assertFalse(loginService.erBrukerInnlogget(utloggetBruker));
+        // bruker som ikke er logget inn
+        HttpSession brukerIkkeLoggetInn = new MockHttpSession();
+        assertFalse(LoginService.erBrukerInnlogget(brukerIkkeLoggetInn));
     }
 }

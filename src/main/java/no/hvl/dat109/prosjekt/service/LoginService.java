@@ -12,7 +12,7 @@ import no.hvl.dat109.prosjekt.entity.Bruker;
 @Service
 public class LoginService {
 
-	private static final int MAX_INTERACTIVE_INTERVAL = 10 * 60;
+	public static final int MAX_INACTIVE_INTERVAL = 10 * 60;
 
 	/**
 	 * Logger ut en bruker.
@@ -30,7 +30,7 @@ public class LoginService {
 	public static void loggInnBruker(HttpServletRequest request, Bruker bruker) {
 		loggUtBruker(request.getSession());
 		HttpSession session = request.getSession();
-		session.setMaxInactiveInterval(MAX_INTERACTIVE_INTERVAL);
+		session.setMaxInactiveInterval(MAX_INACTIVE_INTERVAL);
 		session.setAttribute("bruker", bruker);
 	}
 
