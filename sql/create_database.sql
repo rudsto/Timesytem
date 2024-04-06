@@ -2,6 +2,7 @@ DROP SCHEMA IF EXISTS DAT109_PROSJEKT CASCADE;
 CREATE SCHEMA DAT109_PROSJEKT;
 SET search_path TO DAT109_PROSJEKT;
 
+-- Opprett bruker table --------------------------------------------
 CREATE TABLE bruker
 (
     mobil     CHARACTER(8) PRIMARY KEY,
@@ -12,3 +13,12 @@ CREATE TABLE bruker
 );
 
 select * from dat109_prosjekt.bruker;
+
+-- Opprett prosjekt table ------------------------------------------
+CREATE TABLE prosjekt
+(
+    id     CHARACTER(6) PRIMARY KEY,
+    navn      CHARACTER(64) NOT NULL,
+);
+
+select * from dat109_prosjekt.prosjekt;
