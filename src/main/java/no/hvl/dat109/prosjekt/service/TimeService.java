@@ -3,29 +3,81 @@ package no.hvl.dat109.prosjekt.service;
 import no.hvl.dat109.prosjekt.entity.Bruker;
 import no.hvl.dat109.prosjekt.entity.Prosjekt;
 import no.hvl.dat109.prosjekt.entity.Time;
+import no.hvl.dat109.prosjekt.repo.TimeRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class TimeService {
-	
-	public void finnAlle(){
+
+    @Autowired
+    TimeRepo timeRepo;
+
+    /**
+     * Finner alle registrerte timer.
+     * @return liste med alle timer
+     */
+	public List<Time> finnAlleTimer(){
+
+        return timeRepo.findAll();
 
     }
 
-    public void finnBrukerTimer(Bruker bruker) {
+    /**
+     * Finner alle timer registrert på en bruker..
+     * @param bruker en bruker
+     * @return liste med timer for en bruker
+     */
+    public List<Time> finnBrukerTimer(Bruker bruker) {
+
+        List<Time> alleTimer = finnAlleTimer();
+
+        return alleTimer.stream()
+                .filter(time -> time.getBruker().equals(bruker))
+                .toList();
 
     }
 
-    public void finnProsjektTimer(Prosjekt prosjekt) {
+    /**
+     * Finner alle timer registrert på et prosjekt.
+     * @param prosjekt et prosjekt
+     * @return list med timer på et prosjekt
+     */
+    public List<Time> finnProsjektTimer(Prosjekt prosjekt) {
+
+        List<Time> alleTimer = finnAlleTimer();
+
+        return alleTimer.stream()
+                .filter(time -> time.getProsjekt().equals(prosjekt))
+                .toList();
+    }
+
+    /**
+     * Finner alle timer registrert på en bruker for et bestemt prosjekt.
+     * @param bruker en bruker
+     * @param prosjekt et prosjekt
+     * @return liste med timer til en bruker på et bestemt prosjekt
+     */
+    public List<Time> finnBrukerProsjektTimer(Bruker bruker, Prosjekt prosjekt) {
+
+        List<Time> alleTimer = finnAlleTimer();
+
+        return alleTimer.stream()
+                .filter(time -> time.getBruker().equals(bruker))
+                .filter(time -> time.getProsjekt().equals(prosjekt))
+                .toList();
 
     }
 
-    public void finnBrukerProsjektTimer(Bruker bruker, Prosjekt prosjekt) {
-
-    }
-
-    public void lagre(Time time) {
-
+    /**
+     * Lagrer timer.
+     * @param time et time objekt
+     * @return timer som blir lagret
+     */
+    public Time lagreTime(Time time) {
+        return timeRepo.save(time);
     }
 
 }
