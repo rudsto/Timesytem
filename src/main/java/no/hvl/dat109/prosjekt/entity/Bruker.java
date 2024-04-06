@@ -76,4 +76,7 @@ public class Bruker {
 		this.etternavn = etternavn;
 	}
 
+	public List<Time> getTimeliste() {
+		return timeliste;
+	}
 }

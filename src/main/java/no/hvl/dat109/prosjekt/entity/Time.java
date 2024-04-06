@@ -21,7 +21,6 @@ public class Time {
     private Prosjekt prosjekt;
 
     public Time() {
-
     }
 
     public Time(int antallTimer, Bruker bruker, Prosjekt prosjekt) {
@@ -33,7 +32,6 @@ public class Time {
     public Integer getId() {
         return id;
     }
-
 
     public int getAntallTimer() {
         return antallTimer;
