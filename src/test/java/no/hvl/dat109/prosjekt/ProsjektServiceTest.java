@@ -26,6 +26,11 @@ class ProsjektServiceTest {
 	@MockBean
 	private ProsjektRepo prosjektRepo;
 
+	/**
+	 * Test av  {@link ProsjektService#finnAlle()} }
+	 * To nye prosjekter opprettes og legges til.
+	 * Metodene linker til en ny liste og tester sammenligning og størrelse
+	 */
 	@Test
 	public void finnAlleTest() {
 		List<Prosjekt> prosjekter = new ArrayList<>();
@@ -46,6 +51,10 @@ class ProsjektServiceTest {
 		assertEquals(2, testResultatet.size());
 	}
 
+	/**
+	 * Test av {@link ProsjektService#finnMedID(String)}
+	 * Legger til ett prosjekt og søker etter id
+	 */
 	@Test
 	public void finnMedIdTest() {
 
@@ -62,6 +71,10 @@ class ProsjektServiceTest {
 		assertEquals("HR", testResultat.getNavn());
 	}
 
+	/**
+	 * Test av {@link ProsjektService#lagre(Prosjekt)}
+	 * Legger til ett prosjekt og tester at det blir lagt til.
+	 */
 	@Test
 	public void testLagre() {
 		Prosjekt prosjekt = new Prosjekt();
