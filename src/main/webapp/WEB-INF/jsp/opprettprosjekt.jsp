@@ -12,11 +12,11 @@
     <fieldset id="rot">
 
         <label>Prosjekt Id<br>
-            <input type="text" name="id" id="id" value="${prosjekt.id}"/><br>
+            <input type="text" name="id" id="prosjektid" value="${prosjekt.id}"/><br>
         </label>
 
         <label>Navn<br>
-            <input type="text" name="navn" id="navn" value="${prosjekt.navn}"/><br>
+            <input type="text" name="navn" id="prosjektnavn" value="${prosjekt.navn}"/><br>
         </label>
 
         <br>
