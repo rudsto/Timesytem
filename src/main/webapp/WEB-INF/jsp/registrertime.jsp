@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="no">
 <head>
-    <title>Registrer Time</title>
+    <title>Timeregistrering</title>
 </head>
 <body>
 <table class="navbar">
@@ -35,7 +35,7 @@
     </tr>
 </table>
 
-<h2>Brukerkonto detaljer</h2>
+<h2>Timeregistrering</h2>
 <p style="color:red;">${feilmeldinger}</p>
 
 <form action="${pageContext.request.contextPath}/registrertime" method="post">
