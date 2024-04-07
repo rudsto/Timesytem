@@ -12,17 +12,17 @@ public class Prosjekt {
 
     @Id
     @Column(name = "prosjekt_id", length = 6)
-    @Size(min = 6, max = 6, message = "Prosjektid må være 6 siffer")
-    @NotNull(message = "Prosjektid er obligatorisk")
-    @Pattern(regexp = "[0-9]{6}", message = "Prosjektid må være 6 siffer")
+    //@Size(min = 6, max = 6, message = "Prosjektid må være 6 siffer")
+    //@NotNull(message = "Prosjektid er obligatorisk")
+    //@Pattern(regexp = "[0-9]{6}", message = "Prosjektid må være 6 siffer")
     private String prosjekt_id;
 
     @OneToMany(mappedBy = "prosjekt", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Time> timeliste;
 
     @Column(name = "navn", length = 64)
-    @Size(min = 1, max = 64, message = "Prosjektnavnet må være mellom 1-64 bokstaver")
-    @NotNull(message = "Projektet må ha navn")
+    //@Size(min = 1, max = 64, message = "Prosjektnavnet må være mellom 1-64 bokstaver")
+    //@NotNull(message = "Projektet må ha navn")
     private String navn;
 
     /*

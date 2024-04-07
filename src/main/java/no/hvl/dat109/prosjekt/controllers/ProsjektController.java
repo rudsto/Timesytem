@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
@@ -33,24 +34,10 @@ public class ProsjektController {
     }
 
     @PostMapping("opprettprosjekt")
-    public String postProsjekt (@Valid @ModelAttribute("prosjekt") Prosjekt prosjekt,
-                                RedirectAttributes ra,
-                                BindingResult bindingResult
-            ) {
-        ra.addFlashAttribute("prosjekt", prosjekt);
-        if (bindingResult.hasErrors()) {
-            String feilmeldinger = bindingResult.getAllErrors()
-                    .stream()
-                    .map(e -> e.getDefaultMessage())
-                    .reduce("", (f,e) -> f + e + "<br>");
-            ra.addFlashAttribute("feilmeldinger", feilmeldinger);
-            return "redirect:opprettprosjekt";
-        }
-        if (prosjektService.finnMedID(prosjekt.getProsjekt_id()) != null) {
-            ra.addFlashAttribute("feilmeldinger", "Prosjektid er allerede registrert");
-            return "redirect:opprettprosjekt";
-        }
-
+    public String postProsjekt (@RequestParam String prosjekt_id,@RequestParam String navn) {
+        Prosjekt prosjekt = new Prosjekt();
+        prosjekt.setProsjekt_id(prosjekt_id);
+        prosjekt.setNavn(navn);
         prosjektService.lagre(prosjekt);
         return "redirect:prosjektopprettet";
     }

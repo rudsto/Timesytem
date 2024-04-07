@@ -28,9 +28,9 @@ public class ProsjektService {
      * @return {@link Prosjekt} med den angitte id, ellers null
      */
     public Prosjekt finnMedID(String id) {
-        Optional<Prosjekt> projektOptional = prosjektRepo.findById(Integer.parseInt(id));
-
-        return projektOptional.orElse(null);
+        //Optional<Prosjekt> projektOptional = prosjektRepo.findById(Integer.parseInt(id));
+        //return projektOptional.orElse(null);
+        return prosjektRepo.findById(id).orElse(null);
     }
 
     /**
