@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class TimeService {
@@ -32,9 +33,11 @@ public class TimeService {
      */
     public List<Time> finnBrukerTimer(Bruker bruker) {
 
-        List<Time> alleTimer = finnAlleTimer();
+    	List<Time> alleTimer = finnAlleTimer();
 
-        return null;
+        return alleTimer.stream()
+                .filter(time -> time.getBruker().equals(bruker))
+                .collect(Collectors.toList());
 
     }
 
@@ -45,9 +48,11 @@ public class TimeService {
      */
     public List<Time> finnProsjektTimer(Prosjekt prosjekt) {
 
-        List<Time> alleTimer = finnAlleTimer();
+    	List<Time> alleTimer = finnAlleTimer();
 
-        return null;
+        return alleTimer.stream()
+                .filter(time -> time.getProsjekt().equals(prosjekt))
+                .collect(Collectors.toList());
     }
 
     /**
@@ -58,9 +63,12 @@ public class TimeService {
      */
     public List<Time> finnBrukerProsjektTimer(Bruker bruker, Prosjekt prosjekt) {
 
-        List<Time> alleTimer = finnAlleTimer();
+    	List<Time> alleTimer = finnAlleTimer();
 
-        return null;
+        return alleTimer.stream()
+                .filter(time -> time.getBruker().equals(bruker))
+                .filter(time -> time.getProsjekt().equals(prosjekt))
+                .collect(Collectors.toList());
 
     }
 
