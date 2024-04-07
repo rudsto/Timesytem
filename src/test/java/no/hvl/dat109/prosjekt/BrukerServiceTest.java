@@ -4,27 +4,28 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import no.hvl.dat109.prosjekt.repo.BrukerRepo;
 import no.hvl.dat109.prosjekt.service.BrukerService;
+import no.hvl.dat109.prosjekt.entity.Bruker;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
-import no.hvl.dat109.prosjekt.entity.Bruker;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
+@SpringBootTest
 public class BrukerServiceTest {
 
+    @Autowired
     private BrukerService brukerService;
 
-	/**
-	 * Oppsett
-	 */
-    @BeforeEach
-    public void setup() {
-        brukerService = new BrukerService();
-    }
+    @MockBean
+    private BrukerRepo brukerRepo;
 
 	/**
 	 * Test av metoden finnAlle().Skal teste at metoden returner en liste av alle brukere.
@@ -45,10 +46,9 @@ public class BrukerServiceTest {
         bruker2.setEtternavn("Jensen");
         brukere.add(bruker2);
 
-        BrukerService mockBrukerService = mock(BrukerService.class);
-        when(mockBrukerService.finnAlleBrukere()).thenReturn(brukere);
+        when(brukerRepo.findAll()).thenReturn(brukere);
 
-        List<Bruker> resultat = mockBrukerService.finnAlleBrukere();
+        List<Bruker> resultat = brukerService.finnAlleBrukere();
         assertEquals(brukere, resultat);
         assertEquals(2, resultat.size());
     }
@@ -64,10 +64,9 @@ public class BrukerServiceTest {
         bruker.setFornavn("Ola");
         bruker.setEtternavn("Nordmann");
 
-        BrukerService mockBrukerService = mock(BrukerService.class);
-        when(mockBrukerService.finnBrukerMedMobil("12345678")).thenReturn(bruker);
+        when(brukerRepo.findById("12345678")).thenReturn(Optional.of(bruker));
 
-        Bruker resultat = mockBrukerService.finnBrukerMedMobil("12345678");
+        Bruker resultat = brukerService.finnBrukerMedMobil("12345678");
         assertEquals(bruker, resultat);
         assertEquals("12345678", resultat.getMobil());
     }
@@ -83,10 +82,9 @@ public class BrukerServiceTest {
         bruker.setFornavn("Ola");
         bruker.setEtternavn("Nordmann");
 
-        BrukerService mockBrukerService = mock(BrukerService.class);
-        when(mockBrukerService.lagreBruker(bruker)).thenReturn(bruker);
+        when(brukerRepo.save(bruker)).thenReturn(bruker);
+        Bruker resultat = brukerService.lagreBruker(bruker);
 
-        Bruker resultat = mockBrukerService.lagreBruker(bruker);
         assertEquals(bruker, resultat);
         assertEquals("12345678", resultat.getMobil());
     }
