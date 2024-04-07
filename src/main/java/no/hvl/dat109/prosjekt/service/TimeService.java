@@ -34,9 +34,7 @@ public class TimeService {
 
         List<Time> alleTimer = finnAlleTimer();
 
-        return alleTimer.stream()
-                .filter(time -> time.getBruker().equals(bruker))
-                .toList();
+        return null;
 
     }
 
@@ -49,9 +47,7 @@ public class TimeService {
 
         List<Time> alleTimer = finnAlleTimer();
 
-        return alleTimer.stream()
-                .filter(time -> time.getProsjekt().equals(prosjekt))
-                .toList();
+        return null;
     }
 
     /**
@@ -64,10 +60,7 @@ public class TimeService {
 
         List<Time> alleTimer = finnAlleTimer();
 
-        return alleTimer.stream()
-                .filter(time -> time.getBruker().equals(bruker))
-                .filter(time -> time.getProsjekt().equals(prosjekt))
-                .toList();
+        return null;
 
     }
 

@@ -33,12 +33,12 @@ class ProsjektServiceTest {
 	public void finnAlleTest() {
 		List<Prosjekt> prosjekter = new ArrayList<>();
 		Prosjekt prosjekt1 = new Prosjekt();
-		prosjekt1.setId("110000");
+		prosjekt1.setProsjekt_id("110000");
 		prosjekt1.setNavn("Adm");
 		prosjekter.add(prosjekt1);
 
 		Prosjekt prosjekt2 = new Prosjekt();
-		prosjekt2.setId("120000");
+		prosjekt2.setProsjekt_id("120000");
 		prosjekt2.setNavn("Salg");
 		prosjekter.add(prosjekt2);
 
@@ -57,15 +57,14 @@ class ProsjektServiceTest {
 	public void finnMedIdTest() {
 
 		Prosjekt prosjekt = new Prosjekt();
-		prosjekt.setId("115000");
+		prosjekt.setProsjekt_id("115000");
 		prosjekt.setNavn("HR");
-		System.out.println(prosjekt.getId());
 
 		when(prosjektRepo.findById(115000)).thenReturn(Optional.of(prosjekt));
 
 		Prosjekt testResultat = prosjektService.finnMedID("115000");
 		assertEquals(prosjekt, testResultat);
-		assertEquals("115000", testResultat.getId());
+		assertEquals("115000", testResultat.getProsjekt_id());
 		assertEquals("HR", testResultat.getNavn());
 	}
 
@@ -77,12 +76,12 @@ class ProsjektServiceTest {
 	public void testLagre() {
 		Prosjekt prosjekt = new Prosjekt();
 		prosjekt.setNavn("Testprosjekt");
-		prosjekt.setId("303030");
+		prosjekt.setProsjekt_id("303030");
 
 		when(prosjektRepo.save(prosjekt)).thenReturn(prosjekt);
 		Prosjekt lagretProsjekt = prosjektService.lagre(prosjekt);
 
-		assertNotNull(lagretProsjekt.getId());
+		assertNotNull(lagretProsjekt.getProsjekt_id());
 		assertEquals("Testprosjekt", lagretProsjekt.getNavn());
 	}
 }

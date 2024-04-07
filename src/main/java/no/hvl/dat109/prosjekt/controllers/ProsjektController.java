@@ -37,13 +37,6 @@ public class ProsjektController {
                                 RedirectAttributes ra,
                                 BindingResult bindingResult
             ) {
-
-        if (prosjekt.getId().isEmpty()) {
-            bindingResult.rejectValue("prosjektid", "NotEmpty", "Prosjektid kan ikke være tom");
-        }
-
-        //TODO lage en sjekk for prosjektnavn
-
         ra.addFlashAttribute("prosjekt", prosjekt);
         if (bindingResult.hasErrors()) {
             String feilmeldinger = bindingResult.getAllErrors()
@@ -53,10 +46,11 @@ public class ProsjektController {
             ra.addFlashAttribute("feilmeldinger", feilmeldinger);
             return "redirect:opprettprosjekt";
         }
-        if (prosjektService.finnMedID(prosjekt.getId()) != null) {
+        if (prosjektService.finnMedID(prosjekt.getProsjekt_id()) != null) {
             ra.addFlashAttribute("feilmeldinger", "Prosjektid er allerede registrert");
             return "redirect:opprettprosjekt";
         }
+
         prosjektService.lagre(prosjekt);
         return "redirect:prosjektopprettet";
     }

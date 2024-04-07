@@ -11,35 +11,37 @@ import javax.validation.constraints.Size;
 public class Prosjekt {
 
     @Id
-    @Column(name = "id", length = 6)
+    @Column(name = "prosjekt_id", length = 6)
     @Size(min = 6, max = 6, message = "Prosjektid må være 6 siffer")
     @NotNull(message = "Prosjektid er obligatorisk")
     @Pattern(regexp = "[0-9]{6}", message = "Prosjektid må være 6 siffer")
-    private String id;
+    private String prosjekt_id;
 
     @OneToMany(mappedBy = "prosjekt", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Time> timeliste;
 
-    @Column(name = "navn", length = 50)
-    @Size(min = 1, max = 50, message = "Prosjektnavnet må være mellom 1-50 bokstaver")
+    @Column(name = "navn", length = 64)
+    @Size(min = 1, max = 64, message = "Prosjektnavnet må være mellom 1-64 bokstaver")
     @NotNull(message = "Projektet må ha navn")
     private String navn;
 
+    /*
     public Prosjekt() {
 
     }
 
-    public Prosjekt(String id, String navn) {
-        this.id = id;
+    public Prosjekt(String prosjekt_id, String navn) {
+        this.prosjekt_id = prosjekt_id;
         this.navn = navn;
     }
+    */
 
-    public String getId() {
-        return id;
+    public String getProsjekt_id() {
+        return prosjekt_id;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setProsjekt_id(String id) {
+        this.prosjekt_id = id;
     }
 
     public String getNavn() {

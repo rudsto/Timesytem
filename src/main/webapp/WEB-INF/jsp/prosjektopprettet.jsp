@@ -6,18 +6,18 @@
 </head>
 <body>
 <h1>Prosjekt opprettet</h1>
-<p>Prosjekt ID: ${prosjekt.id}</p>
+<p>Prosjekt ID: ${prosjekt.prosjekt_id}</p>
 <p>Prosjektnavn: ${prosjekt.navn}</p>
 
 <table class="navbar">
     <tr>
         <td>
-            <form action="/${pageContext.request.contextPath}/opprettprosjekt" method="get">
+            <form action="${pageContext.request.contextPath}/opprettprosjekt" method="get">
                 <button type="submit">Registrer nytt prosjekt</button>
             </form>
         </td>
         <td>
-            <form action="/${pageContext.request.contextPath}/logut" method="post">
+            <form action="${pageContext.request.contextPath}/logut" method="post">
                 <button type="submit">Logg ut</button>
             </form>
         </td>

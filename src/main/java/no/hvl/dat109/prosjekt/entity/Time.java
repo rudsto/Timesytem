@@ -1,19 +1,18 @@
 package no.hvl.dat109.prosjekt.entity;
 
-import java.util.List;
-
 import javax.persistence.*;
 
 @Entity
+@Table(name = "timereg", schema = "dat109_prosjekt")
 public class Time {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer time_id;
     private int antallTimer;
 
     @ManyToOne
-    @JoinColumn(name = "bruker_id")
+    @JoinColumn(name = "mobil")
     private Bruker bruker;
 
     @ManyToOne
@@ -29,8 +28,8 @@ public class Time {
         this.prosjekt = prosjekt;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getTime_id() {
+        return time_id;
     }
 
     public int getAntallTimer() {
