@@ -14,7 +14,7 @@
 <table class="navbar">
     <tr>
         <td>
-    		<button href="/deltagerliste" type="submit">Opprett prosjekt</button>
+    		<a href="/opprettprosjekt">Opprett prosjekt</a>
         </td>
         <td>
             <button href="/deltagerliste" type="submit">Rediger prosjekt</button>
