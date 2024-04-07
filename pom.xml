@@ -49,18 +49,6 @@
             <artifactId>tomcat-embed-jasper</artifactId>
             <scope>provided</scope>
         </dependency>
-
-<!--        &lt;!&ndash;Internett sa vi måtte ha den neste&ndash;&gt;
-        <dependency>
-            <groupId>org.glassfish.web</groupId>
-            <artifactId>jakarta.servlet.jsp.jstl</artifactId>
-        </dependency>
-        -->
-
-<!--        <dependency>
-            <groupId>jakarta.servlet.jsp.jstl</groupId>
-            <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
-        </dependency>-->
         
        	<!--Gir noe bra integrasjon i IntelliJ for endpoints etc.-->
         <dependency>
@@ -82,12 +70,6 @@
             <artifactId>postgresql</artifactId>
             <scope>runtime</scope>
         </dependency>	
-        
-<!--        &lt;!&ndash; må ha denne for PassordService &ndash;&gt;
-        <dependency>
-            <groupId>jakarta.xml.bind</groupId>
-            <artifactId>jakarta.xml.bind-api</artifactId>
-        </dependency>	-->
 
         <!--Spring boot test framework-->
         <dependency>
@@ -95,14 +77,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>compile</scope>
         </dependency>
-		
-		<!--  For deployment og war ...
-                <dependency>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-tomcat</artifactId>
-                    <scope>provided</scope>
-                </dependency>
-         -->
 
 		<!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
 		<dependency>
@@ -125,15 +99,12 @@
             <scope>test</scope>
         </dependency>
 
-
         <!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
-
-
 
     </dependencies>
 
