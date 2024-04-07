@@ -28,7 +28,8 @@ public class BrukerServiceTest {
     private BrukerRepo brukerRepo;
 
 	/**
-	 * Test av metoden finnAlle().Skal teste at metoden returner en liste av alle brukere.
+	 * Test av metoden {@link BrukerService#finnAlleBrukere()}.
+     * Skal teste at metoden returner en liste av alle brukere.
 	 * Legger til to brukere og tester at listen stemmer.
 	 */
     @Test
@@ -54,7 +55,8 @@ public class BrukerServiceTest {
     }
 
 	/**
-	 * Test av metoden finnMedMobil(). Skal teste at metoden returner brukeren med telefonnummeret.
+	 * Test av metoden {@link BrukerService#finnBrukerMedMobil(String)}.
+     * Skal teste at metoden returner brukeren med telefonnummeret.
 	 * Legger til en bruker og forsøker å hente den.
 	 */
     @Test
@@ -72,7 +74,8 @@ public class BrukerServiceTest {
     }
 
     /**
-     * Test for metoden testLagre(). Skal teste at metoden lagrer brukeren og returnerer den.
+     * Test for metoden {@link BrukerService#lagreBruker(Bruker)}.
+     * Skal teste at metoden lagrer brukeren og returnerer den.
      * Legger til en bruker og tester om den er lagret.
      */
     @Test
