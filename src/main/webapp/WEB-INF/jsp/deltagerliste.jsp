@@ -14,7 +14,7 @@
 <table class="navbar">
     <tr>
         <td>
-    		<button onclick="location.href='/opprettprosjekt'" type="button">Opprett prosjekt</button>
+    		<button onclick="location.href='${pageContext.request.contextPath}/opprettprosjekt'" type="button">Opprett prosjekt</button>
         </td>
         <td>
             <button href="/deltagerliste" type="submit">Rediger prosjekt</button>
