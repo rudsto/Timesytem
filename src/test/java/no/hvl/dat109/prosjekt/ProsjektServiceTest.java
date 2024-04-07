@@ -60,7 +60,7 @@ class ProsjektServiceTest {
 		prosjekt.setProsjekt_id("115000");
 		prosjekt.setNavn("HR");
 
-		when(prosjektRepo.findById(115000)).thenReturn(Optional.of(prosjekt));
+		when(prosjektRepo.findById("115000")).thenReturn(Optional.of(prosjekt));
 
 		Prosjekt testResultat = prosjektService.finnMedID("115000");
 		assertEquals(prosjekt, testResultat);
