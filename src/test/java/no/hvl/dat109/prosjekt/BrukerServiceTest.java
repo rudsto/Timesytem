@@ -1,13 +1,11 @@
 package no.hvl.dat109.prosjekt;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import no.hvl.dat109.prosjekt.repo.BrukerRepo;
 import no.hvl.dat109.prosjekt.service.BrukerService;
 import no.hvl.dat109.prosjekt.entity.Bruker;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
