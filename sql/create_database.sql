@@ -22,3 +22,8 @@ CREATE TABLE prosjekt
 );
 
 select * from dat109_prosjekt.prosjekt;
+
+-- Tilgang bruk database ------------------------------------------
+GRANT USAGE ON SCHEMA dat109_prosjekt TO hstudentnummer;
+GRANT SELECT ON dat109_prosjekt.bruker TO PUBLIC;
+GRANT SELECT ON dat109_prosjekt.prosjekt TO PUBLIC;
