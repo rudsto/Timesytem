@@ -20,7 +20,7 @@
         </label>
 
         <br>
-        <button id="submit-btn" type="submit">Opprett prosjekt</button>
+        <button onclick="location.href='${pageContext.request.contextPath}/prosjektopprettet'" type="button">Opprett prosjekt</button>
 
     </fieldset>
 </form>
