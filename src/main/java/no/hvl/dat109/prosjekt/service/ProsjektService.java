@@ -15,16 +15,15 @@ public class ProsjektService {
     private ProsjektRepo prosjektRepo;
 
     /**
-     * Metode for å hente alle {@link Prosjekt} i databasen
+     * Metode for å hente alle {@link Prosjekt} i databasen.
      * @return {@link List<Prosjekt>} med prosjektene
      */
     public List<Prosjekt> finnAlle() {
         return prosjektRepo.findAll();
     }
 
-
     /**
-     * Metode for å finne et prosjekt basert på den angitte id-en
+     * Metode for å finne et prosjekt basert på den angitte id-en.
      * @param id {@link String} med id til prosjektet man vil finne
      * @return {@link Prosjekt} med den angitte id, ellers null
      */
@@ -35,7 +34,7 @@ public class ProsjektService {
     }
 
     /**
-     * Metode for å lagre prosjektet i databasen
+     * Metode for å lagre prosjektet i databasen.
      * @param prosjekt {@link Prosjekt} som ønskes lagret
      * @return {@link Prosjekt} når lagret
      * @throws org.springframework.dao.DataAccessException hvis det oppstår en feil under lagringsprosessen

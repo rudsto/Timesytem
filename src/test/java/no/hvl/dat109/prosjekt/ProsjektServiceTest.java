@@ -1,13 +1,11 @@
 package no.hvl.dat109.prosjekt;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import no.hvl.dat109.prosjekt.repo.ProsjektRepo;
 import no.hvl.dat109.prosjekt.service.ProsjektService;
 import no.hvl.dat109.prosjekt.entity.Prosjekt;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -27,7 +25,7 @@ class ProsjektServiceTest {
 	private ProsjektRepo prosjektRepo;
 
 	/**
-	 * Test av  {@link ProsjektService#finnAlle()} }
+	 * Test av {@link ProsjektService#finnAlle()}.
 	 * To nye prosjekter opprettes og legges til.
 	 * Metodene linker til en ny liste og tester sammenligning og størrelse
 	 */
@@ -52,7 +50,7 @@ class ProsjektServiceTest {
 	}
 
 	/**
-	 * Test av {@link ProsjektService#finnMedID(String)}
+	 * Test av {@link ProsjektService#finnMedID(String)}.
 	 * Legger til ett prosjekt og søker etter id
 	 */
 	@Test
@@ -72,7 +70,7 @@ class ProsjektServiceTest {
 	}
 
 	/**
-	 * Test av {@link ProsjektService#lagre(Prosjekt)}
+	 * Test av {@link ProsjektService#lagre(Prosjekt)}.
 	 * Legger til ett prosjekt og tester at det blir lagt til.
 	 */
 	@Test
