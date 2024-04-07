@@ -14,7 +14,7 @@
 <table class="navbar">
     <tr>
         <td>
-    		<a href="/opprettprosjekt">Opprett prosjekt</a>
+    		<button onclick="location.href='/opprettprosjekt'" type="button">Opprett prosjekt</button>
         </td>
         <td>
             <button href="/deltagerliste" type="submit">Rediger prosjekt</button>
