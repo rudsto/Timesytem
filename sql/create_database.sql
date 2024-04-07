@@ -12,14 +12,24 @@ CREATE TABLE bruker
     etternavn CHARACTER VARYING(40)
 );
 
-select * from dat109_prosjekt.bruker;
-
 -- Opprett prosjekt table ------------------------------------------
 CREATE TABLE prosjekt
 (
-    id     CHARACTER(6) PRIMARY KEY,
-    navn      CHARACTER(64) NOT NULL
+    prosjekt_id     CHARACTER(6) PRIMARY KEY,
+    navn      		CHARACTER(64) NOT NULL
 );
+
+CREATE TABLE timereg
+(
+	time_id 			INTEGER PRIMARY KEY,
+	antall_timer		INTEGER,
+	mobil				CHARACTER(8),
+	prosjekt_id			CHARACTER(6),
+	FOREIGN KEY (mobil) REFERENCES bruker (mobil),
+	FOREIGN KEY (prosjekt_id) REFERENCES prosjekt (prosjekt_id)	
+);
+
+
 
 select * from dat109_prosjekt.prosjekt;
 
