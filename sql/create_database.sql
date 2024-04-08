@@ -21,7 +21,7 @@ CREATE TABLE prosjekt
 
 CREATE TABLE timereg
 (
-	time_id 			INTEGER PRIMARY KEY,
+	time_id 			SERIAL PRIMARY KEY,
 	antall_timer		INTEGER,
 	mobil				CHARACTER(8),
 	prosjekt_id			CHARACTER(6),
