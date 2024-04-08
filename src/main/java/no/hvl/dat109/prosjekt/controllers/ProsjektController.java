@@ -54,6 +54,14 @@ public class ProsjektController {
     @PostMapping("opprettprosjekt")
     public String postProsjekt (@RequestParam String prosjekt_id,@RequestParam String navn, RedirectAttributes ra) {
 
+        if(prosjekt_id == null) {
+            ra.addFlashAttribute("feilmeldinger", "ID kan ikke være tomt");
+            return "redirect:opprettprosjekt";
+        }
+        if (!prosjekt_id.matches("\\d+")) {
+            ra.addFlashAttribute("feilmeldinger", "ID må være numerisk");
+            return "redirect:opprettprosjekt";
+        }
         if(prosjektService.finnMedID(prosjekt_id) != null) {
             ra.addFlashAttribute("feilmeldinger", "ID allerede i bruk");
             return "redirect:opprettprosjekt";
