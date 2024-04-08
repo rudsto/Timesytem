@@ -12,12 +12,22 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 
+/**
+ * Controller for behandling av timer i timeføringsystemet.
+ */
 @Controller
 public class TimeController {
 
     @Autowired
     private TimeService timeService;
 
+    /**
+     *
+     * @param session
+     * @param model
+     * @param ra
+     * @return
+     */
     @GetMapping("registrertime")
     public String getRegistrerTime(HttpSession session, Model model, RedirectAttributes ra) {
         if(!LoginUtil.erBrukerInnlogget(session)) {
@@ -29,6 +39,13 @@ public class TimeController {
         return "registrertime";
     }
 
+    /**
+     *
+     * @param session
+     * @param model
+     * @param ra
+     * @return
+     */
     @PostMapping("/registrertime")
     public String registrerTimer(HttpSession session, Model model, RedirectAttributes ra) {
         if(!LoginUtil.erBrukerInnlogget(session)) {
