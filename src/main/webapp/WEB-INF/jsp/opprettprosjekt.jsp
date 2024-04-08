@@ -42,5 +42,8 @@
             </tr>
         </c:forEach>
 </table>
+
+<script src="js/validering.js" defer></script>
+
 </body>
 </html>

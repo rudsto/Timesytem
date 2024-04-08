@@ -3,6 +3,8 @@ function validering() {
     validerEtternavn();
     validerMobil();
     validerPassord();
+    validerProsjektID();
+    validerProsjektnavn();
 }
 
 function validerFornavn() {
@@ -74,6 +76,39 @@ function validerPassord() {
     let passordRepetert = passordRepetertElm.value;
     if (passord !== passordRepetert) {
         passordRepetertElm.setCustomValidity("Passordene må være like");
+    }
+}
+
+function validerProsjektID() {
+    let prosjekt_idElm = document.getElementById("prosjekt_id");
+    if (!prosjekt_idElm) {
+        return;
+    }
+    prosjekt_idElm.setCustomValidity("");
+    prosjekt_idElm.checkValidity();
+    let prosjekt_id = prosjekt_idElm.value;
+    let prosjekt_idRegex = /^[0-9]+$/;
+    if (prosjekt_id.length !== 6) {
+        prosjekt_idElm.setCustomValidity("Prosjekt ID må være 6 siffer");
+
+    } else if (!prosjekt_idRegex.test(prosjekt_id)) {
+        prosjekt_idElm.setCustomValidity("Prosjekt ID kan kun inneholde tall");
+    }
+}
+
+function validerProsjektnavn() {
+    let prosjektnavnElm = document.getElementById("navn");
+    if (!prosjektnavnElm) {
+        return;
+    }
+    prosjektnavnElm.setCustomValidity("");
+    prosjektnavnElm.checkValidity();
+    let prosjektnavn = prosjektnavnElm.value;
+    let prosjektnavnRegex = /^[\p{L} -]+$/u;
+    if (prosjektnavn.length < 2 || prosjektnavn.length > 20) {
+        prosjektnavnElm.setCustomValidity("Prosjektnavn må være minst 2 tegn, og maks 20 tegn");
+    } else if (!prosjektnavnRegex.test(prosjektnavn)) {
+        prosjektnavnElm.setCustomValidity("Prosjektnavn kan kun inneholde bokstaver, bindestrek og mellomrom");
     }
 }
 
