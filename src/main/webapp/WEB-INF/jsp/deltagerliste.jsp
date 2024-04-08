@@ -61,6 +61,23 @@
     </c:forEach>
 </table>
 <br>
+
+<h3>Registrerte prosjekter</h3>
+<table>
+    <tr>
+        <th align="left">Prosjekt id</th>
+        <th align="left">Navn</th>
+    </tr>
+        <c:forEach var="prosjekt" items="${prosjekter}">
+            <tr>
+                <td>${prosjekt.prosjekt_id}</td>
+                <td>${prosjekt.navn}</td>
+            </tr>
+        </c:forEach>
+</table>
+
+
+<br>
 <form action="${pageContext.request.contextPath}/logut" method="post">
     <button type="submit">Logg ut</button>
 </form>
