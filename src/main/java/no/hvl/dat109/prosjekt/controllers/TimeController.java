@@ -9,6 +9,7 @@ import no.hvl.dat109.prosjekt.service.TimeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -56,12 +57,20 @@ public class TimeController {
     @PostMapping("registrertime")
     public String registrerTimer(
             HttpSession session, Model model, RedirectAttributes ra,
-            @RequestParam String prosjekt_id,
-            @RequestParam int antallTimer) {
+            @RequestParam String prosjekt_id, @RequestParam int antallTimer) {
         if (!LoginUtil.erBrukerInnlogget(session)) {
             ra.addFlashAttribute("feilmelding", "Du må være innlogget for å registrere timer");
             return "redirect:login";
         }
+
+//        if (bindingResult.hasErrors()) {
+//            String feilmeldinger = bindingResult.getAllErrors()
+//                    .stream()
+//                    .map(e -> e.getDefaultMessage())
+//                    .reduce("", (f, e) -> f + e + "<br>");
+//            ra.addFlashAttribute("feilmelding", feilmeldinger);
+//            return "redirect:registrertime";
+//        }
         Prosjekt prosjekt = prosjektService.finnMedID(prosjekt_id);
 
         if (prosjekt == null) {
