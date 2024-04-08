@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import no.hvl.dat109.prosjekt.service.BrukerService;
 import no.hvl.dat109.prosjekt.service.ProsjektService;
+import no.hvl.dat109.prosjekt.service.TimeService;
 import no.hvl.dat109.prosjekt.Utils.LoginUtil;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,8 @@ public class BrukerController {
     private BrukerService brukerService;
     @Autowired
     private ProsjektService prosjektService;
+    @Autowired
+    private TimeService timeService;
 
 
     @GetMapping("deltagerliste")
@@ -30,6 +33,7 @@ public class BrukerController {
         }
         model.addAttribute("ansatte", brukerService.finnAlleBrukere());
         model.addAttribute("prosjekter", prosjektService.finnAlle());
+        model.addAttribute("timeliste", timeService.finnAlleTimer());
         return "deltagerliste";
     }
 

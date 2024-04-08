@@ -75,9 +75,29 @@
             </tr>
         </c:forEach>
 </table>
-
-
 <br>
+
+<h3>Registrerte timer</h3>
+<table>
+    <tr>
+        <th align="left">Time id</th>
+        <th align="left">Antall</th>
+        <th align="left">Mobil</th>
+        <th align="left">Prosjekt id</th>
+    </tr>
+    </tr>
+        <c:forEach var="time" items="${timeliste}">
+            <tr>
+                <td>${time.time_id}</td>
+                <td>${time.antallTimer}</td>
+                <td>${time.bruker.mobil}</td>
+                <td>${time.prosjekt.prosjekt_id}</td>
+            </tr>
+        </c:forEach>
+</table>
+<br>
+
+
 <form action="${pageContext.request.contextPath}/logut" method="post">
     <button type="submit">Logg ut</button>
 </form>
