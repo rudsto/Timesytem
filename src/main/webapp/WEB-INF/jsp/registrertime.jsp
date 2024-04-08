@@ -37,15 +37,21 @@
 
 <h2>Timeregistrering</h2>
 <p style="color:red;">${feilmeldinger}</p>
+<!-- <fieldset>
+    <h1>Timer registrert </h1>
+    <p>Prosjekt ID: ${time.prosjekt_id}</p>
+    <p>Prosjektnavn: ${prosjekt.navn}</p>
+    <p>Antall timer: ${time.antallTimer}</p>
+</fieldset> -->
 
 <form action="${pageContext.request.contextPath}/registrertime" method="post">
     <fieldset id="rot">
 
         <label>Prosjekt ID<br>
-            <input type="text" name="id" id="id" value="${prosjekt.id}"/><br></label>
+            <input type="text" name="prosjekt_id" id="prosjekt_id" value="${prosjekt_id}"/><br></label>
 
         <label>Antall timer<br>
-            <input type="text" name="timer" id="timer" value="${time.antallTimer}"/><br></label>
+            <input type="text" name="antallTimer" id="antallTimer" value="${antallTimer}"/><br></label>
 
         <br>
         <button id="submit-btn" type="submit">Registrer</button>
