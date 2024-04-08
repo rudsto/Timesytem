@@ -47,11 +47,14 @@ public class ProsjektController {
      * @return redirect
      */
     @PostMapping("opprettprosjekt")
-    public String postProsjekt (@RequestParam String prosjekt_id,@RequestParam String navn) {
+    public String postProsjekt (@RequestParam String prosjekt_id,@RequestParam String navn, RedirectAttributes ra) {
         Prosjekt prosjekt = new Prosjekt();
         prosjekt.setProsjekt_id(prosjekt_id);
         prosjekt.setNavn(navn);
         prosjektService.lagre(prosjekt);
+
+        ra.addFlashAttribute("prosjekt", prosjekt);
+
         return "redirect:prosjektopprettet";
     }
 
