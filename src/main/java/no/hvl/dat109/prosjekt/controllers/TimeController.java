@@ -63,8 +63,14 @@ public class TimeController {
             return "redirect:login";
         }
         Prosjekt prosjekt = prosjektService.finnMedID(prosjekt_id);
+
+        if (prosjekt == null) {
+            ra.addFlashAttribute("feilmelding", "Tast inn et prosjekt fra prosjektoversikten");
+            return "redirect:registrertime";
+        }
         Bruker bruker = (Bruker) session.getAttribute("bruker");
         Time time = new Time(antallTimer, bruker, prosjekt);
+
         timeService.lagreTime(time);
 
         ra.addFlashAttribute("time", time);

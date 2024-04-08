@@ -7,7 +7,7 @@
     <title>Timeregistrering</title>
 </head>
 <body>
-<script src="js/validering.js" defer></script>
+<script src="js/timevalidering.js" defer></script>
 <table class="navbar">
     <tr>
         <c:choose>
@@ -38,7 +38,7 @@
 </table>
 
 <h2>Timeregistrering</h2>
-<p style="color:red;">${feilmeldinger}</p>
+<p style="color:red;">${feilmelding}</p>
 
 <fieldset id="rot">
     <form action="${pageContext.request.contextPath}/registrertime" method="post">

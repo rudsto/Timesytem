@@ -1,6 +1,7 @@
 package no.hvl.dat109.prosjekt.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 @Entity
 @Table(name = "timereg", schema = "dat109_prosjekt")
@@ -9,6 +10,9 @@ public class Time {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer time_id;
+    @Min(value = 1)
+    @Max(value = 99)
+    @NotNull(message = "Tast inn timer jobbet")
     private int antallTimer;
 
     @ManyToOne
