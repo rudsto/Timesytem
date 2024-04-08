@@ -58,6 +58,10 @@ public class ProsjektController {
             ra.addFlashAttribute("feilmeldinger", "ID allerede i bruk");
             return "redirect:opprettprosjekt";
         }
+        if(prosjekt_id.length() != 6) {
+            ra.addFlashAttribute("feilmeldinger", "ID må være 6 siffer");
+            return "redirect:opprettprosjekt";
+        }
 
         Prosjekt prosjekt = new Prosjekt();
         prosjekt.setProsjekt_id(prosjekt_id);
