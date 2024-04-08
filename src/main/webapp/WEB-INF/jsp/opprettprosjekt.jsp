@@ -8,6 +8,10 @@
 </head>
 
 <body>
+
+<h2>Opprett nytt prosjekt</h2>
+<p style="color:red;">${feilmeldinger}</p>
+
 <form action="${pageContext.request.contextPath}/opprettprosjekt" method="post">
     <fieldset id="rot">
 
