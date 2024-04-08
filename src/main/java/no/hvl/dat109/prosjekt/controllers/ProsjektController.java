@@ -22,6 +22,13 @@ public class ProsjektController {
     @Autowired
     private ProsjektService prosjektService;
 
+    /**
+     * Metode for å hente skjema for innfylling av nytt prosjekt.
+     * @param session brukes for å sørge for at brukeren har en gyldig sesjon.
+     * @param model
+     * @param ra
+     * @return {@link String} som sender brukeren til relevant side
+     */
     @GetMapping("opprettprosjekt")
     public String getOpprettProsjekt(HttpSession session, Model model, RedirectAttributes ra) {
         if(!LoginUtil.erBrukerInnlogget(session)) {
@@ -33,6 +40,12 @@ public class ProsjektController {
         return "opprettprosjekt";
     }
 
+    /**
+     * PostMapping som hånterer de inntastede prosjektfeltene og forsøker å opprette et prosjekt.
+     * @param prosjekt_id {@link String} med prosjektets id
+     * @param navn {@link String} med prosjekets navn
+     * @return redirect
+     */
     @PostMapping("opprettprosjekt")
     public String postProsjekt (@RequestParam String prosjekt_id,@RequestParam String navn) {
         Prosjekt prosjekt = new Prosjekt();
@@ -42,6 +55,11 @@ public class ProsjektController {
         return "redirect:prosjektopprettet";
     }
 
+    /**
+     * Sender bruker videre til prosjekt opprettet
+     * @param model
+     * @return
+     */
     @GetMapping("prosjektopprettet")
     public String getProsjekt(Model model) {
         return "prosjektopprettet";
