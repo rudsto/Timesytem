@@ -29,5 +29,18 @@
 
     </fieldset>
 </form>
+<h3>Registrerte prosjekter</h3>
+<table>
+    <tr>
+        <th align="left">Prosjekt id</th>
+        <th align="left">Navn</th>
+    </tr>
+        <c:forEach var="prosjekt" items="${prosjekter}">
+            <tr>
+                <td>${prosjekt.prosjekt_id}</td>
+                <td>${prosjekt.navn}</td>
+            </tr>
+        </c:forEach>
+</table>
 </body>
 </html>

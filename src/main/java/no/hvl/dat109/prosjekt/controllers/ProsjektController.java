@@ -35,6 +35,8 @@ public class ProsjektController {
             return "redirect:login";
         }
 
+        model.addAttribute("prosjekter", prosjektService.finnAlle());
+
         //Logikk her
         return "opprettprosjekt";
     }
