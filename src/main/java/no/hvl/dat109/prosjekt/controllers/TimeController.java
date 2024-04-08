@@ -43,7 +43,7 @@ public class TimeController {
             ra.addFlashAttribute("feilmelding", "Du må være innlogget for å registrere timer");
             return "redirect:login";
         }
-
+        model.addAttribute("prosjekter", prosjektService.finnAlle());
         return "registrertime";
     }
 
@@ -67,7 +67,9 @@ public class TimeController {
         Time time = new Time(antallTimer, bruker, prosjekt);
         timeService.lagreTime(time);
 
-        //ra.addFlashAttribute("time", time);
-        return "registrertime";
+        ra.addFlashAttribute("time", time);
+        ra.addFlashAttribute("prosjekt", prosjekt);
+
+        return "redirect:registrertime";
     }
 }
