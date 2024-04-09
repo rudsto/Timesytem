@@ -39,11 +39,11 @@ public class TimeControllerTest {
     @MockBean
     TimeRepo timeRepo;
 
-    @InjectMocks
-    TimeService timeService;
-
     @MockBean
     ProsjektRepo prosjektRepo;
+
+    @InjectMocks
+    TimeService timeService;
 
     @InjectMocks
     private ProsjektService prosjektService;
