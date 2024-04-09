@@ -46,7 +46,7 @@ public class BrukerControllerTest {
 
     /**
      * Tester at redirect går til "/deltagerliste" når brukeren er logget inn.
-     * @throws Exception
+     * @throws Exception dersom det kommer feilmelding ved testkjøring
      */
     @Test
     public void brukerLoggetInnTest() throws Exception {
@@ -71,7 +71,7 @@ public class BrukerControllerTest {
 
     /**
      * Tester at redirect går tilbake til "/login" dersom bruker ikke er logget inn.
-     * @throws Exception
+     * @throws Exception dersom det kommer feilmelding ved testkjøring
      */
     @Test
     public void brukerIkkeLoggetInnTest() throws Exception {

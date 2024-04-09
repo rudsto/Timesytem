@@ -59,6 +59,7 @@ public class OpprettbrukerControllerTest {
 
     /**
      *
+     * @throws Exception dersom det kommer feilmelding ved testkjøring
      */
 //    @Test
 //    public void postPaameldingTest() throws Exception {
@@ -87,8 +88,8 @@ public class OpprettbrukerControllerTest {
 //    }
 
     /**
-     * Terster et eller annet.
-     * @throws Exception
+     * Tester om getPaamelding(Model) returnerer riktig view "/paamelding".
+     * @throws Exception dersom det kommer feilmelding ved testkjøring
      */
     @Test
     public void getPaameldingTest() throws Exception {
@@ -96,11 +97,15 @@ public class OpprettbrukerControllerTest {
         String resultat = opprettbrukerController.getPaamelding(model);
 
         Assertions.assertEquals("paamelding", resultat);
+
+        mockMvc.perform(get("/paamelding"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("paamelding"));
     }
 
     /**
-     * Tester ett eller annet.
-     * @throws Exception
+     * Tester om getPaameldt(Model) returnerer riktig view "/paameldt".
+     * @throws Exception dersom det kommer feilmelding ved testkjøring
      */
     @Test
     public void getPaameldtTest() throws Exception {
@@ -108,6 +113,10 @@ public class OpprettbrukerControllerTest {
         String resultat = opprettbrukerController.getPaameldt(model);
 
         Assertions.assertEquals("paameldt", resultat);
+
+        mockMvc.perform(get("/paameldt"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("paameldt"));
     }
 
 }
