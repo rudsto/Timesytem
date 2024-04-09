@@ -1,8 +1,7 @@
-package no.hvl.dat109.prosjekt;
+package no.hvl.dat109.prosjekt.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import no.hvl.dat109.prosjekt.Utils.LoginUtil;
-import no.hvl.dat109.prosjekt.controllers.BrukerController;
 import no.hvl.dat109.prosjekt.entity.Bruker;
 import no.hvl.dat109.prosjekt.service.BrukerService;
 import no.hvl.dat109.prosjekt.service.ProsjektService;
@@ -51,6 +50,7 @@ public class BrukerControllerTest {
      */
     @Test
     public void brukerLoggetInnTest() throws Exception {
+
         MockHttpSession session = new MockHttpSession();
         HttpServletRequest request = new MockHttpServletRequest();
         Bruker testBruker = new Bruker();
@@ -66,7 +66,6 @@ public class BrukerControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(view().name("deltagerliste"))
                 .andExpect(model().attribute("ansatte", brukere));
-
 
     }
 
