@@ -26,6 +26,8 @@ import no.hvl.dat109.prosjekt.entity.Prosjekt;
 import no.hvl.dat109.prosjekt.service.ProsjektService;
 import no.hvl.dat109.prosjekt.service.TimeService;
 
+import java.util.Optional;
+
 @ExtendWith(MockitoExtension.class)
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -64,11 +66,12 @@ public class TimeControllerTest {
 
     @Test
     public void testRegistrerTimer() throws Exception {
+        session.setAttribute("bruker", testbruker);
         Prosjekt mockProsjekt = new Prosjekt();
         mockProsjekt.setProsjekt_id("123987");
         mockProsjekt.setNavn("Test Prosjekt");
 
-        when(prosjektService.finnMedID("123987")).thenReturn(mockProsjekt);
+        when(prosjektService.finnMedID("123987")).thenReturn(Optional.of(mockProsjekt));
 
         mockMvc.perform(post("/registrertime").param("prosjekt_id", "123987").param("antallTimer", "5").session(session))
                 .andExpect(status().is3xxRedirection())

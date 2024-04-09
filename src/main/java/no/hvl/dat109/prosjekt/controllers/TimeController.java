@@ -17,6 +17,7 @@ import org.springframework.web.context.request.RequestScope;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
+import java.util.Optional;
 
 /**
  * Controller for behandling av timer i timeføringsystemet.
@@ -71,7 +72,8 @@ public class TimeController {
 //            ra.addFlashAttribute("feilmelding", feilmeldinger);
 //            return "redirect:registrertime";
 //        }
-        Prosjekt prosjekt = prosjektService.finnMedID(prosjekt_id);
+        Optional<Prosjekt> optionalProsjekt = prosjektService.finnMedID(prosjekt_id);
+        Prosjekt prosjekt = optionalProsjekt.orElse(null);
 
         if (prosjekt == null) {
             ra.addFlashAttribute("feilmelding", "Tast inn et prosjekt fra prosjektoversikten");

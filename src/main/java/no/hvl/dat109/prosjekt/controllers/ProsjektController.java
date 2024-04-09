@@ -62,7 +62,7 @@ public class ProsjektController {
             ra.addFlashAttribute("feilmeldinger", "ID må være numerisk");
             return "redirect:opprettprosjekt";
         }
-        if(prosjektService.finnMedID(prosjekt_id) != null) {
+        if(prosjektService.finnMedID(prosjekt_id).isPresent()) {
             ra.addFlashAttribute("feilmeldinger", "ID allerede i bruk");
             return "redirect:opprettprosjekt";
         }

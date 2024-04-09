@@ -62,7 +62,8 @@ class ProsjektServiceTest {
 
 		when(prosjektRepo.findById("115000")).thenReturn(Optional.of(prosjekt));
 
-		Prosjekt testResultat = prosjektService.finnMedID("115000");
+		Optional<Prosjekt> optionalProsjekt = prosjektService.finnMedID("115000");
+		Prosjekt testResultat = optionalProsjekt.orElse(null);
 		assertEquals(prosjekt, testResultat);
 		assertEquals("115000", testResultat.getProsjekt_id());
 		assertEquals("HR", testResultat.getNavn());
