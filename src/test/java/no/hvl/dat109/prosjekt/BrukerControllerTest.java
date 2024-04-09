@@ -26,6 +26,9 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+/**
+ * Testklasse for BrukerController.
+ */
 @WebMvcTest(controllers = BrukerController.class)
 @AutoConfigureMockMvc(addFilters = false)
 @ExtendWith(MockitoExtension.class)
@@ -42,6 +45,10 @@ public class BrukerControllerTest {
     @Autowired
     private ObjectMapper objectMapper;
 
+    /**
+     * Tester at redirect går til "/deltagerliste" når brukeren er logget inn.
+     * @throws Exception
+     */
     @Test
     public void brukerLoggetInnTest() throws Exception {
         MockHttpSession session = new MockHttpSession();
@@ -63,6 +70,10 @@ public class BrukerControllerTest {
 
     }
 
+    /**
+     * Tester at redirect går tilbake til "/login" dersom bruker ikke er logget inn.
+     * @throws Exception
+     */
     @Test
     public void brukerIkkeLoggetInnTest() throws Exception {
 
