@@ -6,6 +6,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import javax.servlet.http.HttpSession;
 
+import no.hvl.dat109.prosjekt.entity.Bruker;
+import no.hvl.dat109.prosjekt.repo.ProsjektRepo;
+import no.hvl.dat109.prosjekt.repo.TimeRepo;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -31,18 +34,29 @@ public class TimeControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-    @Mock
-    private TimeService timeService;
+    @MockBean
+    TimeRepo timeRepo;
 
-    @Mock
+    @InjectMocks
+    TimeService timeService;
+
+    @MockBean
+    ProsjektRepo prosjektRepo;
+
+    @InjectMocks
     private ProsjektService prosjektService;
 
     @InjectMocks
     private TimeController timeController;
 
+    Bruker testbruker = new Bruker();
+    MockHttpSession session = new MockHttpSession();
+
     @Test
     public void testGetRegistrerTime() throws Exception {
-        mockMvc.perform(get("/registrertime").session(new MockHttpSession()))
+
+        session.setAttribute("bruker", testbruker);
+        mockMvc.perform(get("/registrertime").session(session))
                 .andExpect(status().isOk())
                 .andExpect(view().name("registrertime"))
                 .andExpect(model().attributeExists("prosjekter"));
@@ -56,7 +70,7 @@ public class TimeControllerTest {
 
         when(prosjektService.finnMedID("123987")).thenReturn(mockProsjekt);
 
-        mockMvc.perform(post("/registrertime").param("prosjekt_id", "123987").param("antallTimer", "5").session(new MockHttpSession()))
+        mockMvc.perform(post("/registrertime").param("prosjekt_id", "123987").param("antallTimer", "5").session(session))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(MockMvcResultMatchers.redirectedUrl("registrertime"))
                 .andExpect(flash().attributeExists("time"))
