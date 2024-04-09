@@ -6,6 +6,9 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+/**
+ * Klases for entieten prosjekt. Inneholder variabler og get/set metoder.
+ */
 @Entity
 @Table(name = "prosjekt", schema = "dat109_prosjekt")
 public class Prosjekt {
