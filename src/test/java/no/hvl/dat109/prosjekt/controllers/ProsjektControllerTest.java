@@ -21,6 +21,8 @@ import no.hvl.dat109.prosjekt.repo.ProsjektRepo;
 import no.hvl.dat109.prosjekt.service.ProsjektService;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import java.util.Optional;
+
 
 @ExtendWith(MockitoExtension.class)
 @SpringBootTest
@@ -42,6 +44,9 @@ public class ProsjektControllerTest {
     private Bruker testProsjektBruker = new Bruker();
     private MockHttpSession session = new MockHttpSession();
 
+    private static final String MOCK_PROSJEKT_NAVN = "Mockprosjekt";
+    private static final String MOCK_PROSJEKT_ID = "555555";
+
     @Test
     void testGetOpprettProsjekt() throws Exception {
         session.setAttribute("bruker",testProsjektBruker);
@@ -51,29 +56,26 @@ public class ProsjektControllerTest {
                 .andExpect(model().attributeExists("prosjekter"));
     }
 
-    /*
-    TODO
+
     @Test
     void testPostProsjekt() throws Exception {
-        Prosjekt mockProsjekt = new Prosjekt();
-        mockProsjekt.setProsjekt_id("555555");
-        mockProsjekt.setNavn("Mockprosjekt");
 
-        when(prosjektService.finnMedID("555555")).thenReturn(mockProsjekt);
-
-        mockMvc.perform(post("/prosjektopprettet")
-                .param("prosjekt_id", mockProsjekt.getProsjekt_id())
-                .param("navn",mockProsjekt.getNavn()))
+        mockMvc.perform(post("/opprettprosjekt")
+                .param("prosjekt_id", MOCK_PROSJEKT_ID)
+                .param("navn", MOCK_PROSJEKT_NAVN))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(MockMvcResultMatchers.redirectedUrl("prosjektopprettet"))
                 .andExpect(flash().attributeExists("prosjekt"));
 
-        verify(prosjektService, times(1)).lagre(mockProsjekt);
+        /*
+        TODO - Implemenere testlogikk for lagring av prosjektet
+        Prosjekt mockProsjekt = new Prosjekt();
+        mockProsjekt.setProsjekt_id(MOCK_PROSJEKT_ID);
+        mockProsjekt.setNavn(MOCK_PROSJEKT_NAVN);
+        verify(mock.prosjektService, times(1)).lagre(mockProsjekt);
+
+         */
     }
-
-     */
-
-
 
 
 }
