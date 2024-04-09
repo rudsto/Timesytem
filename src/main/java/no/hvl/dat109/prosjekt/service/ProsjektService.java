@@ -27,11 +27,10 @@ public class ProsjektService {
      * Metode for å finne et prosjekt basert på den angitte id-en.
      *
      * @param id {@link String} med id til prosjektet man vil finne
-     * @return {@link Prosjekt} med den angitte id, ellers null
+     * @return {@link Optional<Prosjekt>} med et treff eller "no-result"
      */
     public Optional<Prosjekt> finnMedID(String id) {
-        Optional<Prosjekt> projektOptional = prosjektRepo.findById(id);
-        return projektOptional;
+        return prosjektRepo.findById(id);
         //return prosjektRepo.findById(id).orElse(null);
     }
 
