@@ -19,6 +19,7 @@ public class BrukerService {
 
     /**
      * Finner alle brukere i databasen.
+     *
      * @return Liste med brukere
      */
     public List<Bruker> finnAlleBrukere() {
@@ -27,6 +28,7 @@ public class BrukerService {
 
     /**
      * Finner én bruker med mobilnummer.
+     *
      * @param mobil
      * @return
      */
@@ -36,6 +38,7 @@ public class BrukerService {
 
     /**
      * Lagrer en ny bruker i databasen.
+     *
      * @param bruker
      * @return
      */
