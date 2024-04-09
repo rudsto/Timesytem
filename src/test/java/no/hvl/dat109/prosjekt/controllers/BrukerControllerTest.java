@@ -1,15 +1,13 @@
-package no.hvl.dat109.prosjekt;
+package no.hvl.dat109.prosjekt.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import no.hvl.dat109.prosjekt.Utils.LoginUtil;
-import no.hvl.dat109.prosjekt.controllers.BrukerController;
 import no.hvl.dat109.prosjekt.entity.Bruker;
 import no.hvl.dat109.prosjekt.service.BrukerService;
 import no.hvl.dat109.prosjekt.service.ProsjektService;
 import no.hvl.dat109.prosjekt.service.TimeService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -27,6 +25,9 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+/**
+ * Testklasse for BrukerController.
+ */
 @WebMvcTest(controllers = BrukerController.class)
 @AutoConfigureMockMvc(addFilters = false)
 @ExtendWith(MockitoExtension.class)
@@ -43,8 +44,13 @@ public class BrukerControllerTest {
     @Autowired
     private ObjectMapper objectMapper;
 
+    /**
+     * Tester at redirect går til "/deltagerliste" når brukeren er logget inn.
+     * @throws Exception
+     */
     @Test
     public void brukerLoggetInnTest() throws Exception {
+
         MockHttpSession session = new MockHttpSession();
         HttpServletRequest request = new MockHttpServletRequest();
         Bruker testBruker = new Bruker();
@@ -61,9 +67,12 @@ public class BrukerControllerTest {
                 .andExpect(view().name("deltagerliste"))
                 .andExpect(model().attribute("ansatte", brukere));
 
-
     }
 
+    /**
+     * Tester at redirect går tilbake til "/login" dersom bruker ikke er logget inn.
+     * @throws Exception
+     */
     @Test
     public void brukerIkkeLoggetInnTest() throws Exception {
 
