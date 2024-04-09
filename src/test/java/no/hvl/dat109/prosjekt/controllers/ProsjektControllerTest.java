@@ -72,7 +72,7 @@ public class ProsjektControllerTest {
         Prosjekt mockProsjekt = new Prosjekt();
         mockProsjekt.setProsjekt_id(MOCK_PROSJEKT_ID);
         mockProsjekt.setNavn(MOCK_PROSJEKT_NAVN);
-        verify(mock.prosjektService, times(1)).lagre(mockProsjekt);
+        verify(prosjektService, times(1)).lagre(mockProsjekt);
 
          */
     }
