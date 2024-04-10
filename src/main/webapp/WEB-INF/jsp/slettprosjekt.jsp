@@ -17,11 +17,13 @@
 <H2>Slett prosjekt</H2>
 <p style="color:red;">${feilmeldinger}</p>
 
-<form >
+<form action="${pageContext.request.contextPath}/slettprosjekt" method="post">
     <fieldset>
         <label>Prosjekt Id<br>
             <input type="text" name="prosjekt_id" id="prosjekt_id" value="${prosjekt.prosjekt_id}"/><br>
         </label>
+        <br>
+        <button id="submit-btn" type="submit">Slett prosjekt</button>
     </fieldset>
 </form>
 
