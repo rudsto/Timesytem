@@ -4,7 +4,6 @@
 <html lang="no">
 <head>
     <title>Brukervalg</title>
-    <script defer src="/js/deltagerliste.js"></script>
 </head>
 <body>
 
@@ -35,13 +34,8 @@
 			</form>
         </td>
         <td>
-            <form action="${pageContext.request.contextPath}/prosjekt???" method="get?">
-                <button type="submit">Rediger time</button>
-            </form>
-        </td>
-        <td>
-            <form action="${pageContext.request.contextPath}/prosjekt???" method="get?">
-                <button type="submit">Slett time</button>
+            <form action="${pageContext.request.contextPath}/redigertimer" method="get">
+                <button type="submit">Rediger/slett time</button>
             </form>
         </td>
     </tr>
