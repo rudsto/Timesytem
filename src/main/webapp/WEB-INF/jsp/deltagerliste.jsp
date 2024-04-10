@@ -29,18 +29,13 @@
 <table class="navbar">
     <tr>
         <td>
-            <form action="${pageContext.request.contextPath}/registrertime" method="get">
+            <form action="${pageContext.request.contextPath}/registrertimer" method="get">
     			<button type="submit">Registrer time</button>
 			</form>
         </td>
         <td>
-            <form action="/prosjekt???" method="get?">
-                <button type="submit">Rediger time</button>
-            </form>
-        </td>
-        <td>
-            <form action="/prosjekt???" method="get?">
-                <button type="submit">Slett time</button>
+            <form action="${pageContext.request.contextPath}/redigertimer" method="get">
+                <button type="submit">Rediger/slett time</button>
             </form>
         </td>
     </tr>

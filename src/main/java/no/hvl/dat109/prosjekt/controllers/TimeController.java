@@ -64,14 +64,6 @@ public class TimeController {
             return "redirect:login";
         }
 
-//        if (bindingResult.hasErrors()) {
-//            String feilmeldinger = bindingResult.getAllErrors()
-//                    .stream()
-//                    .map(e -> e.getDefaultMessage())
-//                    .reduce("", (f, e) -> f + e + "<br>");
-//            ra.addFlashAttribute("feilmelding", feilmeldinger);
-//            return "redirect:registrertime";
-//        }
         Optional<Prosjekt> optionalProsjekt = prosjektService.finnMedID(prosjekt_id);
         Prosjekt prosjekt = optionalProsjekt.orElse(null);
 

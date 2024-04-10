@@ -88,4 +88,7 @@ public class TimeService {
         timeRepo.deleteById(time_id);
     }
 
+    public Time finnMedId(Integer time_id) {
+        return timeRepo.findById(time_id).get();
+    }
 }
