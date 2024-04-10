@@ -29,7 +29,7 @@
 <table class="navbar">
     <tr>
         <td>
-            <form action="${pageContext.request.contextPath}/registrertimer" method="get">
+            <form action="${pageContext.request.contextPath}/registrertime" method="get">
     			<button type="submit">Registrer time</button>
 			</form>
         </td>
