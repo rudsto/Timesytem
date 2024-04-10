@@ -2,11 +2,14 @@ package no.hvl.dat109.prosjekt.controllers;
 
 
 import no.hvl.dat109.prosjekt.Utils.LoginUtil;
+import no.hvl.dat109.prosjekt.entity.Prosjekt;
 import no.hvl.dat109.prosjekt.service.ProsjektService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
@@ -38,5 +41,33 @@ public class SlettProsjektController {
 
         //Logikk her
         return "slettprosjekt";
+    }
+
+    @PostMapping("slettprosjekt")
+    public String postSlettProsjekt(@RequestParam String prosjekt_id, RedirectAttributes ra) {
+        if(prosjekt_id == null) {
+            ra.addFlashAttribute("feilmeldinger", "ID kan ikke være tomt");
+            return "redirect:slettprosjekt";
+        }
+        if (!prosjekt_id.matches("\\d+")) {
+            ra.addFlashAttribute("feilmeldinger", "ID må være numerisk");
+            return "redirect:slettprosjekt";
+        }
+        if(!prosjektService.finnMedID(prosjekt_id).isPresent()) {
+            ra.addFlashAttribute("feilmeldinger", "finner ikke id");
+            return "redirect:slettprosjekt";
+        }
+        if(prosjekt_id.length() != 6) {
+            ra.addFlashAttribute("feilmeldinger", "ID må være 6 siffer");
+            return "redirect:slettprosjekt";
+        }
+
+        Prosjekt slettProsjekt = prosjektService.finnMedID(prosjekt_id).get();
+        prosjektService.slettProsjekt(slettProsjekt);
+
+        ra.addFlashAttribute("prosjekt", slettProsjekt);
+
+        return "redirect:prosjektslettet";
+
     }
 }
