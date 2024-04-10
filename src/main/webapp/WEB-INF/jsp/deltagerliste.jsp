@@ -97,6 +97,15 @@
 </table>
 <br>
 
+<div class="tab">
+    <button class="tablinks" onclick="openTab(event, 'Brukere')">Brukere online</button>
+    <button class="tablinks" onclick="openTab(event, 'Prosjekter')">Registrerte prosjekter</button>
+    <button class="tablinks" onclick="openTab(event, 'Timer')">Registrerte timer</button>
+</div>
+
+
+
+
 
 <form action="${pageContext.request.contextPath}/logut" method="post">
     <button type="submit">Logg ut</button>
