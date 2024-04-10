@@ -2,6 +2,7 @@ package no.hvl.dat109.prosjekt.service;
 
 import no.hvl.dat109.prosjekt.entity.Prosjekt;
 import no.hvl.dat109.prosjekt.repo.ProsjektRepo;
+import no.hvl.dat109.prosjekt.repo.TimeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,9 @@ public class ProsjektService {
 
     @Autowired
     private ProsjektRepo prosjektRepo;
+
+    @Autowired
+    private TimeRepo timeRepo;
 
     /**
      * Metode for å hente alle {@link Prosjekt} i databasen.
@@ -43,6 +47,14 @@ public class ProsjektService {
      */
     public Prosjekt lagre(Prosjekt prosjekt) {
         return prosjektRepo.save(prosjekt);
+    }
+
+    /**
+     * Metode for å slette prosjekt i databasen
+     * @param prosjekt {@link Prosjekt} objektet som skal slettes
+     */
+    public void slettProsjekt(Prosjekt prosjekt) {
+        prosjektRepo.delete(prosjekt);
     }
 
 }
