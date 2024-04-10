@@ -15,6 +15,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -115,6 +117,16 @@ class TimeServiceTest {
 		Time resultat = timeService.lagreTime(time);
 		assertEquals(time, resultat);
 		assertEquals(8, resultat.getAntallTimer());
+	}
+
+	@Test
+	public void slettTimeTest() {
+
+		Integer time_id = 123;
+
+		timeService.slettTime(time_id);
+
+		verify(timeRepo).deleteById(time_id);
 	}
 
 }

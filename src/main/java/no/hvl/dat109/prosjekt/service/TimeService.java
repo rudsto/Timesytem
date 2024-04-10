@@ -84,4 +84,8 @@ public class TimeService {
         return timeRepo.save(time);
     }
 
+    public void slettTime(Integer time_id) {
+        timeRepo.deleteById(time_id);
+    }
+
 }
