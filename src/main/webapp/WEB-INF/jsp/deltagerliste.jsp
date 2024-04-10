@@ -34,12 +34,12 @@
 			</form>
         </td>
         <td>
-            <form action="/prosjekt???" method="get?">
+            <form action="${pageContext.request.contextPath}/prosjekt???" method="get?">
                 <button type="submit">Rediger time</button>
             </form>
         </td>
         <td>
-            <form action="/prosjekt???" method="get?">
+            <form action="${pageContext.request.contextPath}/prosjekt???" method="get?">
                 <button type="submit">Slett time</button>
             </form>
         </td>
@@ -96,6 +96,15 @@
         </c:forEach>
 </table>
 <br>
+
+<div class="tab">
+    <button class="tablinks" onclick="openTab(event, 'Brukere')">Brukere online</button>
+    <button class="tablinks" onclick="openTab(event, 'Prosjekter')">Registrerte prosjekter</button>
+    <button class="tablinks" onclick="openTab(event, 'Timer')">Registrerte timer</button>
+</div>
+
+
+
 
 
 <form action="${pageContext.request.contextPath}/logut" method="post">
