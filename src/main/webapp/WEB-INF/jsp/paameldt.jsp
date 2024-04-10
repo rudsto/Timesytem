@@ -32,7 +32,7 @@
     	${ansatt.mobil} <br>   
 	</p>
 
-	<a href="/deltagerliste">Gå til aktivitetsvalg</a>
+	<a href="${pageContext.request.contextPath}/deltagerliste">Gå til aktivitetsvalg</a>
 	
 </body>
 </html>
