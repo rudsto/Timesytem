@@ -37,6 +37,9 @@ import org.mockito.MockedStatic;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Metode for å teste funksjonalitet i OpprettbrukerController.
+ */
 @WebMvcTest(controllers = OpprettbrukerController.class)
 @AutoConfigureMockMvc(addFilters = false)
 @ExtendWith(MockitoExtension.class)
