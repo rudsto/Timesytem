@@ -39,10 +39,17 @@ public class SlettProsjektController {
 
         model.addAttribute("prosjekter", prosjektService.finnAlle());
 
-        //Logikk her
         return "slettprosjekt";
     }
 
+    /**
+     * Behandler data fra skjemaet for å slette et {@link Prosjekt}.
+     * Prosjekt-objektet, hentet med inntastet prosjektid sletter objectet ved hjelp av {@link ProsjektService}
+     *
+     * @param prosjekt_id   Den unike identifikatoren for prosjektet som skal slettes
+     * @param ra            {@link RedirectAttributes} som brukes for omdirigeringsattributter
+     * @return              En {@link String} som representerer en omdirigering til neste visning, eller laster skjema på nytt
+     */
     @PostMapping("slettprosjekt")
     public String postSlettProsjekt(@RequestParam String prosjekt_id, RedirectAttributes ra) {
         if(prosjekt_id == null) {
