@@ -4,6 +4,7 @@
 <html lang="no">
 <head>
     <title>Brukervalg</title>
+    <script defer src="/js/deltagerliste.js"></script>
 </head>
 <body>
 
@@ -98,9 +99,8 @@
 <br>
 
 <div class="tab">
-    <button class="tablinks" onclick="openTab(event, 'Brukere')">Brukere online</button>
-    <button class="tablinks" onclick="openTab(event, 'Prosjekter')">Registrerte prosjekter</button>
-    <button class="tablinks" onclick="openTab(event, 'Timer')">Registrerte timer</button>
+    <button class="tablinks" onclick="expandView()">Brukere online</button>
+
 </div>
 
 
