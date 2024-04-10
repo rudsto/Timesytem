@@ -26,7 +26,7 @@ CREATE TABLE timereg
 	mobil				CHARACTER(8),
 	prosjekt_id			CHARACTER(6),
 	FOREIGN KEY (mobil) REFERENCES bruker (mobil),
-	FOREIGN KEY (prosjekt_id) REFERENCES prosjekt (prosjekt_id)	
+	FOREIGN KEY (prosjekt_id) REFERENCES prosjekt (prosjekt_id)
 );
 
 
