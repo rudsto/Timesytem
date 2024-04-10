@@ -100,11 +100,7 @@
 
 <div class="tab">
     <button class="tablinks" onclick="expandView()">Brukere online</button>
-
 </div>
-
-
-
 
 
 <form action="${pageContext.request.contextPath}/logut" method="post">
