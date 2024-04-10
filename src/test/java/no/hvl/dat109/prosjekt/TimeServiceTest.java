@@ -19,6 +19,9 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+/**
+ * Testklasse for TimeService
+ */
 @ExtendWith(MockitoExtension.class)
 class TimeServiceTest {
 
@@ -28,7 +31,9 @@ class TimeServiceTest {
 	@InjectMocks
 	TimeService timeService;
 
-
+	/**
+	 * Tester at finnAlleTimer() returnerer en liste av timer.
+	 */
 	@Test
 	public void finnAlleTimerTest(){
 
@@ -44,6 +49,9 @@ class TimeServiceTest {
 		assertEquals(2, resultat.size());
 	}
 
+	/**
+	 * Tester at finnBrukerTimer(Bruker) returnerer en liste av timer knyttet til en bruker.
+	 */
 	@Test
 	public void finnBrukerTimerTest() {
 
@@ -63,6 +71,9 @@ class TimeServiceTest {
 		assertEquals(2, resultat.size());
 	}
 
+	/**
+	 * Tester at finnProsjektTimer(Prosjekt) returnerer en liste av timer knyttet til et prosjekt.
+	 */
 	@Test
 	public void finnProsjektTimerTest() {
 
@@ -82,6 +93,10 @@ class TimeServiceTest {
 		assertEquals(2, resultat.size());
 	}
 
+	/**
+	 * Tester at finnBrukerProsjektTimer(Bruker, Prosjekt) returnerer en liste av timer knyttet til
+	 * en bruker samt et prosjekt.
+	 */
 	@Test
 	public void finnBrukerProsjektTimerTest() {
 
@@ -106,6 +121,9 @@ class TimeServiceTest {
 		assertEquals(2, resultat.size());
 	}
 
+	/**
+	 * Tester at lagreTime(Time) lagrer et time objekt.
+	 */
 	@Test
 	public void lagreTimeTest() {
 
@@ -119,6 +137,9 @@ class TimeServiceTest {
 		assertEquals(8, resultat.getAntallTimer());
 	}
 
+	/**
+	 * Tester at slettTime(Integer) sletter et time objekt.
+	 */
 	@Test
 	public void slettTimeTest() {
 

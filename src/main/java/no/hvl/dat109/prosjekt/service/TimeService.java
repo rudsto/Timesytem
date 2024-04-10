@@ -76,7 +76,7 @@ public class TimeService {
     }
 
     /**
-     * Lagrer timer.
+     * Lagrer et time-objekt.
      * @param time et time objekt
      * @return timer som blir lagret
      */
@@ -84,6 +84,10 @@ public class TimeService {
         return timeRepo.save(time);
     }
 
+    /**
+     * Sletter et time-objekt.
+     * @param time_id id-nummer for et time-objekt
+     */
     public void slettTime(Integer time_id) {
         timeRepo.deleteById(time_id);
     }
