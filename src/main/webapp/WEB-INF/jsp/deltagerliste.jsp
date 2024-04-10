@@ -34,12 +34,12 @@
 			</form>
         </td>
         <td>
-            <form action="/prosjekt???" method="get?">
+            <form action="${pageContext.request.contextPath}/prosjekt???" method="get?">
                 <button type="submit">Rediger time</button>
             </form>
         </td>
         <td>
-            <form action="/prosjekt???" method="get?">
+            <form action="${pageContext.request.contextPath}/prosjekt???" method="get?">
                 <button type="submit">Slett time</button>
             </form>
         </td>
