@@ -12,37 +12,23 @@
 <script src="js/timevalidering.js" defer></script>
 <table class="navbar">
     <tr>
-        <c:choose>
-            <c:when test="${bruker eq null}">
-                <td>
-                    <form action="/login" method="get">
-                        <button type="submit">Logg inn</button>
-                    </form>
-                </td>
-            </c:when>
-            <c:otherwise>
                 <td>
                     <form action="/deltagerliste" method="get">
-                        <button type="submit">Deltagerliste</button>
+                        <button class="button-base" type="submit">Deltagerliste</button>
                     </form>
                 </td>
                 <td>
                     <form action="${pageContext.request.contextPath}/logut" method="post">
-                        <button type="submit">Logg ut</button>
+                        <button class="fa fa-sign-out button-base logout" type="submit">Logg ut</button>
                     </form>
                 </td>
-                <td>
-                    Du er logget inn som ${bruker.fornavn} ${bruker.etternavn}
-                </td>
-            </c:otherwise>
-        </c:choose>
     </tr>
 </table>
 
-<h2>Timeregistrering</h2>
-<p style="color:red;">${feilmelding}</p>
+<p class="feilmelding">${feilmelding}</p>
 
 <fieldset id="rot">
+    <legend>Timeregistrering</legend>
     <form action="${pageContext.request.contextPath}/registrertime" method="post">
 
         <label>Prosjekt ID<br>
@@ -52,7 +38,7 @@
             <input type="text" name="antallTimer" id="antallTimer" value="${antallTimer}"/><br></label>
 
         <br>
-        <button id="submit-btn" type="submit">Registrer</button>
+        <button class="button-base make-user" id="submit-btn" type="submit">Registrer</button>
 
     </form>
 
