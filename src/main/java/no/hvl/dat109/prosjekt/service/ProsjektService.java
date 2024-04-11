@@ -57,4 +57,35 @@ public class ProsjektService {
         prosjektRepo.delete(prosjekt);
     }
 
+    /**
+     * Redigerer prosjektet med den angitte gamle prosjekt-ID-en ved å oppdatere prosjektnavnet.
+     *
+     * @param gammelProsjektId Den gamle prosjekt-ID-en som skal redigeres
+     * @param nyttProsjektnavn Det nye navnet som prosjektet skal oppdateres med
+     * @throws IllegalArgumentException hvis prosjektet ikke finnes basert på den angitte gamle prosjekt-ID-en
+     */
+    public void redigerProsjekt(String gammelProsjektId, String nyttProsjektnavn) {
+        Optional<Prosjekt> maybeProsjekt = prosjektRepo.findById(gammelProsjektId);
+
+        // Sjekker om prosjektet eksisterer
+        if (maybeProsjekt.isEmpty()) {
+            throw new IllegalArgumentException("Prosjektet finnes ikke");
+        }
+
+        // Henter prosjektet
+        Prosjekt prosjekt = maybeProsjekt.get();
+
+        // Oppdaterer prosjektnavnet
+        prosjekt.setNavn(nyttProsjektnavn);
+
+        // Lagrer endringene i databasen
+        prosjektRepo.save(prosjekt);
+    }
+
 }
+
+
+
+
+
+
