@@ -1,18 +1,14 @@
 package no.hvl.dat109.prosjekt.controllers;
 
-import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
-import javax.servlet.http.HttpSession;
-
 import no.hvl.dat109.prosjekt.entity.Bruker;
+import no.hvl.dat109.prosjekt.entity.Prosjekt;
 import no.hvl.dat109.prosjekt.repo.ProsjektRepo;
 import no.hvl.dat109.prosjekt.repo.TimeRepo;
+import no.hvl.dat109.prosjekt.service.ProsjektService;
+import no.hvl.dat109.prosjekt.service.TimeService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -22,11 +18,12 @@ import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import no.hvl.dat109.prosjekt.entity.Prosjekt;
-import no.hvl.dat109.prosjekt.service.ProsjektService;
-import no.hvl.dat109.prosjekt.service.TimeService;
-
 import java.util.Optional;
+
+import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @ExtendWith(MockitoExtension.class)
 @SpringBootTest
@@ -42,7 +39,7 @@ public class TimeControllerTest {
     @MockBean
     ProsjektRepo prosjektRepo;
 
-    @InjectMocks
+    @MockBean
     TimeService timeService;
 
     @InjectMocks

@@ -24,6 +24,6 @@
     </tr>
 </table>
 
-<a href="${pageContext.request.contextPath}/deltagerliste">Gå til aktivitetsvalg</a>
+<button onclick="location.href='${pageContext.request.contextPath}/deltagerliste'" type="button">Til hovedsiden</button>
 </body>
 </html>
