@@ -13,6 +13,34 @@
     <title>Slett prosjekt</title>
 </head>
 <body>
+<table class="navbar">
+<tr>
+    <c:choose>
+        <c:when test="${bruker eq null}">
+            <td>
+                <form action="/login" method="get">
+                    <button type="submit">Logg inn</button>
+                </form>
+            </td>
+        </c:when>
+        <c:otherwise>
+            <td>
+                <form action="/deltagerliste" method="get">
+                    <button type="submit">Deltagerliste</button>
+                </form>
+            </td>
+            <td>
+                <form action="/logut" method="post">
+                    <button type="submit">Logg ut</button>
+                </form>
+            </td>
+            <td>
+                Du er logget inn som ${bruker.fornavn} ${bruker.etternavn}
+            </td>
+        </c:otherwise>
+    </c:choose>
+</tr>
+</table>
 
 <H2>Slett prosjekt</H2>
 <p style="color:red;">${feilmeldinger}</p>
@@ -24,13 +52,9 @@
             <input type="text" name="prosjekt_id" id="prosjekt_id" value="${prosjekt.prosjekt_id}"/><br>
             <p style="color:red;" id="feilmelding-prosjekt-id"></p>
         </label>
-        <br>
-
         <button type="submit" id="slettProsjektBtn">Slett prosjekt</button>
     </fieldset>
 </form>
-
-<button onclick="location.href='${pageContext.request.contextPath}/deltagerliste'" type="button">Til hovedsiden</button>
 
 <h3>Registrerte prosjekter</h3>
 <table>
