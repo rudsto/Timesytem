@@ -1,3 +1,4 @@
+
 /* Style the tab */
 .tab {
     overflow: hidden;
@@ -29,12 +30,13 @@
 
 /* Style the tab content */
 .tabcontent {
-    width: 50%;
+    width: 100%;
     margin: 0 auto;
 
     display: none;
     padding: 6px 12px;
-    border: 1px solid #ffffff;
+    border: 1px solid #ccc;
+    background: #f2f2f2;
     border-top: none;
 }
 
@@ -46,4 +48,41 @@
 .tablinks {
     flex-grow: 1;
     text-align: center;
+}
+
+.db_data{
+    width: 50%;
+    margin: 0 auto;
+}
+
+.logout {
+    background-color: #800020;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 15px;
+
+    width: 50%;
+    margin: auto;
+
+}
+
+.logout:hover {
+    background-color: #590015;
+}
+
+.form {
+    width: 100%;
+    display: flex; /* Make the form itself a flex container */
+    flex-direction: column; /* Stack its children (i.e., the button) vertically */
+    align-items: center; /* Center its children horizontally */
+    /* Optional: add some padding and a max-width if you want */
+    padding: 20px;
+}
+
+.center{
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
