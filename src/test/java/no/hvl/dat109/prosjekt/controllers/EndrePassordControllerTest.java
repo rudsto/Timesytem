@@ -44,9 +44,6 @@ public class EndrePassordControllerTest {
     @InjectMocks
     private BrukerController brukerController;
 
-
-
-
     /**
      * Tester at redirect går til "/endrepassord" når brukeren er logget inn.
      * @throws Exception dersom det kommer feilmelding ved testkjøring

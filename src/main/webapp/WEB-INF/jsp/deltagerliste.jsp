@@ -34,8 +34,6 @@
     <button class="tablinks fa" onclick="expandView(event, 'Min-side')"> Min Side </button>
 </div>
 
-<!-- Tab content -->
-
 
 <div id="Brukere" class="tabcontent">
     <div class="center">
@@ -55,7 +53,6 @@
         </c:forEach>
     </table>
     </div>
-
 </div>
 
 <div id="Prosjekter" class="tabcontent">
@@ -79,7 +76,7 @@
 
 </div>
 
-<div id="Min-side" class="tabcontent">
+<div id="Min-side" class="tabcontent" style="display: block;">
     <div class="center">
         <p> Innlogget som: ${bruker.fornavn} ${bruker.etternavn}</p>
     </div>
@@ -122,6 +119,21 @@
             </td>
         </tr>
     </table>
+
+
+    <div class = "center">
+        <h2>Innstillinger</h2>
+    </div>
+    <table class="navbar center">
+        <tr>
+            <td>
+                <form action="${pageContext.request.contextPath}/endrepassord" method="get">
+                    <button class="button-base" type="submit">Endre passord</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+
 </div>
 
 
