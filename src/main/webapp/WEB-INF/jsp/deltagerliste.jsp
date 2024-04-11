@@ -10,20 +10,7 @@
 </head>
 <body>
 
-<h2>Prosjektvalg</h2>
-<table class="navbar">
-    <tr>
-        <td>
-    		<button onclick="location.href='${pageContext.request.contextPath}/opprettprosjekt'" type="button">Opprett prosjekt</button>
-        </td>
-        <td>
-            <button onclick="location.href='${pageContext.request.contextPath}/redigerProsjekt'" type="button">Rediger prosjekt</button>
-        </td>
-        <td>
-            <button onclick="location.href='${pageContext.request.contextPath}/slettprosjekt'" type="button">Slett prosjekt</button>
-        </td>
-    </tr>
-</table>
+
 
 
 <br>
@@ -37,12 +24,25 @@
 
 <div id="Min-side" class="tabcontent">
 
+    <div class = "center">
+        <table>
+            <tr>
+                <th>
+                    Innlogget som: ${bruker.fornavn} ${bruker.etternavn}
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    Ditt telefonnommer: ${bruker.mobil}
+                </th>
+            </tr>
+        </table>
+    </div>
 
 
     <div class = "center">
-        <h2>Timehåndteringsvalg</h2>
-    </div>
-    <table class="navbar center">
+        <h2>Timehåndteringsvalg: </h2>
+    <table class="navbar">
         <tr>
             <td>
                 <form action="${pageContext.request.contextPath}/registrertime" method="get">
@@ -56,33 +56,17 @@
             </td>
         </tr>
     </table>
-
+    </div>
 
     <div class = "center">
-        <h2>Innstillinger</h2>
-    </div>
-    <table class="navbar center">
+        <h2>Innstillinger: </h2>
+    <table class="navbar">
         <tr>
             <td>
                 <form action="${pageContext.request.contextPath}/endrepassord" method="get">
                     <button class="button-base" type="submit">Endre passord</button>
                 </form>
             </td>
-        </tr>
-    </table>
-
-
-    <div class = "center">
-    <table>
-        <tr>
-            <th>
-                Innlogget som: ${bruker.fornavn} ${bruker.etternavn}
-            </th>
-        </tr>
-        <tr>
-            <th>
-                Ditt telefonnommer: ${bruker.mobil}
-            </th>
         </tr>
     </table>
     </div>
@@ -134,6 +118,25 @@
 </div>
 
 <div id="Prosjekter" class="tabcontent">
+
+    <div class="center">
+    <h2>Prosjektvalg: </h2>
+    <table class="navbar">
+        <tr>
+            <td>
+                <button class="button-base" onclick="location.href='${pageContext.request.contextPath}/opprettprosjekt'" type="button">Opprett prosjekt</button>
+            </td>
+            <td>
+                <button class="button-base" onclick="location.href='${pageContext.request.contextPath}/redigerProsjekt'" type="button">Rediger prosjekt</button>
+            </td>
+            <td>
+                <button class="button-base" onclick="location.href='${pageContext.request.contextPath}/slettprosjekt'" type="button">Slett prosjekt</button>
+            </td>
+        </tr>
+    </table>
+    </div>
+
+
     <div class="center">
     <input type="text" class="search-input" onkeyup="searchTable('Prosjekter', 1)" placeholder="Søk etter prosjekt..." title="Type in a project name">
     </div>

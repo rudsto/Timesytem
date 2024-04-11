@@ -18,7 +18,7 @@
             <c:when test="${bruker eq null}">
                 <td>
                     <form action="/login" method="get">
-                        <button type="submit">Logg inn</button>
+                        <button class="button-base sign-in fa fa-sign-in" type="submit"> Logg inn </button>
                     </form>
                 </td>
             </c:when>
@@ -64,7 +64,7 @@
 
 
         <br>
-        <button class="button-base fa fa-sign-in sign-in" id="submit-btn" type="submit"> Opprett bruker </button>
+        <button class="button-base fa fa-sign-in make-user" id="submit-btn" type="submit"> Opprett bruker </button>
         
     </fieldset>
 </form>
