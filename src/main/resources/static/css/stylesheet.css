@@ -145,3 +145,8 @@ label {
     line-height: 1.5; /* To center the text with the icon */
     border-radius: 15px;
 }
+
+
+.center > div {
+    margin-bottom: 10px;
+}

@@ -31,56 +31,10 @@
 <div class="tab">
     <button class="tablinks fa" onclick="expandView(event, 'Brukere')">Brukere online</button>
     <button class="tablinks fa" onclick="expandView(event, 'Prosjekter')">Registrerte prosjekter</button>
-    <button class="tablinks fa" onclick="expandView(event, 'Timer')">Registrerte timer</button>
     <button class="tablinks fa" onclick="expandView(event, 'Min-side')"> Min Side </button>
 </div>
 
 <!-- Tab content -->
-
-<div id="Min-side" class="tabcontent">
-        <div class="center">
-            <p> Innlogget som: ${bruker.fornavn} ${bruker.etternavn}</p>
-        </div>
-        <div class="center">
-            <p> Ditt telefonnommer: ${bruker.mobil} </p>
-        </div>
-
-            <table class="center">
-                <tr>
-                    <th> Antall timer: </th>
-                    <th> Prosjekt: </th>
-                </tr>
-                <c:forEach var="time" items="${timeliste}">
-                    <tr>
-                        <c:choose>
-                            <c:when test="${time.bruker.mobil eq bruker.mobil}">
-                                 <td>${time.antallTimer}</td>
-                                <td>${time.prosjekt.prosjekt_id}</td>
-                            </c:when>
-                        </c:choose>
-
-                    </tr>
-                </c:forEach>
-            </table>
-
-        <div class = "center">
-            <h2>Timehåndteringsvalg</h2>
-        </div>
-        <table class="navbar center">
-            <tr>
-                <td>
-                    <form action="${pageContext.request.contextPath}/registrertime" method="get">
-                        <button class="button-base" type="submit">Registrer time</button>
-                    </form>
-                </td>
-                <td>
-                    <form action="${pageContext.request.contextPath}/redigertimer" method="get">
-                        <button class="button-base" type="submit">Rediger/slett time</button>
-                    </form>
-                </td>
-            </tr>
-        </table>
-</div>
 
 
 <div id="Brukere" class="tabcontent">
@@ -125,32 +79,51 @@
 
 </div>
 
-<div id="Timer" class="tabcontent">
+<div id="Min-side" class="tabcontent">
     <div class="center">
-    <input type="text" class="search-input" onkeyup="searchTable('Timer', 1)" placeholder="Søk etter timer..." title="Type in a time entry">
+        <p> Innlogget som: ${bruker.fornavn} ${bruker.etternavn}</p>
     </div>
-    <div class = "center">
-    <table class = "db_data" id="TimerTable">
+    <div class="center">
+        <p> Ditt telefonnommer: ${bruker.mobil} </p>
+    </div>
+
+    <table class="center">
         <tr>
-            <th align="left">Time id</th>
-            <th align="left">Antall</th>
-            <th align="left">Mobil</th>
-            <th align="left">Prosjekt id</th>
-        </tr>
+            <th> Antall timer: </th>
+            <th> Prosjekt: </th>
         </tr>
         <c:forEach var="time" items="${timeliste}">
             <tr>
-                <td>${time.time_id}</td>
-                <td>${time.antallTimer}</td>
-                <td>${time.bruker.mobil}</td>
-                <td>${time.prosjekt.prosjekt_id}</td>
+                <c:choose>
+                    <c:when test="${time.bruker.mobil eq bruker.mobil}">
+                        <td>${time.antallTimer}</td>
+                        <td>${time.prosjekt.prosjekt_id}</td>
+                    </c:when>
+                </c:choose>
+
             </tr>
         </c:forEach>
     </table>
+
+    <div class = "center">
+        <h2>Timehåndteringsvalg</h2>
     </div>
+    <table class="navbar center">
+        <tr>
+            <td>
+                <form action="${pageContext.request.contextPath}/registrertime" method="get">
+                    <button class="button-base" type="submit">Registrer time</button>
+                </form>
+            </td>
+            <td>
+                <form action="${pageContext.request.contextPath}/redigertimer" method="get">
+                    <button class="button-base" type="submit">Rediger/slett time</button>
+                </form>
+            </td>
+        </tr>
+    </table>
 </div>
 
-<br>
 
 <div class="center">
     <form action="${pageContext.request.contextPath}/logut" method="post">
