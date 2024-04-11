@@ -52,7 +52,16 @@
 
 .db_data{
     width: 50%;
+    /*
     margin: 0 auto;
+    */
+
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
 .logout {
@@ -85,4 +94,17 @@
     width: 100%;
     display: flex;
     justify-content: center;
+}
+
+.sign-in {
+    background-color: #26a660;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 15px;
+}
+
+.sign-in:hover {
+    background-color: #44d585;
 }

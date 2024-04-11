@@ -44,58 +44,6 @@
     </tr>
 </table>
 <br>
-<%--
-
-<h3>Brukere online</h3>
-<table>
-    <tr>
-        <th align="left">Navn</th>
-        <th align="left">Mobil</th>
-    </tr>
-    <c:forEach var="ansatt" items="${ansatte}">
-        <tr style=<c:if test="${ansatt.mobil eq bruker.mobil}">"background-color:#418941"</c:if>>
-            <td>${ansatt.fornavn} ${ansatt.etternavn}</td>
-            <td>${ansatt.mobil}</td>
-        </tr>
-    </c:forEach>
-</table>
-<br>
-
-<h3>Registrerte prosjekter</h3>
-<table>
-    <tr>
-        <th align="left">Prosjekt id</th>
-        <th align="left">Navn</th>
-    </tr>
-        <c:forEach var="prosjekt" items="${prosjekter}">
-            <tr>
-                <td>${prosjekt.prosjekt_id}</td>
-                <td>${prosjekt.navn}</td>
-            </tr>
-        </c:forEach>
-</table>
-<br>
-
-<h3>Registrerte timer</h3>
-<table>
-    <tr>
-        <th align="left">Time id</th>
-        <th align="left">Antall</th>
-        <th align="left">Mobil</th>
-        <th align="left">Prosjekt id</th>
-    </tr>
-    </tr>
-        <c:forEach var="time" items="${timeliste}">
-            <tr>
-                <td>${time.time_id}</td>
-                <td>${time.antallTimer}</td>
-                <td>${time.bruker.mobil}</td>
-                <td>${time.prosjekt.prosjekt_id}</td>
-            </tr>
-        </c:forEach>
-</table>
-<br>
---%>
 
 <div class="tab">
     <button class="tablinks fa" onclick="expandView(event, 'Brukere')">Brukere online</button>
@@ -105,6 +53,7 @@
 
 <!-- Tab content -->
 <div id="Brukere" class="tabcontent">
+    <div class="center">
     <table class = "db_data">
         <tr>
             <th align="left">Navn</th>
@@ -117,10 +66,12 @@
             </tr>
         </c:forEach>
     </table>
+    </div>
 
 </div>
 
 <div id="Prosjekter" class="tabcontent">
+    <div class="center">
     <table class = "db_data">
         <tr>
             <th align="left">Prosjekt id</th>
@@ -133,10 +84,12 @@
             </tr>
         </c:forEach>
     </table>
+    </div>
 
 </div>
 
 <div id="Timer" class="tabcontent">
+    <div class = "center">
     <table class = "db_data">
         <tr>
             <th align="left">Time id</th>
@@ -154,6 +107,7 @@
             </tr>
         </c:forEach>
     </table>
+    </div>
 </div>
 
 <br>
