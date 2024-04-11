@@ -10,9 +10,10 @@
 <body>
 
 <h2>Logg inn</h2>
-<p style="color:red;">${feilmelding}</p>
+<p class = "feilmelding">${feilmelding}</p>
 
 <fieldset>
+	<legend>Logg in</legend>
 	<table class="navbar">
     	<tr>
        		<td>
@@ -24,7 +25,7 @@
         	</td>
         	<td>
             	<form action="${pageContext.request.contextPath}/paamelding" method="get">
-    				<button class = "fa fa-plus" type="submit"> Opprett bruker </button>
+    				<button class = "fa fa-plus make-user" type="submit"> Opprett bruker </button>
     			</form>
         	</td>
     	</tr>

@@ -30,8 +30,6 @@
 
 /* Style the tab content */
 .tabcontent {
-    width: 100%;
-    margin: 0 auto;
 
     display: none;
     padding: 6px 12px;
@@ -72,22 +70,11 @@
     cursor: pointer;
     border-radius: 15px;
 
-    width: 50%;
-    margin: auto;
 
 }
 
 .logout:hover {
     background-color: #590015;
-}
-
-.form {
-    width: 100%;
-    display: flex; /* Make the form itself a flex container */
-    flex-direction: column; /* Stack its children (i.e., the button) vertically */
-    align-items: center; /* Center its children horizontally */
-    /* Optional: add some padding and a max-width if you want */
-    padding: 20px;
 }
 
 .center{
@@ -107,4 +94,22 @@
 
 .sign-in:hover {
     background-color: #44d585;
+}
+
+.make-user {
+    background-color: #1a5fb4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 15px;
+}
+
+.make-user:hover {
+    background-color: #4d91e6;
+}
+
+.feilmelding {
+    color: red;
+
 }
