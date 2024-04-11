@@ -10,6 +10,11 @@ import no.hvl.dat109.prosjekt.entity.Bruker;
 public class LoginUtil {
 
 	public static final int MAX_INACTIVE_INTERVAL = 10 * 60;
+	
+	/**
+	 * Navnet som bruker attribute blir lagret under i httpsession.
+	 */
+	private static final String BRUKER_ATTRIBUTE_NAVN = "bruker";
 
 	/**
 	 * Logger ut en bruker.
@@ -25,10 +30,10 @@ public class LoginUtil {
 	 * @param bruker
 	 */
 	public static void loggInnBruker(HttpServletRequest request, Bruker bruker) {
-		loggUtBruker(request.getSession());
+		loggUtBruker(request.getSession()); // ?? why
 		HttpSession session = request.getSession();
 		session.setMaxInactiveInterval(MAX_INACTIVE_INTERVAL);
-		session.setAttribute("bruker", bruker);
+		session.setAttribute(BRUKER_ATTRIBUTE_NAVN , bruker);
 	}
 
 	/**
@@ -37,7 +42,26 @@ public class LoginUtil {
 	 * @return
 	 */
 	public static boolean erBrukerInnlogget(HttpSession session) {
-		return session != null && session.getAttribute("bruker") != null;
+		return session != null && session.getAttribute(BRUKER_ATTRIBUTE_NAVN) != null;
+	}
+	
+	/**
+	 * Henter objectet til den innloggede brukeren fra httpsession.
+	 * @param session
+	 * @return bruker innlogget in session, null om ingen bruker er innlogget
+	 */
+	public static Bruker getInnloggetBruker(HttpSession session) {
+		if(!erBrukerInnlogget(session)) {
+			return null;
+		}
+		
+		Object bruker = session.getAttribute(BRUKER_ATTRIBUTE_NAVN);
+		
+		if(bruker instanceof Bruker) {
+			return (Bruker) bruker;
+		}
+		
+		return null;
 	}
 
 }
