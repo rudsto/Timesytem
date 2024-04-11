@@ -1,22 +1,14 @@
 package no.hvl.dat109.prosjekt.controllers;
 
-import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.flash;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-
+import no.hvl.dat109.prosjekt.Utils.LoginUtil;
+import no.hvl.dat109.prosjekt.Utils.PassordUtil;
+import no.hvl.dat109.prosjekt.entity.Bruker;
+import no.hvl.dat109.prosjekt.service.BrukerService;
+import no.hvl.dat109.prosjekt.service.ProsjektService;
+import no.hvl.dat109.prosjekt.service.TimeService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mockito;
+import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -25,18 +17,13 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.RequestBuilder;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import javax.servlet.http.HttpServletRequest;
 
-import no.hvl.dat109.prosjekt.Utils.LoginUtil;
-import no.hvl.dat109.prosjekt.Utils.PassordUtil;
-import no.hvl.dat109.prosjekt.entity.Bruker;
-import no.hvl.dat109.prosjekt.service.BrukerService;
-import no.hvl.dat109.prosjekt.service.ProsjektService;
-import no.hvl.dat109.prosjekt.service.TimeService;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
  * Testklasse for BrukerController.
@@ -50,6 +37,15 @@ public class EndrePassordControllerTest {
     private MockMvc mockMvc;
     @MockBean
     private BrukerService brukerService;
+    @MockBean
+    private ProsjektService prosjektService;
+    @MockBean
+    private TimeService timeService;
+    @InjectMocks
+    private BrukerController brukerController;
+
+
+
 
     /**
      * Tester at redirect går til "/endrepassord" når brukeren er logget inn.
