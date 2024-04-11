@@ -72,7 +72,6 @@ public class TimeService {
                 .filter(time -> time.getBruker().equals(bruker))
                 .filter(time -> time.getProsjekt().equals(prosjekt))
                 .collect(Collectors.toList());
-
     }
 
     /**
