@@ -43,15 +43,15 @@
 <fieldset id="rot">
 
     <c:choose>
-        <c:when test="${prosjekt eq null}">
+        <c:when test="${time eq null}">
 
-            <form action="${pageContext.request.contextPath}/velgprosjekt" method="post">
+            <form action="${pageContext.request.contextPath}/velgtime" method="post">
 
-                <label>Prosjekt ID<br>
-                    <input type="text" name="prosjekt_id" id="prosjekt_id" value="${prosjekt_id}"/><br></label>
+                <label>Time ID<br>
+                    <input type="text" name="time_id" id="time_id" value="${time_id}"/><br></label>
 
                 <br>
-                <button id="submit-btn" type="submit">Velg prosjekt</button>
+                <button id="submit-btn" type="submit">Velg time</button>
 
             </form>
 
@@ -79,31 +79,23 @@
     </c:choose>
 </fieldset>
 
-<h3>Registrerte timer på ${prosjekt.prosjekt_id}</h3>
+<h3>Registrerte timer</h3>
 <table>
     <tr>
-        <th align="left">Time id</th>
-        <th align="left">Antall</th>
+        <th align="left">Bruker</th>
+        <th align="left">Time ID</th>
+        <th align="left">Antall timer</th>
+        <th align="left">Prosjekt ID</th>
+        <th align="left">Prosjekt navn</th>
     </tr>
     </tr>
-    <c:forEach var="time" items="${timeliste1}">
+    <c:forEach var="time" items="${timeliste}">
         <tr>
+            <td>${time.bruker.mobil}</td>
             <td>${time.time_id}</td>
             <td>${time.antallTimer}</td>
-        </tr>
-    </c:forEach>
-</table>
-
-<h3>Registrerte prosjekter</h3>
-<table>
-    <tr>
-        <th align="left">Prosjekt id</th>
-        <th align="left">Navn</th>
-    </tr>
-    <c:forEach var="prosjekt" items="${prosjekter}">
-        <tr>
-            <td>${prosjekt.prosjekt_id}</td>
-            <td>${prosjekt.navn}</td>
+            <td>${time.prosjekt.prosjekt_id}</td>
+            <td>${time.prosjekt.navn}</td>
         </tr>
     </c:forEach>
 </table>

@@ -37,61 +37,56 @@ public class RedigerTimeController {
         }
         Bruker bruker = (Bruker) session.getAttribute("bruker");
         model.addAttribute("prosjekter", prosjektService.finnAlle());
-
+        model.addAttribute("timeliste", timeService.finnAlleTimer());
         return "redigertime";
     }
 
-    @PostMapping("velgprosjekt")
+    @PostMapping("velgtime")
     public String postVelgProsjekt(HttpSession session, Model model, RedirectAttributes ra,
-                                   @RequestParam String prosjekt_id) {
+                                   @RequestParam String time_id) {
 
         if (!LoginUtil.erBrukerInnlogget(session)) {
             ra.addFlashAttribute("feilmelding", "Du må være innlogget for å redigere timer");
             return "redirect:login";
         }
         Bruker bruker = (Bruker) session.getAttribute("bruker");
-        Optional<Prosjekt> optionalProsjekt = prosjektService.finnMedID(prosjekt_id);
-        Prosjekt prosjekt = optionalProsjekt.orElse(null);
-        List<Time> brukerProsjektTimer = timeService.finnBrukerProsjektTimer(bruker, prosjekt);
+        Time time = timeService.finnMedId(Integer.parseInt(time_id));
 
-        if (optionalProsjekt.isEmpty()) {
-            ra.addFlashAttribute("feilmelding", "Tast inn et prosjekt fra prosjektoversikten");
+
+        if (time == null) {
+            ra.addFlashAttribute("feilmelding", "Tast inn en time fra prosjektoversikten");
             return "redirect:redigertimer";
         }
 
-        model.addAttribute("prosjekt", prosjekt);
-        model.addAttribute("timeliste", brukerProsjektTimer);
-        ra.addFlashAttribute("timeliste1", brukerProsjektTimer);
-
+        ra.addFlashAttribute(time);
         return "redirect:redigertimer";
     }
 
 
     @PostMapping("redigertime")
-    public String postRedigerTime(HttpSession session, Model model, RedirectAttributes ra,
-                                  @RequestParam Integer time_id, @RequestParam int antallTimer) {
+    public String postRedigerTime(HttpSession session,@ModelAttribute("time") Time time, RedirectAttributes ra,
+                                  @RequestParam int antallTimer) {
 
         if (!LoginUtil.erBrukerInnlogget(session)) {
             ra.addFlashAttribute("feilmelding", "Du må være innlogget for å redigere timer");
             return "redirect:login";
         }
 
-        Time time = timeService.finnMedId(time_id);
         time.setAntallTimer(antallTimer);
+        timeService.lagreTime(time);
 
         return "redirect:redigertimer";
     }
 
     @PostMapping("sletttime")
-    public String postSlettTime(HttpSession session, Model model, RedirectAttributes ra,
-                                @RequestParam Integer time_id) {
+    public String postSlettTime(HttpSession session, @ModelAttribute("time") Time time, RedirectAttributes ra) {
 
         if (!LoginUtil.erBrukerInnlogget(session)) {
             ra.addFlashAttribute("feilmelding", "Du må være innlogget for å redigere timer");
             return "redirect:login";
         }
 
-        timeService.slettTime(time_id);
+        timeService.slettTime(time.getTime_id());
 
         return "redirect:redigertimer";
     }
