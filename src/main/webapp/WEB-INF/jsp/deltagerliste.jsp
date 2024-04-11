@@ -90,6 +90,19 @@
         </c:forEach>
     </table>
     </div>
+    <div class="new-line center">
+        <c:set var="totalTimer" value="0" /> <!-- Initial counter variable for the sum -->
+
+        <c:forEach var="time" items="${timeliste}">
+            <c:if test="${time.bruker.mobil eq bruker.mobil}">
+                <!-- If condition is true, add antallTimer to totalTimer -->
+                <c:set var="totalTimer" value="${totalTimer + time.antallTimer}" />
+            </c:if>
+        </c:forEach>
+
+        <!-- Display the sum -->
+        <p>Totalt antall timer: ${totalTimer}</p>
+    </div>
 
 
 </div>

@@ -10,6 +10,7 @@
 </head>
 <body>
 <script src="js/timevalidering.js" defer></script>
+<div class="center">
 <table class="navbar">
     <tr>
                 <td>
@@ -24,22 +25,25 @@
                 </td>
     </tr>
 </table>
+</div>
 
 <p class="feilmelding">${feilmelding}</p>
 
+<div class="flex-container center">
 <fieldset id="rot">
     <legend>Timeregistrering</legend>
     <form action="${pageContext.request.contextPath}/registrertime" method="post">
-
-        <label>Prosjekt ID<br>
-            <input type="text" name="prosjekt_id" id="prosjekt_id" value="${prosjekt_id}"/><br></label>
-
+        <div class="new-line center">
+            <label>Prosjekt ID<br>
+                <input type="text" name="prosjekt_id" id="prosjekt_id" value="${prosjekt_id}"/><br></label>
+        </div>
+        <div class="new-line center">
         <label>Antall timer<br>
             <input type="text" name="antallTimer" id="antallTimer" value="${antallTimer}"/><br></label>
-
-        <br>
+        </div>
+        <div class="new-line center">
         <button class="button-base make-user" id="submit-btn" type="submit">Registrer</button>
-
+        </div>
     </form>
 
     <c:if test="${prosjekt != null}">
@@ -52,12 +56,10 @@
     </c:if>
 
 </fieldset>
-
-<h3>Registrerte prosjekter</h3>
 <table class="db_data">
     <tr>
-        <th align="left">Prosjekt id</th>
-        <th align="left">Navn</th>
+        <th>Prosjekt id</th>
+        <th>Navn</th>
     </tr>
     <c:forEach var="prosjekt" items="${prosjekter}">
         <tr>
@@ -66,6 +68,8 @@
         </tr>
     </c:forEach>
 </table>
+
+</div>
 
 </body>
 </html>

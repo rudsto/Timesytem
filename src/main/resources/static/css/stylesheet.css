@@ -190,3 +190,25 @@ label {
     border-color: #007bff; /* Change border color on focus */
     box-shadow: 0 0 8px rgba(0, 123, 255, 0.2); /* Add a glow effect */
 }
+
+
+.flex-container {
+    display: flex;
+    /*justify-content: space-between;*/
+}
+
+.flex-container > * {
+    flex-basis: 48%; /* Sets the size of each child in the container */
+    /* The width can be adjusted as needed, and is dependent on the container size */
+}
+
+.flex-container > table {
+    margin: 1%;
+}
+
+#rot {
+    margin: 1%; /* Removes default margin to ensure alignment at the top */
+    flex-grow: 1;
+    max-width: 300px;
+    max-height: 250px;
+}
