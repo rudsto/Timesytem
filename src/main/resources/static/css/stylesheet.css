@@ -60,11 +60,6 @@ body{
 }
 
 .db_data{
-    width: 50%;
-    /*
-    margin: 0 auto;
-    */
-
     border-collapse: collapse;
     margin: 25px 0;
     font-size: 0.9em;
@@ -72,6 +67,37 @@ body{
     min-width: 400px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
+
+.db_data thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+.db_data th,
+.db_data td {
+    padding: 12px 15px;
+    justify-content: center;
+    text-align: center;
+}
+
+
+.db_data tbody tr {
+    border-bottom: 1px solid #dddddd;
+
+}
+
+.db_data tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.db_data tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+
+
+
 
 .logout {
     background-color: #800020;

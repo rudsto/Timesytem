@@ -5,6 +5,8 @@
 
 <head>
     <title>Timeregistrering</title>
+    <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 <script src="js/timevalidering.js" defer></script>
@@ -66,7 +68,7 @@
 </fieldset>
 
 <h3>Registrerte prosjekter</h3>
-<table>
+<table class="db_data">
     <tr>
         <th align="left">Prosjekt id</th>
         <th align="left">Navn</th>

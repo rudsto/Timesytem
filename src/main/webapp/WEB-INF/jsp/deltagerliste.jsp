@@ -30,36 +30,14 @@
 
 <div class="tab">
     <button class="tablinks fa" onclick="expandView(event, 'Min-side')"> Min Side </button>
-    <button class="tablinks fa" onclick="expandView(event, 'Brukere')">Brukere online</button>
-    <button class="tablinks fa" onclick="expandView(event, 'Prosjekter')">Registrerte prosjekter</button>
+    <button class="tablinks fa" onclick="expandView(event, 'Brukere')">Brukere</button>
+    <button class="tablinks fa" onclick="expandView(event, 'Prosjekter')">Prosjekter</button>
 </div>
 
 
 <div id="Min-side" class="tabcontent">
-    <div class="center">
-        <p> Innlogget som: ${bruker.fornavn} ${bruker.etternavn}</p>
-    </div>
-    <div class="center">
-        <p> Ditt telefonnommer: ${bruker.mobil} </p>
-    </div>
 
-    <table class="center">
-        <tr>
-            <th> Antall timer: </th>
-            <th> Prosjekt: </th>
-        </tr>
-        <c:forEach var="time" items="${timeliste}">
-            <tr>
-                <c:choose>
-                    <c:when test="${time.bruker.mobil eq bruker.mobil}">
-                        <td>${time.antallTimer}</td>
-                        <td>${time.prosjekt.prosjekt_id}</td>
-                    </c:when>
-                </c:choose>
 
-            </tr>
-        </c:forEach>
-    </table>
 
     <div class = "center">
         <h2>Timehåndteringsvalg</h2>
@@ -93,6 +71,43 @@
         </tr>
     </table>
 
+
+    <div class = "center">
+    <table>
+        <tr>
+            <th>
+                Innlogget som: ${bruker.fornavn} ${bruker.etternavn}
+            </th>
+        </tr>
+        <tr>
+            <th>
+                Ditt telefonnommer: ${bruker.mobil}
+            </th>
+        </tr>
+    </table>
+    </div>
+
+    <div class="center">
+    <table class="db_data">
+        <tr>
+            <th> Prosjekt: </th>
+            <th> Antall timer: </th>
+        </tr>
+        <c:forEach var="time" items="${timeliste}">
+            <tr>
+                <c:choose>
+                    <c:when test="${time.bruker.mobil eq bruker.mobil}">
+                        <td>${time.prosjekt.navn}</td>
+                        <td>${time.antallTimer}</td>
+                    </c:when>
+                </c:choose>
+
+            </tr>
+        </c:forEach>
+    </table>
+    </div>
+
+
 </div>
 
 
@@ -105,8 +120,8 @@
     <div class="center">
         <table class = "db_data" id="BrukereTable">
         <tr>
-            <th align="left">Navn</th>
-            <th align="left">Mobil</th>
+            <th>Navn</th>
+            <th>Mobil</th>
         </tr>
         <c:forEach var="ansatt" items="${ansatte}">
             <tr style=<c:if test="${ansatt.mobil eq bruker.mobil}">"background-color:#418941"</c:if>>
@@ -125,8 +140,8 @@
     <div class="center">
     <table class = "db_data" id="ProsjekterTable">
         <tr>
-            <th align="left">Prosjekt id</th>
-            <th align="left">Navn</th>
+            <th>Prosjekt id</th>
+            <th>Navn</th>
         </tr>
         <c:forEach var="prosjekt" items="${prosjekter}">
             <tr>
