@@ -29,6 +29,9 @@
 
 /* Style the tab content */
 .tabcontent {
+    width: 50%;
+    margin: 0 auto;
+
     display: none;
     padding: 6px 12px;
     border: 1px solid #ffffff;
