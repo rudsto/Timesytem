@@ -29,54 +29,13 @@
 <br>
 
 <div class="tab">
+    <button class="tablinks fa" onclick="expandView(event, 'Min-side')"> Min Side </button>
     <button class="tablinks fa" onclick="expandView(event, 'Brukere')">Brukere online</button>
     <button class="tablinks fa" onclick="expandView(event, 'Prosjekter')">Registrerte prosjekter</button>
-    <button class="tablinks fa" onclick="expandView(event, 'Min-side')"> Min Side </button>
 </div>
 
 
-<div id="Brukere" class="tabcontent">
-    <div class="center">
-    <input type="text" class="search-input" onkeyup="searchTable('Brukere', 0)" placeholder="Søk etter navn..." title="Type in a name">
-    </div>
-    <div class="center">
-        <table class = "db_data" id="BrukereTable">
-        <tr>
-            <th align="left">Navn</th>
-            <th align="left">Mobil</th>
-        </tr>
-        <c:forEach var="ansatt" items="${ansatte}">
-            <tr style=<c:if test="${ansatt.mobil eq bruker.mobil}">"background-color:#418941"</c:if>>
-                <td>${ansatt.fornavn} ${ansatt.etternavn}</td>
-                <td>${ansatt.mobil}</td>
-            </tr>
-        </c:forEach>
-    </table>
-    </div>
-</div>
-
-<div id="Prosjekter" class="tabcontent">
-    <div class="center">
-    <input type="text" class="search-input" onkeyup="searchTable('Prosjekter', 1)" placeholder="Søk etter prosjekt..." title="Type in a project name">
-    </div>
-    <div class="center">
-    <table class = "db_data" id="ProsjekterTable">
-        <tr>
-            <th align="left">Prosjekt id</th>
-            <th align="left">Navn</th>
-        </tr>
-        <c:forEach var="prosjekt" items="${prosjekter}">
-            <tr>
-                <td>${prosjekt.prosjekt_id}</td>
-                <td>${prosjekt.navn}</td>
-            </tr>
-        </c:forEach>
-    </table>
-    </div>
-
-</div>
-
-<div id="Min-side" class="tabcontent" style="display: block;">
+<div id="Min-side" class="tabcontent">
     <div class="center">
         <p> Innlogget som: ${bruker.fornavn} ${bruker.etternavn}</p>
     </div>
@@ -133,6 +92,50 @@
             </td>
         </tr>
     </table>
+
+</div>
+
+
+
+
+<div id="Brukere" class="tabcontent">
+    <div class="center">
+    <input type="text" class="search-input" onkeyup="searchTable('Brukere', 0)" placeholder="Søk etter navn..." title="Type in a name">
+    </div>
+    <div class="center">
+        <table class = "db_data" id="BrukereTable">
+        <tr>
+            <th align="left">Navn</th>
+            <th align="left">Mobil</th>
+        </tr>
+        <c:forEach var="ansatt" items="${ansatte}">
+            <tr style=<c:if test="${ansatt.mobil eq bruker.mobil}">"background-color:#418941"</c:if>>
+                <td>${ansatt.fornavn} ${ansatt.etternavn}</td>
+                <td>${ansatt.mobil}</td>
+            </tr>
+        </c:forEach>
+    </table>
+    </div>
+</div>
+
+<div id="Prosjekter" class="tabcontent">
+    <div class="center">
+    <input type="text" class="search-input" onkeyup="searchTable('Prosjekter', 1)" placeholder="Søk etter prosjekt..." title="Type in a project name">
+    </div>
+    <div class="center">
+    <table class = "db_data" id="ProsjekterTable">
+        <tr>
+            <th align="left">Prosjekt id</th>
+            <th align="left">Navn</th>
+        </tr>
+        <c:forEach var="prosjekt" items="${prosjekter}">
+            <tr>
+                <td>${prosjekt.prosjekt_id}</td>
+                <td>${prosjekt.navn}</td>
+            </tr>
+        </c:forEach>
+    </table>
+    </div>
 
 </div>
 
