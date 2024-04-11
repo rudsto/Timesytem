@@ -80,6 +80,18 @@
                 </td>
             </tr>
         </table>
+        <div class = "center">
+        <h2>Innstillinger</h2>
+        </div>
+        <table class="navbar center">
+            <tr>
+                <td>
+                    <form action="${pageContext.request.contextPath}/endrepassord" method="get">
+   						<button class="button-base" type="submit">Endre passord</button>
+					</form>
+                </td>
+            </tr>
+        </table>
 </div>
 
 
@@ -101,7 +113,6 @@
         </c:forEach>
     </table>
     </div>
-
 </div>
 
 <div id="Prosjekter" class="tabcontent">
