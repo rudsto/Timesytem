@@ -52,10 +52,9 @@
             <input type="text" name="prosjekt_id" id="prosjekt_id" value="${prosjekt.prosjekt_id}"/><br>
             <p style="color:red;" id="feilmelding-prosjekt-id"></p>
         </label>
+        <button type="submit" id="slettProsjektBtn">Slett prosjekt</button>
     </fieldset>
 </form>
-
-<button onclick="location.href='${pageContext.request.contextPath}/deltagerliste'" type="button">Til hovedsiden</button>
 
 <h3>Registrerte prosjekter</h3>
 <table>
