@@ -24,13 +24,6 @@
             <input type="text" name="prosjekt_id" id="prosjekt_id" value="${prosjekt.prosjekt_id}"/><br>
         </label>
         <br>
-        <!--
-        <label>
-            <input type="checkbox" name="deleteTimereg" id="deleteTimeregCheckbox"/>
-            Slett også tilhørende timer
-        </label>
-        <br>
-        -->
         <button type="submit" id="slettProsjektBtn">Slett prosjekt</button>
     </fieldset>
 </form>
@@ -54,16 +47,7 @@
 <script>
     document.getElementById("slettProsjektBtn").addEventListener("click", function (event) {
         var confirmDelete = confirm("Er du sikker på at du vil slette prosjektet?");
-        //var deleteTimeregCheckbox = document.getElementById("deleteTimeregCheckbox").checked;
         if (confirmDelete === true) {
-            /*
-            if(deleteTimeregCheckbox === true) {
-                var confirmDelTimereg = confirm("Er du sikker på at du også vil slette timene?")
-                if (confirmDelTimereg === false) {
-                    document.getElementById("deleteTimeregCheckbox").checked = false;
-                }
-            }
-             */
             document.getElementById("slettProsjektForm").submit();
         } else {
             event.preventDefault(); // For å forhindre standard oppførsel av knappen (form submission)
