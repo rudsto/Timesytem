@@ -4,6 +4,8 @@
 <html lang="no">
 <head>
     <title>Brukervalg</title>
+    <script defer src="js/deltagerliste.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
 </head>
 <body>
 
@@ -93,9 +95,28 @@
 <br>
 
 <div class="tab">
-    <button class="tablinks" onclick="expandView()">Brukere online</button>
+    <button class="tablinks" onclick="expandView(event, 'Brukere')">Brukere online</button>
+    <button class="tablinks" onclick="expandView(event, 'Prosjekter')">Registrerte prosjekter</button>
+    <button class="tablinks" onclick="expandView(event, 'Timer')">Registrerte timer</button>
 </div>
 
+<!-- Tab content -->
+<div id="Brukere" class="tabcontent">
+    <h3>Brukere online</h3>
+    <p> testing </p>
+</div>
+
+<div id="Prosjekter" class="tabcontent">
+    <h3>Registrerte prosjekter</h3>
+    <!-- Prosjekter table here -->
+</div>
+
+<div id="Timer" class="tabcontent">
+    <h3>Registrerte timer</h3>
+    <!-- Timer table here -->
+</div>
+
+<br>
 
 <form action="${pageContext.request.contextPath}/logut" method="post">
     <button type="submit">Logg ut</button>
