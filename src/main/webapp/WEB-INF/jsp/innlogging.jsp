@@ -9,28 +9,42 @@
 </head>
 <body>
 
-<h2>Logg inn</h2>
+<div class="center">
 <p class = "feilmelding">${feilmelding}</p>
+</div>
 
+<div class="center">
 <fieldset>
-	<legend>Logg in</legend>
+	<legend class = "log-in-text">Logg in</legend>
 	<table class="navbar">
     	<tr>
-       		<td>
+
            		<form method="post" action="${pageContext.request.contextPath}/login">
-       	 			<label for="mobil">Mobil:</label> <input type="text" name="mobil" id="mobil" value="${mobil}"/>
-        			<label for="passord"> Passord:</label> <input type="password" name="passord" id="passord"/>
-        			<button class="fa fa-sign-in sign-in" id="submit-btn" type="submit"> Logg inn </button>
+					<div class = "new-line">
+       	 				<label for="mobil">Mobil:</label>
+						<input type="text" name="mobil" id="mobil" value="${mobil}"/>
+					</div>
+					<div class = "new-line">
+        				<label for="passord"> Passord:</label>
+						<input type="password" name="passord" id="passord"/>
+					</div>
+					<div class = "new-line center">
+        				<button class="button-base fa fa-sign-in sign-in" id="submit-btn" type="submit"> Logg inn </button>
+					</div>
 				</form>
-        	</td>
-        	<td>
+
+
             	<form action="${pageContext.request.contextPath}/paamelding" method="get">
-    				<button class = "fa fa-plus make-user" type="submit"> Opprett bruker </button>
-    			</form>
-        	</td>
+					<div class = "new-line center">
+					<button class = "button-base fa fa-plus make-user" type="submit"> Opprett bruker </button>
+					</div>
+				</form>
+
     	</tr>
 	</table>  
 </fieldset>
+
+</div>
 
 <script src="js/validering.js" defer></script>
 

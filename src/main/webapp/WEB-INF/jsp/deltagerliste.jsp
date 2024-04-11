@@ -13,6 +13,7 @@
 <p>Innlogget som: ${bruker.mobil} / ${bruker.fornavn} ${bruker.etternavn}</p>
 <br>
 
+
 <h2>Prosjektvalg</h2>
 <table class="navbar">
     <tr>
@@ -114,7 +115,7 @@
 
 <div class="center">
     <form action="${pageContext.request.contextPath}/logut" method="post">
-        <button class="logout fa fa-sign-out center" type="submit"> Logg ut </button>
+        <button class="button-base logout fa fa-sign-out center" type="submit"> Logg ut </button>
     </form>
 </div>
 </body>

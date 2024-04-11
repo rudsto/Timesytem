@@ -1,4 +1,15 @@
 
+body{
+/*    background-image: url("https://i.kym-cdn.com/entries/icons/original/000/000/684/d53c91p-a4ed1934-bb45-4aeb-8593-2bb8175041c7.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+
+    background-color: #36393e;
+*/
+}
+
 /* Style the tab */
 .tab {
     overflow: hidden;
@@ -68,9 +79,6 @@
     border: none;
     padding: 10px 20px;
     cursor: pointer;
-    border-radius: 15px;
-
-
 }
 
 .logout:hover {
@@ -89,7 +97,6 @@
     border: none;
     padding: 10px 20px;
     cursor: pointer;
-    border-radius: 15px;
 }
 
 .sign-in:hover {
@@ -99,10 +106,8 @@
 .make-user {
     background-color: #1a5fb4;
     color: white;
-    border: none;
     padding: 10px 20px;
     cursor: pointer;
-    border-radius: 15px;
 }
 
 .make-user:hover {
@@ -112,4 +117,36 @@
 .feilmelding {
     color: red;
 
+}
+
+.log-in-text{
+    font-weight: bolder;
+    font-size: large;
+}
+
+.new-line{
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.fa {
+    margin-right: 5px;
+}
+
+.button-base {
+    font-size: 16px; /* Set the desired font size */
+    width: 200px; /* Example fixed width */
+    height: 50px; /* Example fixed height */
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    margin: 5px; /* Optional spacing between buttons */
+    text-align: center;
+    vertical-align: middle;
+    line-height: 1.5; /* To center the text with the icon */
+    border-radius: 15px;
 }
