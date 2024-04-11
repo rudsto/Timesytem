@@ -20,7 +20,7 @@
     		<button onclick="location.href='${pageContext.request.contextPath}/opprettprosjekt'" type="button">Opprett prosjekt</button>
         </td>
         <td>
-            <button onclick="location.href='${pageContext.request.contextPath}/redigerprosjekt'" type="button">Rediger prosjekt</button>
+            <button onclick="location.href='${pageContext.request.contextPath}/redigerProsjekt'" type="button">Rediger prosjekt</button>
         </td>
         <td>
             <button onclick="location.href='${pageContext.request.contextPath}/slettprosjekt'" type="button">Slett prosjekt</button>
