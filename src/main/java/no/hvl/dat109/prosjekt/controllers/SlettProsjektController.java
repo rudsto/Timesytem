@@ -2,8 +2,8 @@ package no.hvl.dat109.prosjekt.controllers;
 
 
 import no.hvl.dat109.prosjekt.Utils.LoginUtil;
-import no.hvl.dat109.prosjekt.entity.Prosjekt;
-import no.hvl.dat109.prosjekt.service.ProsjektService;
+import no.hvl.dat109.prosjekt.entity.*;
+import no.hvl.dat109.prosjekt.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,11 +14,16 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 
+import java.util.List;
+
 @Controller
 public class SlettProsjektController {
 
     @Autowired
     private ProsjektService prosjektService;
+
+    @Autowired
+    private TimeService timeService;
 
     /**
      * Viser skjemaet for sletting av prosjekt.
@@ -51,7 +56,7 @@ public class SlettProsjektController {
      * @return              En {@link String} som representerer en omdirigering til neste visning, eller laster skjema på nytt
      */
     @PostMapping("slettprosjekt")
-    public String postSlettProsjekt(@RequestParam String prosjekt_id, RedirectAttributes ra) {
+    public String postSlettProsjekt(@RequestParam String prosjekt_id, @RequestParam(defaultValue = "false") boolean deleteTimereg, RedirectAttributes ra) {
         if(prosjekt_id == null) {
             ra.addFlashAttribute("feilmeldinger", "ID kan ikke være tomt");
             return "redirect:slettprosjekt";
@@ -74,7 +79,13 @@ public class SlettProsjektController {
 
         ra.addFlashAttribute("prosjekt", slettProsjekt);
 
-        return "redirect:prosjektslettet";
+        return "redirect:slettprosjekt_suksess";
 
     }
+
+    @GetMapping("slettprosjekt_suksess")
+    public String getSlettProsjekt_suksess(Model model) {
+        return "slettprosjekt_suksess";
+    }
+
 }
