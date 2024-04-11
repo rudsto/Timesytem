@@ -65,12 +65,12 @@ public class SlettProsjektController {
             ra.addFlashAttribute("feilmeldinger", "ID må være numerisk");
             return "redirect:slettprosjekt";
         }
-        if(!prosjektService.finnMedID(prosjekt_id).isPresent()) {
-            ra.addFlashAttribute("feilmeldinger", "finner ikke id");
-            return "redirect:slettprosjekt";
-        }
         if(prosjekt_id.length() != 6) {
             ra.addFlashAttribute("feilmeldinger", "ID må være 6 siffer");
+            return "redirect:slettprosjekt";
+        }
+        if(!prosjektService.finnMedID(prosjekt_id).isPresent()) {
+            ra.addFlashAttribute("feilmeldinger", "finner ikke id");
             return "redirect:slettprosjekt";
         }
 
@@ -83,6 +83,14 @@ public class SlettProsjektController {
 
     }
 
+    /**
+     * Viser en bekreftelse på at prosjektet er slettet.
+     * Denne metoden forutsetter at nødvendig informasjon om det nylig opprettede prosjektet er
+     * lagt til i modellen via RedirectAttributes i metoden som håndterer POST-forespørselen for prosjektopprettelsen.
+     *
+     * @param model Model-objektet som brukes for å sende data om det slettede prosjektet til visningen.
+     * @return En {@link String} som representerer navnet på visningen som skal hentes
+     */
     @GetMapping("slettprosjekt_suksess")
     public String getSlettProsjekt_suksess(Model model) {
         return "slettprosjekt_suksess";

@@ -22,8 +22,10 @@
     <fieldset>
         <label>Prosjekt Id<br>
             <input type="text" name="prosjekt_id" id="prosjekt_id" value="${prosjekt.prosjekt_id}"/><br>
+            <p style="color:red;" id="feilmelding-prosjekt-id"></p>
         </label>
         <br>
+
         <button type="submit" id="slettProsjektBtn">Slett prosjekt</button>
     </fieldset>
 </form>
@@ -45,15 +47,40 @@
 </table>
 
 <script>
-    document.getElementById("slettProsjektBtn").addEventListener("click", function (event) {
+    function idvalidering() {
+        let prosjekt_idElement = document.getElementById("prosjekt_id");
+        if (!prosjekt_idElement) {
+            return;
+        }
+        prosjekt_idElement.setCustomValidity("");
+        prosjekt_idElement.checkValidity();
+
+        let prosjekt_id = prosjekt_idElement.value;
+        let prosjekt_idRegEx = /^[0-9]{6}$/;
+
+        if (!prosjekt_idRegEx.test(prosjekt_id)) {
+            prosjekt_idElement.setCustomValidity("Prosjekt ID må være 6 siffer");
+            document.getElementById("feilmelding-prosjekt-id").innerText = "Prosjekt ID må være 6 siffer";
+        } else {
+            // Skjul feilmelding når format på prosjekt-id er gyldig
+            document.getElementById("feilmelding-prosjekt-id").innerText = "";
+        }
+    }
+
+    function slettProsjekt() {
         var confirmDelete = confirm("Er du sikker på at du vil slette prosjektet?");
         if (confirmDelete === true) {
+
             document.getElementById("slettProsjektForm").submit();
         } else {
             event.preventDefault(); // For å forhindre standard oppførsel av knappen (form submission)
         }
-    });
+    }
+
+    document.getElementById("slettProsjektBtn").addEventListener("click", slettProsjekt);
+    document.getElementById("prosjekt_id").addEventListener("blur", idvalidering);
 </script>
+
 
 </body>
 </html>
