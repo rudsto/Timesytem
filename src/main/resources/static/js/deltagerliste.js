@@ -39,7 +39,7 @@ function hideAllTabs(){
 }
 
 function searchTable(tabContentId, columnIndex) {
-    var input, filter, table, tr, td, i, txtValue;
+    let input, filter, table, tr, td, i, txtValue;
     input = document.querySelector(`#${tabContentId} .search-input`);
     filter = input.value.toUpperCase();
     table = document.getElementById(`${tabContentId}Table`);

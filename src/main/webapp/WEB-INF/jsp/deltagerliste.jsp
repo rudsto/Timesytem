@@ -10,10 +10,6 @@
 </head>
 <body>
 
-<p>Innlogget som: ${bruker.mobil} / ${bruker.fornavn} ${bruker.etternavn}</p>
-<br>
-
-
 <h2>Prosjektvalg</h2>
 <table class="navbar">
     <tr>
@@ -50,9 +46,19 @@
     <button class="tablinks fa" onclick="expandView(event, 'Brukere')">Brukere online</button>
     <button class="tablinks fa" onclick="expandView(event, 'Prosjekter')">Registrerte prosjekter</button>
     <button class="tablinks fa" onclick="expandView(event, 'Timer')">Registrerte timer</button>
+    <button class="tablinks fa" onclick="expandView(event, 'Min-side')"> Min Side </button>
 </div>
 
 <!-- Tab content -->
+
+<div id="Min-side" class="tabcontent">
+    <div class = "center">
+        <p> Innlogget som:  ${bruker.fornavn} ${bruker.etternavn}</p> <br>
+        <p> Ditt telefonnommer: ${bruker.mobil} </p>
+    </div>
+</div>
+
+
 <div id="Brukere" class="tabcontent">
     <div class="center">
     <input type="text" class="search-input" onkeyup="searchTable('Brukere', 0)" placeholder="Søk etter navn..." title="Type in a name">
