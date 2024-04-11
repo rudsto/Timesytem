@@ -5,6 +5,10 @@
 <head>
 
     <title>Påmelding</title>
+
+    <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 
 <body>
@@ -60,7 +64,7 @@
 
 
         <br>
-        <button id="submit-btn" type="submit">Opprett bruker</button>
+        <button class="button-base fa fa-sign-in sign-in" id="submit-btn" type="submit"> Opprett bruker </button>
         
     </fieldset>
 </form>

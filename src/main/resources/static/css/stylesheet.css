@@ -76,8 +76,6 @@ body{
 .logout {
     background-color: #800020;
     color: white;
-    border: none;
-    padding: 10px 20px;
     cursor: pointer;
 }
 
@@ -94,8 +92,6 @@ body{
 .sign-in {
     background-color: #26a660;
     color: white;
-    border: none;
-    padding: 10px 20px;
     cursor: pointer;
 }
 
@@ -106,7 +102,6 @@ body{
 .make-user {
     background-color: #1a5fb4;
     color: white;
-    padding: 10px 20px;
     cursor: pointer;
 }
 

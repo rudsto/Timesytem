@@ -37,3 +37,24 @@ function hideAllTabs(){
     }
 
 }
+
+function searchTable(tabContentId, columnIndex) {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.querySelector(`#${tabContentId} .search-input`);
+    filter = input.value.toUpperCase();
+    table = document.getElementById(`${tabContentId}Table`);
+    tr = table.getElementsByTagName("tr");
+
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 1; i < tr.length; i++) { // Start from 1 to skip heading row
+        td = tr[i].getElementsByTagName("td")[columnIndex];
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+}

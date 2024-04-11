@@ -55,7 +55,10 @@
 <!-- Tab content -->
 <div id="Brukere" class="tabcontent">
     <div class="center">
-    <table class = "db_data">
+    <input type="text" class="search-input" onkeyup="searchTable('Brukere', 0)" placeholder="Søk etter navn..." title="Type in a name">
+    </div>
+    <div class="center">
+        <table class = "db_data" id="BrukereTable">
         <tr>
             <th align="left">Navn</th>
             <th align="left">Mobil</th>
@@ -73,7 +76,10 @@
 
 <div id="Prosjekter" class="tabcontent">
     <div class="center">
-    <table class = "db_data">
+    <input type="text" class="search-input" onkeyup="searchTable('Prosjekter', 1)" placeholder="Søk etter prosjekt..." title="Type in a project name">
+    </div>
+    <div class="center">
+    <table class = "db_data" id="ProsjekterTable">
         <tr>
             <th align="left">Prosjekt id</th>
             <th align="left">Navn</th>
@@ -90,8 +96,11 @@
 </div>
 
 <div id="Timer" class="tabcontent">
+    <div class="center">
+    <input type="text" class="search-input" onkeyup="searchTable('Timer', 1)" placeholder="Søk etter timer..." title="Type in a time entry">
+    </div>
     <div class = "center">
-    <table class = "db_data">
+    <table class = "db_data" id="TimerTable">
         <tr>
             <th align="left">Time id</th>
             <th align="left">Antall</th>
