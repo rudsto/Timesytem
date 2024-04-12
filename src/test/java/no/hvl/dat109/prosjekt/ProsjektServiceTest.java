@@ -1,6 +1,7 @@
 package no.hvl.dat109.prosjekt;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import no.hvl.dat109.prosjekt.repo.ProsjektRepo;
@@ -84,5 +85,20 @@ class ProsjektServiceTest {
 
 		assertNotNull(lagretProsjekt.getProsjekt_id());
 		assertEquals("Testprosjekt", lagretProsjekt.getNavn());
+	}
+
+	/**
+	 * Test av {@link ProsjektService#slettProsjekt(Prosjekt)}.
+	 * Legger til et prosjekt og tester at det blir slettet.
+	 */
+	@Test
+	public void testSlett() {
+		Prosjekt prosjekt = new Prosjekt();
+		prosjekt.setProsjekt_id("232323");
+		prosjekt.setNavn("testslett");
+
+		prosjektService.slettProsjekt(prosjekt);
+
+		verify(prosjektRepo).delete(prosjekt);
 	}
 }
