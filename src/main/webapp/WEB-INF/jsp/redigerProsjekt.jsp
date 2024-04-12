@@ -45,7 +45,7 @@
 </table>
 
 <h2>Prosjekt redigering</h2>
-<p style="color:red;">${feilmelding}</p>
+<p style="color:red;">${feilmeldinger}</p>
     <p style="color:green;">${suksessmelding}</p>
 
 
