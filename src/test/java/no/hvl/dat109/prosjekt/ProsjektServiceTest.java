@@ -3,6 +3,7 @@ package no.hvl.dat109.prosjekt;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 import no.hvl.dat109.prosjekt.repo.ProsjektRepo;
 import no.hvl.dat109.prosjekt.service.ProsjektService;
@@ -101,4 +102,30 @@ class ProsjektServiceTest {
 
 		verify(prosjektRepo).delete(prosjekt);
 	}
+
+	/**
+	 * Test av {@link ProsjektService#redigerProsjekt(String, String)}.
+	 * Legger til et prosjekt med id og navn. Forsøker så å teste endring.
+	 */
+	@Test
+	public void testRedigerProsjekt() {
+		String gammelProsjektId = "123456";
+		String nyttProsjektnavn = "Nytt prosjektnavn";
+
+		Prosjekt prosjekt = new Prosjekt();
+		prosjekt.setProsjekt_id(gammelProsjektId);
+		prosjekt.setNavn("Gammelt prosjektnavn");
+		Optional<Prosjekt> maybeProsjekt = Optional.of(prosjekt);
+
+		when(prosjektRepo.findById(gammelProsjektId)).thenReturn(maybeProsjekt);
+
+		prosjektService.redigerProsjekt(gammelProsjektId, nyttProsjektnavn);
+
+		verify(prosjektRepo).save(prosjekt);
+
+		assertEquals(nyttProsjektnavn, prosjekt.getNavn());
+	}
+
+
+
 }
