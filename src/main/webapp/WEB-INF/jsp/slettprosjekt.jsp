@@ -92,7 +92,7 @@
     }
 
     function slettProsjekt() {
-        var confirmDelete = confirm("Er du sikker på at du vil slette prosjektet?");
+        var confirmDelete = confirm("Er du sikker på at du vil slette prosjektet? Dette vil også slette alle tilhørende timer");
         if (confirmDelete === true) {
 
             document.getElementById("slettProsjektForm").submit();
