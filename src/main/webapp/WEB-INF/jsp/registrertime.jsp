@@ -14,7 +14,7 @@
 <table class="navbar">
     <tr>
                 <td>
-                    <form action="/deltagerliste" method="get">
+                    <form action="${pageContext.request.contextPath}/deltagerliste" method="get">
                         <button class="button-base" type="submit">Deltagerliste</button>
                     </form>
                 </td>
