@@ -28,6 +28,16 @@ public class RedigerTimeController {
     @Autowired
     ProsjektService prosjektService;
 
+    /**
+     * Viser skjemaet for redigering av en time.
+     * Metoden sjekker først at brukeren er innlogget ved sjekk av HttpSession.
+     * Hvis brukeren ikke er logget inn, blir brukeren omdirigert til innloggingen med feilmelding.
+     *
+     * @param session Den nåværende {@link HttpSession} som brukes for å verifisere om brukeren er innlogget
+     * @param model   {@link Model} objekt som brukes for å sende data til visningen
+     * @param ra      {@link RedirectAttributes} som brukes for å sende feilmeldinger over til redirect
+     * @return {@link String} som representerer navnet på visningen som skal hentes.
+     */
     @GetMapping("redigertimer")
     public String getRedigerTimer(HttpSession session, Model model, RedirectAttributes ra) {
 
@@ -42,6 +52,14 @@ public class RedigerTimeController {
         return "redigertime";
     }
 
+    /**
+     * Velger et timeobjekt spesifisert i POST-forespørselen, og lagrer det i session.
+     *
+     * @param session Lagrer det angitte time objektet
+     * @param ra
+     * @param time_id ID-en til et timeobjekt
+     * @return
+     */
     @PostMapping("velgtime")
     public String postVelgProsjekt(HttpSession session, RedirectAttributes ra,
                                    @RequestParam String time_id) {
@@ -61,7 +79,15 @@ public class RedigerTimeController {
         return "redirect:redigertimer";
     }
 
-
+    /**
+     * Behandler en POST-forespørsel for å redigere en time med den angitte time-ID-en.
+     * Etter vellykket redigering av time, blir en suksessmelding lagt til og brukeren blir omdirigert til redigeringssiden.
+     *
+     * @param session Den angitte timeobjektet som skal redigeres
+     * @param antallTimer Nytt antall timer i et time objekt
+     * @param ra RedirectAttributes for å legge til feilmeldinger og suksessmeldinger for viderekobling
+     * @return En String som representerer URL-en for å omdirigere brukeren etter behandling av forespørselen
+     */
     @PostMapping("redigertime")
     public String postRedigerTime(HttpSession session, RedirectAttributes ra,
                                   @RequestParam int antallTimer) {
@@ -78,6 +104,14 @@ public class RedigerTimeController {
         return "redirect:redigertimer";
     }
 
+    /**
+     * Behandler data fra skjemaet for å slette en {@link Time}.
+     * Time-objektet, hentet med inntastet time_id sletter objectet ved hjelp av {@link TimeService}
+     *
+     * @param session       Den unike identifikatoren for timen som skal slettes
+     * @param ra            {@link RedirectAttributes} som brukes for omdirigeringsattributter
+     * @return              En {@link String} som representerer en omdirigering til neste visning, eller laster skjema på nytt
+     */
     @PostMapping("sletttime")
     public String postSlettTime(HttpSession session, RedirectAttributes ra) {
 
