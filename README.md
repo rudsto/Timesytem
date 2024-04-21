@@ -12,19 +12,12 @@ Repository inneholder startkoden hvor det er benyttet [Springboot](https://sprin
 
 ### Utforming og modeller
 
+#### Brukstilfellediagram
 ![](assets/BrukstilfellemodellV7(Rudi).jpg)
 
-```
-Give the example
-```
+#### Aktivitetsdiagram
+![](assets/AktivitetsdiagramV4.jpg)
 
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
 
 ## Running the tests
 
