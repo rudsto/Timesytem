@@ -1,18 +1,14 @@
-# Project Title
+# Timeføringssytem
 
-One Paragraph of project description goes here
+Vi er en gruppe som har designet og utviklet en applikasjon tiltenkt små bedrifter, som forenkler og effektiviserer prosessen med å registrere og administrere arbeidstimer til ansatte opp mot prosjekter.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Repository inneholder startkoden hvor det er benyttet [Springboot](https://spring.io/projects/spring-boot) rammeverk, og hvor det er organisert inn i et [Maven](https://maven.apache.org/) prosjekt. Man kan importere prosjektet til en IDE som for eksempel Eclipse eller Intellij.
 
-### Prerequisites
+- Importing into Eclipse: Use `File -> Import -> Maven -> Existing Maven Projects` to import the startcode project
+- Importing into IntelliJ: Use `File -> New -> Project From Existing Sources` to import the startcode project
 
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
 
 ### Installing
 
