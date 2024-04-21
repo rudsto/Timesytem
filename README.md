@@ -9,7 +9,14 @@ Repository inneholder startkoden hvor det er benyttet [Springboot](https://sprin
 - Importing into Eclipse: Use `File -> Import -> Maven -> Existing Maven Projects` to import the startcode project
 - Importing into IntelliJ: Use `File -> New -> Project From Existing Sources` to import the startcode project
 
+Koden er koblet opp mot en postgreSQL database, hvor data om bruker, prosjekt og timer blir lagret. Dersom du ikke ønsker å opprette en bruker, selv med falsk info ;) kan du benytte deg av brukeren til Ola Normann.
 
+ ```
+Innlogging
+Mobil: 90010100
+Passord: 00000
+NB! Passordet er fem nuller.
+ ```
 
 
 ### Utforming og modeller
