@@ -17,7 +17,7 @@ Mobil: 90010100
 Passord: 00000
 NB! Passordet er fem nuller.
  ```
-
+Dersom du ønsker å teste funksjonaliteten til å endre passord, plis skift tilbake igjen:)
 
 ### Utforming og modeller
 
@@ -42,4 +42,5 @@ lett føre timer
 - Opprette prosjekt
 - Registrere arbeidstimer
 - Administrering av system informasjon
+- Endre bruker sitt passord
   
