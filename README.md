@@ -43,4 +43,26 @@ lett føre timer
 - Registrere arbeidstimer
 - Administrering av system informasjon
 - Endre bruker sitt passord
+
+### Gruppen sin ettertanke
+Når det gjelder samarbeidet og arbeidsflyt sitter vi igjen med gode opplevelser og et inntrykk
+av at vi har hatt en velfungerende gruppe. Strukturen vi har hatt internt har også fungert bra,
+og det har vært en lav terskel for å diskutere oppgaver og fremgangsmåter. Vi har hatt god
+hjelp av hverandre og oppgaver og sprinter som har vært mulig å gjennomføre.
+Arbeidsmodellen med å bygge smått med sten for sten har fungert bra, og gjort at vi kun har
+søtt på noen få tilfeller av kode som ikke har fungert. Kommunikasjonen har jevnt over vært
+bra, med unntak av noen enkelttilfeller av duplikatkode hvor to eller flere har tatt for seg
+samme oppgave.
+
+Oppgavenes størrelse har vært utfordrende å estimere og timene bruk har variert. Timebruken
+har også vært preget av hvorvidt man har støtt på utfordringer. Foruten om ovennevnte
+kommunikasjon og duplikatkode, så har vi støtt på utfordringer med deployment til Tomee-
+serveren, samt visning av sider ved navigering i prosjektet fra serveren. Eksempelvis måtte vi
+gjennom en downgrade av versjoner på både java og spring, noe som også fikk følger for
+tidligere produsert kode. Dette gjorde at det ble noen timer ekstra på enkelte elementer, men
+prosjektet og produktet har på tross av dette vært fungerende og oppe det meste av tiden. Et
+element vi trodde kom til å bli en større utfordring var at alle skulle jobbe på samme master-
+branch. Dette har for det meste gått bra og applikasjonen har hatt lite nedetid som følge av
+kodefeil på master.
+
   
