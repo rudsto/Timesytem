@@ -18,6 +18,12 @@ Repository inneholder startkoden hvor det er benyttet [Springboot](https://sprin
 #### Aktivitetsdiagram
 ![](assets/AktivitetsdiagramV4.jpg)
 
+#### Sekvensdiagram
+![](assets/SekvensdiagramV4.2.jpg)
+
+#### Klassediagram
+![](assets/Klassediagram4.4.jpg)
+
 
 ## Running the tests
 
