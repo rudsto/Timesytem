@@ -20,6 +20,9 @@ jobs:
           submodules: true
           lfs: false
 
+      - name: Set DEBIAN_FRONTEND
+        run: echo 'DEBIAN_FRONTEND=noninteractive' | sudo tee -a /etc/environment
+        
       - name: Install apt-utils and set DEBIAN_FRONTEND
         run: |
           sudo apt-get update
