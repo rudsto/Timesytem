@@ -39,7 +39,7 @@ jobs:
         run: chmod +x ./mvnw
       
       - name: Build with Maven
-        run: mvn -e clean install -DskipTests
+        run: mvn install -DskipTests
           
       - name: Build And Deploy
         id: builddeploy
