@@ -40,6 +40,10 @@ jobs:
       
       - name: Build with Maven
         run: mvn install -DskipTests
+
+    
+      - name: Specify Artifact Location
+        run: echo "##vso[task.setvariable variable=APP_ARTIFACTS;]$(pwd)/path/to/artifacts"
           
       - name: Build And Deploy
         id: builddeploy
@@ -50,8 +54,8 @@ jobs:
           action: "upload"
           ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
-          app_location: "/" # App source code path
-          api_location: "test1-eeaeeqg2d3c5aag6.eastus-01.azurewebsites.net" # Api source code path - optional
+          app_location: "${{ env.APP_ARTIFACTS }}" # App source code path
+          api_location: "" # Api source code path - optional
           output_location: "" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
 
